@@ -22,6 +22,11 @@ int ShowMessageBoxError(void* window, const char* content, const char* title)
 	return MessageBoxA(static_cast<HWND>(window), content, title, MB_OK | MB_ICONERROR);
 }
 
+void PauseGame(void* window)
+{
+	MessageBoxA(static_cast<HWND>(window), "Press \"OK\" to continue.", "Game paused", MB_OK | MB_ICONINFORMATION);
+}
+
 FileDialogResult* ShowOpenFileDialog(const char* title)
 {
 	FileDialogResult *result = new FileDialogResult;
@@ -60,6 +65,7 @@ void ExitFileNotFound()
 
 FileDialogResult::FileDialogResult()
 {
+	this->Result = -1;
 	this->File = new char[_MAX_PATH];
 }
 

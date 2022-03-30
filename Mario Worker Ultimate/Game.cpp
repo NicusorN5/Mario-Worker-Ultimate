@@ -22,4 +22,17 @@ namespace Game
 			return Y;
 		}
 	}
+	Level CurrentLevel(nullptr);
+
+	Rectangle ScreenRec(Rectangle norm)
+	{
+		return
+		{
+			norm.x * Resolution::X,
+			norm.y * Resolution::Y,
+			norm.width * Resolution::X,
+			norm.height * Resolution::Y
+		};
+	}
+
 };

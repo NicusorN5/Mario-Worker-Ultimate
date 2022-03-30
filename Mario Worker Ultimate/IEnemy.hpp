@@ -25,7 +25,7 @@ public:
 
 	virtual bool WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy) = 0;
 	virtual void Update(float dt) = 0;
-	virtual void Render(float dt) = 0;
+	virtual void Draw(float dt) = 0;
 
 	~IEnemy();
 };

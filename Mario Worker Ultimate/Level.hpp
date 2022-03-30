@@ -12,6 +12,7 @@ class Level
 public:
 	Level(const char* path);
 
+	bool IsValid;
 	int Time;
 	int Gravity;
 

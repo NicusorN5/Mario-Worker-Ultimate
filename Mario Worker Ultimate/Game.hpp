@@ -1,5 +1,7 @@
 #pragma once
 #include "Player.hpp"
+#include "Level.hpp"
+
 namespace Game
 {
 	extern unsigned CurrentGameSection;
@@ -13,5 +15,8 @@ namespace Game
 		float FltX();
 		float FltY();
 	}
+	extern Level CurrentLevel;
+
+	Rectangle ScreenRec(Rectangle norm);
 };
 

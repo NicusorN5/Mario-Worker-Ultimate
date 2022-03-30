@@ -1,4 +1,3 @@
-#include "Libs.hpp"
 #include "MainMenu.hpp"
 #include "Game.hpp"
 #include "Dialogs.hpp"
@@ -6,6 +5,7 @@
 
 int main()
 {
+	//initialization
 	ProperlySetWorkingPath();
 	InitWindow(800, 600, "Mario Worker Ultimate");
 
@@ -49,22 +49,31 @@ int main()
 
 	SetExitKey(0);
 	SetTargetFPS(60);
+	
+	MouseState mouse;
+
+	//game loop
 	while(!WindowShouldClose())
 	{
 		BeginDrawing();
+		BeginBlendMode(BLEND_ALPHA);
 		float dt = GetFrameTime();
 		ClearBackground(clearColor);
 		gameSections[Game::CurrentGameSection]->Draw(dt);
-		gameSections[Game::CurrentGameSection]->Update(dt);
+		EndBlendMode();
 		EndDrawing();
+
+		mouse = MouseState::GetMouseState(&mouse);
+		ControllerState controls = GetControllerState();
+		gameSections[Game::CurrentGameSection]->Update(dt,&mouse,&controls);
+
 	}
 
 	CloseWindow();
-
+	//cleanup
 	for(int i = 0; i < 5; i++)
 	{
 		delete gameSections[i];
 	}
-
 	return 0;
 }

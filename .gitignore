@@ -34,3 +34,7 @@
 *.opendb
 *.pdb
 *.bak
+*.db
+*.suo
+
+**/.vs/

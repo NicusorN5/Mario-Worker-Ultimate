@@ -53,5 +53,8 @@
     <ClInclude Include="Decoration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameSection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

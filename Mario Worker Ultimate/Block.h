@@ -4,6 +4,6 @@
 struct Block
 {
 	unsigned ID;
-	Position Position;
+	Vector2 Position;
 };
 

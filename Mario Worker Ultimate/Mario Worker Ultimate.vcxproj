@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="Decoration.h" />
+    <ClInclude Include="GameSection.h" />
     <ClInclude Include="IEnemy.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Libs.h" />

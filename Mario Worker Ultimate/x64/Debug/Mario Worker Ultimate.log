@@ -1,4 +1,0 @@
-﻿  Main.cpp
-Main.obj : error LNK2019: unresolved external symbol InitWindow referenced in function main
-Main.obj : error LNK2019: unresolved external symbol WindowShouldClose referenced in function main
-D:\Projects\Mario Worker Ultimate\x64\Debug\Mario Worker Ultimate.exe : fatal error LNK1120: 2 unresolved externals

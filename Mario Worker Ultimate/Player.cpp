@@ -7,6 +7,7 @@ bool Player::LoadSprites(const char* characterName)
 
 void Player::Render()
 {
+
 }
 
 void Player::Update(float dt)

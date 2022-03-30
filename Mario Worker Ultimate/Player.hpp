@@ -24,7 +24,7 @@ class Player
 	Texture2D PlayerLui;
 	Texture2D PlayerHammer;
 public:
-	Player(int x, int y) : Position{ x, y} {};
+	Player(int x, int y) : Position{ static_cast<float>(x), static_cast<float>(y)} {};
 
 	bool LoadSprites(const char* characterName);
 

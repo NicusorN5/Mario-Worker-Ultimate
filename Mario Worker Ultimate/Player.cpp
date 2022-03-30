@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Player.hpp"
 
 bool Player::LoadSprites(const char* characterName)
 {

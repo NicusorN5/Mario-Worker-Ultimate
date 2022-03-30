@@ -1,4 +1,4 @@
-#include "IEnemy.h"
+#include "IEnemy.hpp"
 
 const char* IEnemy::GetName()
 {

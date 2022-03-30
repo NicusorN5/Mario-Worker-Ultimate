@@ -1,0 +1,24 @@
+﻿  Backround.cpp
+  Block.cpp
+  Bonus.cpp
+  Decoration.cpp
+  Game.cpp
+  Goomba.cpp
+  IEnemy.cpp
+  IGamePart.cpp
+  Level.cpp
+  Main.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Main.cpp(41,23): warning C4154: deletion of an array expression; conversion to pointer supplied
+  MainMenu.cpp
+  Player.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 146 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+raylib.lib(rcore.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rcore.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+raylib.lib(rglfw.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rglfw.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+raylib.lib(rshapes.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rshapes.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+raylib.lib(rtext.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rtext.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+raylib.lib(rtextures.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rtextures.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+raylib.lib(utils.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(utils.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
+  Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Release\Mario Worker Ultimate.exe

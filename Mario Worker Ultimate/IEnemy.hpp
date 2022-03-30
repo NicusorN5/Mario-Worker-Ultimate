@@ -1,5 +1,5 @@
 #pragma once
-#include <raylib.h>
+#include "Libs.hpp"
 
 enum class DamageByPlayer
 {
@@ -12,10 +12,11 @@ enum class DamageByPlayer
 
 class IEnemy
 {
+protected:
 	const char* _name;
 	unsigned _variant;
 public:
-	IEnemy(const char* Name, int X, int Y, unsigned v) : _name(Name), Position{ X,Y }, _variant(v) {};
+	IEnemy(const char* Name, int X, int Y, unsigned v) : _name(Name), Position{ static_cast<float>(X),static_cast<float>(Y) }, _variant(v) {};
 
 	Vector2 Position;
 

@@ -1,0 +1,51 @@
+﻿  Backround.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Block.cpp
+  Bonus.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Bonus.h(19,47): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Bonus.h(19,47): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Bonus.h(19,49): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Bonus.h(19,49): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Decoration.cpp
+  Game.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Goomba.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  IEnemy.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  IGamePart.cpp
+  Level.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\IEnemy.h(19,80): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Level.cpp(3,33): error C2614: 'Level': illegal member initialization: 'Player' is not a base or member
+  Main.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Main.cpp(39,23): warning C4154: deletion of an array expression; conversion to pointer supplied
+  MainMenu.cpp
+  Player.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): error C2397: conversion from 'int' to 'float' requires a narrowing conversion
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Player.h(27,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Generating Code...

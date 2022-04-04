@@ -24,6 +24,5 @@ public:
 	std::vector<Decoration> Decorations;
 	std::vector<Bonus> Bonuses;
 	Backround LvlBackround;
-	
 };
 

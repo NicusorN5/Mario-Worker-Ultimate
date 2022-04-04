@@ -16,7 +16,9 @@ namespace Game
 		float FltY();
 	}
 	extern Level CurrentLevel;
+	extern bool GameRunning;
 
 	Rectangle ScreenRec(Rectangle norm);
+
 };
 

@@ -1,6 +1,7 @@
 #include "Dialogs.hpp"
 #include <Windows.h>
 #include <PathCch.h>
+#include "resource.h"
 
 #pragma comment(lib,"Pathcch.lib")
 
@@ -61,6 +62,12 @@ FileDialogResult* ShowSaveFileDialog(const char* title)
 void ExitFileNotFound()
 {
 	exit(0x80070002); // 0x80070002 = E_FILE_NOT_FOUND
+}
+
+void SetGameIcon(void* window)
+{
+	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
+	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
 }
 
 FileDialogResult::FileDialogResult()

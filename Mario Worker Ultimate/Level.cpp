@@ -33,8 +33,8 @@ Level::Level(const char* path) : LvlBackround(nullptr,false,false)
 	}
 	else
 	{
-		char buff[300]{ 0 };
-		sprintf_s(buff, "Level file %s doesn't exist!", path);
-		throw std::runtime_error(buff);
+		std::stringstream err;
+		err << "Level file " << path << " doesn't exist!";
+		throw std::runtime_error(err.str().c_str());
 	}
 }

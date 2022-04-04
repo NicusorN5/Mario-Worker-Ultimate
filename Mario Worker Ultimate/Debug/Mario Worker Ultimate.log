@@ -1,2 +1,4 @@
 ﻿  MainMenu.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\MainMenu.cpp(5,33): warning C4244: 'return': conversion from 'float' to 'uint8_t', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\MainMenu.cpp(50,42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Debug\Mario Worker Ultimate.exe

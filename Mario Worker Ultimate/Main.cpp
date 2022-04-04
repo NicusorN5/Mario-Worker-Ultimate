@@ -2,20 +2,27 @@
 #include "Game.hpp"
 #include "Dialogs.hpp"
 #include "Resources.hpp"
+#include "LevelEditor.hpp"
+#include "Intro.h"
 
 int main()
 {
 	//initialization
 	ProperlySetWorkingPath();
 	InitWindow(800, 600, "Mario Worker Ultimate");
+	InitAudioDevice();
 
 	Game::Resolution::X = 800;
 	Game::Resolution::Y = 600;
+	Game::CurrentGameSection = 0;
 	//ToggleFullscreen();
 	void* WindowHandle = GetWindowHandle();
+	SetGameIcon(WindowHandle);
 
 	IGamePart* gameSections[5]{ nullptr };
-	gameSections[0] = new MainMenu();
+	gameSections[0] = new Intro();
+	gameSections[1] = new MainMenu();
+	gameSections[2] = new LevelEditor();
 
 	try
 	{
@@ -53,7 +60,7 @@ int main()
 	MouseState mouse;
 
 	//game loop
-	while(!WindowShouldClose())
+	while(!WindowShouldClose() && Game::GameRunning)
 	{
 		BeginDrawing();
 		BeginBlendMode(BLEND_ALPHA);
@@ -66,9 +73,9 @@ int main()
 		mouse = MouseState::GetMouseState(&mouse);
 		ControllerState controls = GetControllerState();
 		gameSections[Game::CurrentGameSection]->Update(dt,&mouse,&controls);
-
 	}
 
+	CloseAudioDevice();
 	CloseWindow();
 	//cleanup
 	for(int i = 0; i < 5; i++)

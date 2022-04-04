@@ -19,3 +19,4 @@ FileDialogResult* ShowOpenFileDialog(const char* title);
 FileDialogResult* ShowSaveFileDialog(const char* title);
 
 void ExitFileNotFound();
+void SetGameIcon(void* window);

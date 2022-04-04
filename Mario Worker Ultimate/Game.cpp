@@ -35,4 +35,6 @@ namespace Game
 		};
 	}
 
+	bool GameRunning = true;
+
 };

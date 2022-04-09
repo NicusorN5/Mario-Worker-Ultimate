@@ -11,6 +11,8 @@ struct ControllerState
 	bool Z; // z button 
 	bool C; // c button (may not be used)
 	bool P; // p button (for pausing the game).
+	bool Shift; // shift (for speeeing up movement in the editor)
+	bool Space; // space button (showing the elements)
 };
 
 ControllerState GetControllerState();

@@ -6,19 +6,7 @@ namespace Game
 {
 	extern unsigned CurrentGameSection;
 	extern Player MainPlayer;
-	namespace Resolution
-	{
-		extern unsigned X;
-		extern unsigned Y;
-
-		Vector2 Vec();
-		float FltX();
-		float FltY();
-	}
 	extern Level CurrentLevel;
 	extern bool GameRunning;
-
-	Rectangle ScreenRec(Rectangle norm);
-
 };
 

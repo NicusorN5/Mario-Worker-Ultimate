@@ -1,7 +1,6 @@
 #include "MainMenu.hpp"
 #include "Game.hpp"
 #include "Dialogs.hpp"
-#include "Resources.hpp"
 #include "LevelEditor.hpp"
 #include "Intro.h"
 
@@ -15,6 +14,7 @@ int main()
 	Game::Resolution::X = 800;
 	Game::Resolution::Y = 600;
 	Game::CurrentGameSection = 0;
+
 	//ToggleFullscreen();
 	void* WindowHandle = GetWindowHandle();
 	SetGameIcon(WindowHandle);

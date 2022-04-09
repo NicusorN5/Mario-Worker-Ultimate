@@ -2,6 +2,7 @@
 #include "IGamePart.hpp"
 #include "Game.hpp"
 #include "Resources.hpp"
+#include "ShinyButton.hpp"
 
 class MainMenu : public IGamePart
 {
@@ -11,23 +12,25 @@ class MainMenu : public IGamePart
 	Texture2D _btnPlay;
 	Texture2D _btnQuit;
 
-	Rectangle _coordBtnEdit = Game::ScreenRec({ 0.25f,0.3f,0.2f,0.2f });
-	Rectangle _coordBtnPlay = Game::ScreenRec({ 0.25f,0.55f,0.2f,0.2f });
-	Rectangle _coordBtnQuit = Game::ScreenRec({ 0.75f, 0.55f,0.2f,0.2f });
+	ShinyButton _editButton{};
+	ShinyButton _createMapButton{};
+	ShinyButton _settingsButton{};
 
-	float glintAnimTimer = 0.0f;
+	ShinyButton _playButton{};
+	ShinyButton _playMapButton{};
+	ShinyButton _quitButton{};
+
 	Texture2D _glint;
-	uint8_t hoveredButtonIndex = 0;
-
-	uint8_t _calculateGlintAlpha(float animTimer);
 
 	float marioAnimTimer = 0.0f;
 	Sound _welcomeMarioWorker;
-	Music _mainMenuMusic;
 	Texture _mainMenuMario;
 
 	bool _playedApplause = false;
 	Sound _applause;
+
+	bool playingMusic = false;
+	Music _mainMenuMusic;
 public:
 	void LoadContent() override;
 	void Update(float dt,MouseState *ms, ControllerState* cs) override;

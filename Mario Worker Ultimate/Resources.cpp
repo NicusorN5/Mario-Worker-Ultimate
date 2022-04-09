@@ -1,7 +1,12 @@
 #include "Resources.hpp"
 
+Texture2D Resources::GradientA{};
+Texture2D Resources::GradientB{};
+
 Texture2D Resources::Goomba1{};
 Texture2D Resources::Goomba2{};
+
+Texture2D Resources::Window{};
 
 Texture2D Resources::LoadTextureChkF(const char* path)
 {
@@ -11,6 +16,9 @@ Texture2D Resources::LoadTextureChkF(const char* path)
 
 void Resources::LoadAll()
 {
+	GradientA = LoadTextureChkF("Data\\Backrounds\\GradientA.png");
+	GradientB = LoadTextureChkF("Data\\Backrounds\\GradientB.png");
+
 	Goomba1 = LoadTextureChkF("Data\\Enemies\\BrownGoomba.png");
 }
 
@@ -27,7 +35,7 @@ Sound Resources::LoadSoundChkF(const char* path)
 	if(isWave)
 	{
 		Wave w = LoadWave(path);
-		//if(w.data == nullptr) throw GameResourceLoadException(path);
+		if(w.data == nullptr) throw GameResourceLoadException(path);
 		return LoadSoundFromWave(w);
 	}
 	

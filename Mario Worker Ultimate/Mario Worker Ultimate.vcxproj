@@ -170,7 +170,9 @@
     <ClCompile Include="Dialogs.cpp" />
     <ClCompile Include="MouseState.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Resolution.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ShinyButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backround.hpp" />
@@ -192,8 +194,10 @@
     <ClInclude Include="Dialogs.hpp" />
     <ClInclude Include="MouseState.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Resolution.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.hpp" />
+    <ClInclude Include="ShinyButton.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

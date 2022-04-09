@@ -12,5 +12,7 @@ ControllerState GetControllerState()
         IsKeyDown(KEY_Z),
         IsKeyDown(KEY_C),
         IsKeyDown(KEY_P),
+        IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT),
+        IsKeyDown(KEY_SPACE)
     };
 }

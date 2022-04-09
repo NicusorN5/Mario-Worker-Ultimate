@@ -1,20 +1,43 @@
 ﻿  Backround.cpp
   Block.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Block.cpp(8,2): warning C4065: switch statement contains 'default' but no 'case' labels
   Bonus.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Bonus.cpp(8,2): warning C4065: switch statement contains 'default' but no 'case' labels
+  ControllerState.cpp
   Decoration.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Decoration.cpp(8,2): warning C4065: switch statement contains 'default' but no 'case' labels
   Game.cpp
+  GameResourceLoadException.cpp
   Goomba.cpp
   IEnemy.cpp
   IGamePart.cpp
+  Intro.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Intro.cpp(7,14): warning C4244: 'return': conversion from 'float' to 'uint8_t', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Intro.cpp(9,27): warning C4244: 'return': conversion from 'float' to 'uint8_t', possible loss of data
   Level.cpp
+  LevelEditor.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(44,117): warning C4305: 'initializing': truncation from 'double' to 'float'
   Main.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Main.cpp(41,23): warning C4154: deletion of an array expression; conversion to pointer supplied
   MainMenu.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\MainMenu.cpp(5,33): warning C4244: 'return': conversion from 'float' to 'uint8_t', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\MainMenu.cpp(50,42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Dialogs.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Dialogs.cpp(42,31): warning C4805: '==': unsafe mix of type 'BOOL' and type 'bool' in operation
+  MouseState.cpp
   Player.cpp
+  Resolution.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resolution.cpp(12,19): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resolution.cpp(12,22): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resolution.cpp(16,11): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resolution.cpp(20,11): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
+  Resources.cpp
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 146 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Compiler switch has changed, fall back to full compilation.
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Intro.cpp(11): warning C4715: 'Intro::introImageAlpta': not all control paths return a value
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resources.cpp(13): warning C4715: 'Resources::LoadTextureChkF': not all control paths return a value
+  All 318 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
+raylib.lib(raudio.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(raudio.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
 raylib.lib(rcore.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rcore.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
 raylib.lib(rglfw.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rglfw.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info
 raylib.lib(rshapes.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rshapes.obj)' or at 'D:\Projects\Mario Worker Ultimate\Release\raylib.pdb'; linking object as if no debug info

@@ -5,8 +5,13 @@
 
 namespace Resources
 {
+	extern Texture2D GradientA;
+	extern Texture2D GradientB;
+
 	extern Texture2D Goomba1; //normal goomba
 	extern Texture2D Goomba2; //gray goomba (immune to fire)
+
+	extern Texture2D Window;
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

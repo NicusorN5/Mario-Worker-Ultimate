@@ -41,3 +41,5 @@
 .vs/
 
 **/raylib-4.0.0_win32_msvc16/
+**/Debug/
+**/Release/

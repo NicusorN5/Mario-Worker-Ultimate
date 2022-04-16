@@ -51,5 +51,5 @@ void TabButton::SetXOffset(float offset)
 
 bool TabButton::Raised()
 {
-	return _isHovered || movingAnim > 0;
+	return movingAnim > 0;
 }

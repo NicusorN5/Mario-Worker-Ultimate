@@ -76,6 +76,25 @@ void LevelEditor::LoadContent()
 
 	_tSceneryTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTab.png");
 	_tSceneryTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTabClosed.png");
+	_sceneryBtn = TabButton(_tSceneryTabUnhov, _tSceneryTabHov,
+		Game::ScreenRec({0.455f,0.0975f,0.05f,0.05f}),
+		Game::ScreenRec({0.455f,0.0975f,0.1f,0.05f}),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetItemCategory(4);
+		}
+	);
+
+	_tSettingsTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTab.png");
+	_tSettingsTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTabClosed.png");
+	_settingsBtn = TabButton(_tSettingsTabUnhov, _tSettingsTabHov,
+		Game::ScreenRec({ 0.505f,0.0975f,0.05f,0.05f }),
+		Game::ScreenRec({ 0.505f,0.0975f,0.1f,0.05f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetItemCategory(5);
+		}
+	);
 
 }
 
@@ -108,6 +127,25 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			_sceneryBtn.SetXOffset(0.05f);
 			_settingsBtn.SetXOffset(0.05f);
 		}
+		else if(_enemiesBtn.Raised())
+		{
+			_enemiesBtn.SetXOffset(0);
+			_bonusBtn.SetXOffset(0.05f);
+			_marksBtn.SetXOffset(0.05f);
+			_sceneryBtn.SetXOffset(0.05f);
+			_settingsBtn.SetXOffset(0.05f);
+		}
+		else if(_bonusBtn.Raised())
+		{
+			_marksBtn.SetXOffset(0.05f);
+			_sceneryBtn.SetXOffset(0.05f);
+			_settingsBtn.SetXOffset(0.05f);
+		}
+		else if(_marksBtn.Raised())
+		{
+			_sceneryBtn.SetXOffset(0.05f);
+			_settingsBtn.SetXOffset(0.05f);
+		}
 		else
 		{
 			_enemiesBtn.SetXOffset(0);
@@ -117,27 +155,22 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			_settingsBtn.SetXOffset(0);
 		}
 
-		if(_enemiesBtn.Raised())
-		{
-			_bonusBtn.SetXOffset(0.05f);
-			_marksBtn.SetXOffset(0.05f);
-			_sceneryBtn.SetXOffset(0.05f);
+		if(_sceneryBtn.Raised())
 			_settingsBtn.SetXOffset(0.05f);
-		}
 		else
 		{
-			_bonusBtn.SetXOffset(0);
-			_marksBtn.SetXOffset(0);
-			_sceneryBtn.SetXOffset(0);
-			_settingsBtn.SetXOffset(0);
-		}
 
+		}
 		//updating tab buttons logic
 		_blocksBtn.Update(ms, dt);
 		_enemiesBtn.Update(ms, dt);
+		_bonusBtn.Update(ms, dt);
+		_marksBtn.Update(ms, dt);
+		_sceneryBtn.Update(ms, dt);
+		_settingsBtn.Update(ms, dt);
 		if(!_previousSpacePress && cs->Space) _showElements = false;
 	}
-	
+
 	_previousSpacePress = cs->Space;
 }
 
@@ -153,6 +186,10 @@ void LevelEditor::Draw(float dt)
 		DrawTexturePro(W_selectItem, { 0,0,800,600 }, Game::ScreenRec({ 0,0,1,1 }), { 0,0 }, 0.0f, WHITE);
 		_blocksBtn.Draw(dt);
 		_enemiesBtn.Draw(dt);
+		_bonusBtn.Draw(dt);
+		_marksBtn.Draw(dt);
+		_sceneryBtn.Draw(dt);
+		_settingsBtn.Draw(dt);
 	}
 }
 

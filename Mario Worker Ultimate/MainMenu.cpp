@@ -26,15 +26,16 @@ void MainMenu::LoadContent()
 	_playButton = ShinyButton(_btnPlay, _glint, Game::ScreenRec({ 0.25f,0.55f,0.2f,0.2f }),
 		[]() -> void
 		{
-			FileDialogResult r = ShowOpenFileDialog("Open a level...");
-			if(r.Result == 0)
+			FileDialogResult *r = ShowOpenFileDialog("Open a level...");
+			if(r->Result == 0)
 			{
-				Game::CurrentLevel = Level(r.File);
+				Game::CurrentLevel = Level(r->File);
 				if(Game::CurrentLevel.IsValid)
 				{
 					Game::CurrentGameSection = 2;
 				}
 			}
+			delete r;
 		}
 	);
 

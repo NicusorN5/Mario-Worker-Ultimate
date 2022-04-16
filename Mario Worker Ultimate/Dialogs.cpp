@@ -28,34 +28,33 @@ void PauseGame(void* window)
 	MessageBoxA(static_cast<HWND>(window), "Press \"OK\" to continue.", "Game paused", MB_OK | MB_ICONINFORMATION);
 }
 
-FileDialogResult ShowOpenFileDialog(const char* title)
+FileDialogResult* ShowOpenFileDialog(const char* title)
 {
-	FileDialogResult result;
-	memset(result.File, 0, _MAX_PATH);
+	FileDialogResult* result = new FileDialogResult();
 
 	OPENFILENAMEA ofn{};
 	ofn.lStructSize = sizeof(OPENFILENAMEA);
-	ofn.lpstrFile = result.File;
+	ofn.lpstrFile = result->File;
 	ofn.lpstrTitle = title;
 	ofn.nMaxFile = _MAX_PATH;
 
-	if(GetOpenFileNameA(&ofn) == true) result.Result = 0;
-	else result.Result = GetLastError();
+	if(GetOpenFileNameA(&ofn) == true) result->Result = 0;
+	else result->Result = (GetLastError() != 0 ? GetLastError() : -1);
 	return result;
 }
 
-FileDialogResult ShowSaveFileDialog(const char* title)
+FileDialogResult *ShowSaveFileDialog(const char* title)
 {
-	FileDialogResult result{};
+	FileDialogResult* result = new FileDialogResult();
 
 	OPENFILENAMEA ofn{};
-	ofn.lStructSize = sizeof(OPENFILENAME);
-	ofn.lpstrFile = result.File;
+	ofn.lStructSize = sizeof(OPENFILENAMEA);
+	ofn.lpstrFile = result->File;
 	ofn.lpstrTitle = title;
 	ofn.nMaxFile = _MAX_PATH;
 
-	if(GetSaveFileNameA(&ofn)) result.Result = 0;
-	else result.Result = GetLastError();
+	if(GetSaveFileNameA(&ofn)) result->Result = 0;
+	else result->Result = (GetLastError() != 0 ? GetLastError() : -1);
 	return result;
 }
 
@@ -74,6 +73,7 @@ FileDialogResult::FileDialogResult()
 {
 	this->Result = -1;
 	this->File = new char[_MAX_PATH];
+	memset(this->File, 0, _MAX_PATH);
 }
 
 FileDialogResult::~FileDialogResult()

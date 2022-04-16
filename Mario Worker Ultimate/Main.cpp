@@ -2,7 +2,7 @@
 #include "Game.hpp"
 #include "Dialogs.hpp"
 #include "LevelEditor.hpp"
-#include "Intro.h"
+#include "Intro.hpp"
 
 int main()
 {

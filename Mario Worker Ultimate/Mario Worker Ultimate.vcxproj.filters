@@ -78,6 +78,12 @@
     <ClCompile Include="ShinyButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TabButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -140,13 +146,19 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Intro.h">
+    <ClInclude Include="Intro.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resolution.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShinyButton.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TabButton.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IButton.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

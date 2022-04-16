@@ -9,6 +9,8 @@ void ShinyButton::Update(MouseState* ms, float dt)
 	{
 		_shiningAnimTimer += 200 * dt;
 	}
+	else _shiningAnimTimer = 0;
+
 	_alpha = _calculateGlintAlpha((int)_shiningAnimTimer % 510);
 
 	if(_isClicked) _eClick();
@@ -20,16 +22,6 @@ void ShinyButton::Draw(float dt)
 	
 	if(_isHovered) 
 		DrawTexturePro(_shine, { 0,0,(float)_shine.width,(float)_shine.height }, _coords, { 0,0 }, 0, { 255,255,255,_alpha });
-}
-
-bool ShinyButton::IsClicked()
-{
-	return _isClicked;
-}
-
-bool ShinyButton::IsHovered()
-{
-	return _isHovered;
 }
 
 uint8_t ShinyButton::_calculateGlintAlpha(int animTimer)

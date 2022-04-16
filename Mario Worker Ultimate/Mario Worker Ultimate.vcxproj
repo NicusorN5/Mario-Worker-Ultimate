@@ -160,6 +160,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameResourceLoadException.cpp" />
     <ClCompile Include="Goomba.cpp" />
+    <ClCompile Include="IButton.cpp" />
     <ClCompile Include="IEnemy.cpp" />
     <ClCompile Include="IGamePart.cpp" />
     <ClCompile Include="Intro.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Resolution.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ShinyButton.cpp" />
+    <ClCompile Include="TabButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backround.hpp" />
@@ -184,9 +186,10 @@
     <ClInclude Include="GameResourceLoadException.hpp" />
     <ClInclude Include="GameSection.hpp" />
     <ClInclude Include="Goomba.hpp" />
+    <ClInclude Include="IButton.hpp" />
     <ClInclude Include="IEnemy.hpp" />
     <ClInclude Include="IGamePart.hpp" />
-    <ClInclude Include="Intro.h" />
+    <ClInclude Include="Intro.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="LevelEditor.hpp" />
     <ClInclude Include="Libs.hpp" />
@@ -198,6 +201,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.hpp" />
     <ClInclude Include="ShinyButton.hpp" />
+    <ClInclude Include="TabButton.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

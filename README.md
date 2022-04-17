@@ -4,7 +4,7 @@
 
 ## What is this?
 
-Mario Worker Ultimate is a remake of Mario Worker 1.1 originally made by 
+Mario Worker Ultimate is a remake of Mario Worker 1.1 originally made by Buziol Games.
 
 ## How to build using VS 2022
 

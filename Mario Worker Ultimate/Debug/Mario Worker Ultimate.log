@@ -1,2 +1,7 @@
-﻿  TabButton.cpp
+﻿  LevelEditor.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(225,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(242,117): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(266,5): warning C4065: switch statement contains 'default' but no 'case' labels
+  Main.cpp
+  Generating Code...
   Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Debug\Mario Worker Ultimate.exe

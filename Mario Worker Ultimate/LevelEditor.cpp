@@ -96,6 +96,50 @@ void LevelEditor::LoadContent()
 		}
 	);
 
+	_tTerrainSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Terrain.png");
+	_btnTerrain = ShinyButton(_tTerrainSub, _tGlint,
+		Game::ScreenRec({ 0.15f,0.148f,0.1f,0.05f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(0);
+		}
+	);
+
+	_tBlocksSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Blocks.png");
+	_btnBlocks = ShinyButton(_tBlocksSub, _tGlint,
+		Game::ScreenRec({ 0.15f,0.2f,0.1f,0.05f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(1);
+		}
+	);
+
+	_tTankSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Tank.png");
+	_btnTank = ShinyButton(_tTankSub, _tGlint,
+		Game::ScreenRec({0.15f,0.252f,0.1f,0.05f}),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(2);
+		}
+	);
+
+	_tPipesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
+	_btnPipes = ShinyButton(_tPipesSub, _tGlint,
+		Game::ScreenRec({0.15f,0.304f,0.1f,0.05f}),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(3);
+		}
+	);
+
+	_tCustomBlocks = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBlocks.png");
+	_btnCustomBlocks = ShinyButton(_tCustomBlocks, _tGlint,
+		Game::ScreenRec({ 0.15f,0.356f,0.1f,0.05f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(4);
+		}
+	);
 }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -146,6 +190,10 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			_sceneryBtn.SetXOffset(0.05f);
 			_settingsBtn.SetXOffset(0.05f);
 		}
+		else if(_sceneryBtn.Raised())
+		{
+			_settingsBtn.SetXOffset(0.05f);
+		}
 		else
 		{
 			_enemiesBtn.SetXOffset(0);
@@ -154,13 +202,6 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			_sceneryBtn.SetXOffset(0);
 			_settingsBtn.SetXOffset(0);
 		}
-
-		if(_sceneryBtn.Raised())
-			_settingsBtn.SetXOffset(0.05f);
-		else
-		{
-
-		}
 		//updating tab buttons logic
 		_blocksBtn.Update(ms, dt);
 		_enemiesBtn.Update(ms, dt);
@@ -168,6 +209,25 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 		_marksBtn.Update(ms, dt);
 		_sceneryBtn.Update(ms, dt);
 		_settingsBtn.Update(ms, dt);
+
+		switch(categoryId)
+		{
+			case 0:
+			{
+				_btnTerrain.Update(ms, dt);
+				_btnBlocks.Update(ms, dt);
+				_btnTank.Update(ms, dt);
+				_btnPipes.Update(ms, dt);
+				_btnCustomBlocks.Update(ms, dt);
+				switch(subCategoryId)
+				{
+					default:break;
+				}
+				break;
+			}
+			default:break;
+		}
+
 		if(!_previousSpacePress && cs->Space) _showElements = false;
 	}
 
@@ -190,6 +250,24 @@ void LevelEditor::Draw(float dt)
 		_marksBtn.Draw(dt);
 		_sceneryBtn.Draw(dt);
 		_settingsBtn.Draw(dt);
+
+		switch(categoryId)
+		{
+			case 0:
+			{
+				_btnTerrain.Draw(dt);
+				_btnBlocks.Draw(dt);
+				_btnTank.Draw(dt);
+				_btnPipes.Draw(dt);
+				_btnCustomBlocks.Draw(dt);
+				switch(subCategoryId)
+				{
+					default:break;
+				}
+				break;
+			}
+			default:break;
+		}
 	}
 }
 

@@ -13,6 +13,8 @@ namespace Resources
 
 	extern Texture2D Window;
 
+	extern Sound LakituDrop[3];
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

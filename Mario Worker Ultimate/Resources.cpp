@@ -8,6 +8,8 @@ Texture2D Resources::Goomba2{};
 
 Texture2D Resources::Window{};
 
+Sound Resources::LakituDrop[3]{};
+
 Texture2D Resources::LoadTextureChkF(const char* path)
 {
 	Texture2D t = LoadTexture(path);
@@ -20,6 +22,13 @@ void Resources::LoadAll()
 	GradientB = LoadTextureChkF("Data\\Backrounds\\GradientB.png");
 
 	Goomba1 = LoadTextureChkF("Data\\Enemies\\BrownGoomba.png");
+
+	for(size_t i = 0; i < 3; i++)
+	{
+		std::string path = "Data\\Sounds\\Lakitu";
+		path += std::to_string(i) + ".ogg";
+		LakituDrop[i] = LoadSoundChkF(path.c_str());
+	}
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

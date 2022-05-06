@@ -81,10 +81,10 @@ class LevelEditor : public IGamePart
 
 	ShinyButton _btnEnemies{};
 	ShinyButton _btnHazard{};
-	ShinyButton _brnClonesSub{};
-	ShinyButton _btnBossesSub{};
-	ShinyButton _btnCustomEnemiesSub{};
-	ShinyButton _btnCustomBossesSub{};
+	ShinyButton _btnClones{};
+	ShinyButton _btnBosses{};
+	ShinyButton _btnCustomEnemies{};
+	ShinyButton _btnCustomBosses{};
 
 	//bonuses types
 	Texture2D _tBonusesSub{};
@@ -103,7 +103,7 @@ class LevelEditor : public IGamePart
 	ShinyButton _btnLevelProgress{};
 	ShinyButton _btnPlatforms{};
 	ShinyButton _btnEnemyMarks{};
-	ShinyButton _btnWarpsSub{};
+	ShinyButton _btnWarps{};
 	Texture2D _btnScripts{};
 
 	//decoration types

@@ -10,6 +10,7 @@ int main()
 	ProperlySetWorkingPath();
 	InitWindow(800, 600, "Mario Worker Ultimate");
 	InitAudioDevice();
+	//ToggleFullscreen();
 
 	Game::Resolution::X = 800;
 	Game::Resolution::Y = 600;

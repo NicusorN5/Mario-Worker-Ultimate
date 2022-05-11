@@ -21,15 +21,15 @@ class Level
 public:
 	Level(const char* path);
 
-	bool IsValid;
-	int Time;
-	int Gravity;
-	float LiquidLevel;
+	bool IsValid = false;
+	int Time = 360;
+	float Gravity = 9.81f;
+	float LiquidLevel = -5.0f;
 
-	int EnemySpeedMultiplier;
-	const char* MusicPath;
+	int EnemySpeedMultiplier = 1;
+	const char* MusicPath = nullptr;
 
-	Vector2 Size;
+	Vector2 Size = { 60,40 };
 
 	std::vector<Block> Blocks;
 	std::vector<IEnemy*> Enemies;

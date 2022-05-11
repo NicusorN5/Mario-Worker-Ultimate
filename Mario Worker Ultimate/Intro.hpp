@@ -5,7 +5,7 @@
 
 class Intro : public IGamePart
 {
-	Texture _introImage;
+	Texture _introImage{};
 	float _introTimer = 0.0f;
 
 	uint8_t introImageAlpta(float t);

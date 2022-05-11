@@ -11,8 +11,8 @@ Rectangle LevelEditor::calculateWorldTransformation(Rectangle normScreen)
 
 Rectangle LevelEditor::calculateTileTransformation(Rectangle normScreen)
 {
-	return { normScreen.x - ((int)cameraPosition.x % 641),
-		normScreen.y - ((int)cameraPosition.y % 481),
+	return { normScreen.x - ((int)cameraPosition.x % (Game::Resolution::X)),
+		normScreen.y - ((int)cameraPosition.y % (Game::Resolution::Y)),
 		normScreen.width + normScreen.x / 20 , normScreen.height + normScreen.x / 15 };
 }
 
@@ -163,6 +163,72 @@ void LevelEditor::LoadContent()
 	_btnCustomBonuses = ShinyButton(_tCustomBonuses, _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 
+	_tLevelProgressSub = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelProgress.png");
+	_btnLevelProgress = ShinyButton(_tLevelProgressSub, _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+
+	_tPlatformsSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Platforms.png");
+	_btnPlatforms = ShinyButton(_tPlatformsSub,_tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+
+	_tMarksSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Marks.png");
+	_btnMarks = ShinyButton(_tMarksSub,_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+
+	_tWarpsSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
+	_btnPipes = ShinyButton(_tWarpsSub,_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+
+	_tScriptedInstances = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
+	_btnScripts = ShinyButton(_tScriptedInstances,_tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+
+	_squareMouse = Resources::LoadTextureChkF("Data\\Editor\\CurrentTileSquare.png");
+
+	_tOverworldSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Overworld.png");
+	_btnOverworld = ShinyButton(_tOverworldSub,_tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+
+	_tUndergroundSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Underground.png");
+	_btnUnderground = ShinyButton(_tUndergroundSub, _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+
+	_tStarlandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
+	_btnStarland = ShinyButton(_tStarlandSub,_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+
+	_tSnowlandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
+	_btnSnowland = ShinyButton(_tSnowlandSub,_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+
+	_tDarklandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Darkland.png");
+	_btnDarkland = ShinyButton(_tDarklandSub, _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+
+	_tSunsetSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Sunset.png");
+	_btnSunset = ShinyButton(_tSunsetSub, _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
+
+	_tDesertSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Desert.png");
+	_btnDesert = ShinyButton(_tDesertSub, _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(6);
+		}
+	);
+
+	_tCastleSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
+	_btnCastle = ShinyButton(_tCastleSub,_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(7);
+		}
+	);
+
+	_tTilesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Tiles.png");
+	_btnTiles = ShinyButton(_tTilesSub,_tGlint,Game::ScreenRec({ 0.095f,0.764f,0.15f,0.075f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(8);
+		}
+	);
+
+	_tCustomDecoSub = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
+	_btnCustomDeco = ShinyButton(_tCustomDecoSub,_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
+		[]() -> void
+		{
+			LevelEditor::GetSingleton()->SetSubCategory(9);
+		}
+	);
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -272,20 +338,53 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 				}
 				break;
 			}
+			case 3:
+			{
+				_btnLevelProgress.Update(ms, dt);
+				_btnPlatforms.Update(ms, dt);
+				_btnMarks.Update(ms, dt);
+				_btnWarps.Update(ms, dt);
+				_btnPipes.Update(ms, dt);
+				_btnScripts.Update(ms, dt);
+				switch(subCategoryId)
+				{
+					default: break;
+				}
+				break;
+			}
+			case 4:
+			{
+				_btnOverworld.Update(ms,dt);
+				_btnUnderground.Update(ms, dt);
+				_btnStarland.Update(ms, dt);
+				_btnSnowland.Update(ms, dt);
+				_btnDarkland.Update(ms, dt);
+				_btnSunset.Update(ms, dt);
+				_btnDesert.Update(ms, dt);
+				_btnCastle.Update(ms, dt);
+				_btnTiles.Update(ms, dt);
+				_btnCustomDeco.Update(ms, dt);
+				switch(subCategoryId)
+				{
+					default: break;
+				}
+				break;
+			}
 			default:break;
 		}
 
 		if(!_previousSpacePress && cs->Space) _showElements = false;
 	}
 	_previousSpacePress = cs->Space;
+	_lastMousePos = { (float)ms->X,(float)ms->Y };
 }
 
 void LevelEditor::Draw(float dt)
 {
 	Game::CurrentLevel.LvlBackround.Draw(cameraPosition, Game::CurrentLevel.Size);
 	
-	DrawTexturePro(_square, { 0,0,2560,1920 }, calculateTileTransformation(Game::ScreenRec({ 0,0,2,2 })), { 0,0 }, 0.0f, WHITE);
-	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateWorldTransformation(Game::ScreenRec({ 0,0,0.05,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
+	DrawTexturePro(_square, { 0,0,64 * Game::CurrentLevel.Size.x,64 * Game::CurrentLevel.Size.y}, calculateTileTransformation(Game::ScreenRec({0,0,Game::CurrentLevel.Size.x / 20,Game::CurrentLevel.Size.y / 15})), {0,0}, 0.0f, WHITE);
+	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateWorldTransformation(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
 
 	if(_showElements)
 	{
@@ -336,8 +435,51 @@ void LevelEditor::Draw(float dt)
 				}
 				break;
 			}
+			case 3:
+			{
+				_btnLevelProgress.Draw(dt);
+				_btnPlatforms.Draw(dt);
+				_btnMarks.Draw(dt);
+				_btnWarps.Draw(dt);
+				_btnPipes.Draw(dt);
+				_btnScripts.Draw(dt);
+				switch(subCategoryId)
+				{
+					default: break;
+				}
+				break;
+			}
+			case 4:
+			{
+				_btnOverworld.Draw(dt);
+				_btnUnderground.Draw(dt);
+				_btnStarland.Draw(dt);
+				_btnSnowland.Draw(dt);
+				_btnDarkland.Draw(dt);
+				_btnSunset.Draw(dt);
+				_btnDesert.Draw(dt);
+				_btnCastle.Draw(dt);
+				_btnTiles.Draw(dt);
+				_btnCustomDeco.Draw(dt);
+				switch(subCategoryId)
+				{
+					default: break;
+				}
+				break;
+			}
 			default:break;
 		}
+	}
+	else
+	{
+		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateWorldTransformation(Game::ScreenRec(
+			{
+				((_lastMousePos.x + cameraPosition.x) - std::fmod(_lastMousePos.x + cameraPosition.x,Game::Resolution::FltX()/20)) / Game::Resolution::FltX() ,
+				((_lastMousePos.y + cameraPosition.y) - std::fmod(_lastMousePos.y + cameraPosition.y,Game::Resolution::FltY()/15)) / Game::Resolution::FltY() ,
+				0.05f,
+				1 / 15.0f 
+			}
+		)), { 0.0f,0.0f }, 0.0f, WHITE);
 	}
 }
 
@@ -349,13 +491,13 @@ LevelEditor* LevelEditor::GetSingleton()
 void LevelEditor::SetItemCategory(int id)
 {
 	categoryId = id;
-	Resources::PlayRandomSound(Resources::LakituDrop, 3);
+	PlaySound(Resources::LakituDrop[2]);
 }
 
 void LevelEditor::SetSubCategory(int id)
 {
 	subCategoryId = id;
-	Resources::PlayRandomSound(Resources::LakituDrop, 3);
+	PlaySound(Resources::LakituDrop[2]);
 }
 
 LevelEditor::~LevelEditor()

@@ -6,11 +6,11 @@
 
 class MainMenu : public IGamePart
 {
-	Texture2D _backroundImg;
-	Texture2D _btnEdit;
-	Texture2D _logo;
-	Texture2D _btnPlay;
-	Texture2D _btnQuit;
+	Texture2D _backroundImg{};
+	Texture2D _btnEdit{};
+	Texture2D _logo{};
+	Texture2D _btnPlay{};
+	Texture2D _btnQuit{};
 
 	ShinyButton _editButton{};
 	ShinyButton _createMapButton{};
@@ -20,17 +20,17 @@ class MainMenu : public IGamePart
 	ShinyButton _playMapButton{};
 	ShinyButton _quitButton{};
 
-	Texture2D _glint;
+	Texture2D _glint{};
 
 	float marioAnimTimer = 0.0f;
-	Sound _welcomeMarioWorker;
-	Texture _mainMenuMario;
+	Sound _welcomeMarioWorker{};
+	Texture _mainMenuMario{};
 
 	bool _playedApplause = false;
-	Sound _applause;
+	Sound _applause{};
 
 	bool playingMusic = false;
-	Music _mainMenuMusic;
+	Music _mainMenuMusic{};
 public:
 	void LoadContent() override;
 	void Update(float dt,MouseState *ms, ControllerState* cs) override;

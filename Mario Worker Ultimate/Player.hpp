@@ -15,14 +15,14 @@ enum PlayerState
 
 class Player
 {
-	const char* characterName;
-	Texture2D PlayerDead;
-	Texture2D PlayerSmall;
-	Texture2D PlayerBig;
-	Texture2D PlayerFlower;
-	Texture2D PlayerBeet;
-	Texture2D PlayerLui;
-	Texture2D PlayerHammer;
+	const char* characterName = nullptr;
+	Texture2D PlayerDead{};
+	Texture2D PlayerSmall{};
+	Texture2D PlayerBig{};
+	Texture2D PlayerFlower{};
+	Texture2D PlayerBeet{};
+	Texture2D PlayerLui{};
+	Texture2D PlayerHammer{};
 public:
 	Player(int x, int y) : Position{ static_cast<float>(x), static_cast<float>(y)} {};
 

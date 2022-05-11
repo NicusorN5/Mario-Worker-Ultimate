@@ -349,11 +349,13 @@ LevelEditor* LevelEditor::GetSingleton()
 void LevelEditor::SetItemCategory(int id)
 {
 	categoryId = id;
+	Resources::PlayRandomSound(Resources::LakituDrop, 3);
 }
 
 void LevelEditor::SetSubCategory(int id)
 {
 	subCategoryId = id;
+	Resources::PlayRandomSound(Resources::LakituDrop, 3);
 }
 
 LevelEditor::~LevelEditor()

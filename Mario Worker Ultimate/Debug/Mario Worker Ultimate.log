@@ -1,7 +1,21 @@
-﻿  Resources.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Resources.cpp(17): warning C4715: 'Resources::LoadTextureChkF': not all control paths return a value
+﻿  Backround.cpp
+  Game.cpp
+  Goomba.cpp
+  Level.cpp
+  LevelEditor.cpp
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(248,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(262,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(272,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(288,117): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(312,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(326,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(336,5): warning C4065: switch statement contains 'default' but no 'case' labels
+  Main.cpp
+  MainMenu.cpp
+  Resources.cpp
+  Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-raylib.lib(raudio.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(raudio.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info
+raylib.lib(raudio.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(raudio.obj)' or at ''; linking object as if no debug info
 raylib.lib(rcore.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rcore.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info
 raylib.lib(rglfw.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rglfw.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info
 raylib.lib(rshapes.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rshapes.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info

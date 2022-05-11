@@ -2,6 +2,7 @@
 #include "Libs.hpp"
 #include "Dialogs.hpp"
 #include "GameResourceLoadException.hpp"
+#include <random>
 
 namespace Resources
 {
@@ -14,6 +15,13 @@ namespace Resources
 	extern Texture2D Window;
 
 	extern Sound LakituDrop[3];
+	
+	void PlayRandomSound(Sound* sounds, size_t numSounds);
+
+	extern std::random_device rd;
+	extern std::mt19937 mt;
+
+	int Random(int min, int max);
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

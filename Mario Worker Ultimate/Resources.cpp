@@ -10,14 +10,30 @@ Texture2D Resources::Window{};
 
 Sound Resources::LakituDrop[3]{};
 
+std::random_device Resources::rd;
+std::mt19937 Resources::mt;
+
+void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
+{
+	PlaySound(sounds[Random(0, numSounds)]);
+}
+
+int Resources::Random(int min, int max)
+{
+	return min + (mt() % (max - min));
+}
+
 Texture2D Resources::LoadTextureChkF(const char* path)
 {
 	Texture2D t = LoadTexture(path);
 	if(t.id <= 0) throw GameResourceLoadException(path);
+	return t;
 }
 
 void Resources::LoadAll()
 {
+	mt = std::mt19937(rd());
+
 	GradientA = LoadTextureChkF("Data\\Backrounds\\GradientA.png");
 	GradientB = LoadTextureChkF("Data\\Backrounds\\GradientB.png");
 
@@ -26,7 +42,7 @@ void Resources::LoadAll()
 	for(size_t i = 0; i < 3; i++)
 	{
 		std::string path = "Data\\Sounds\\Lakitu";
-		path += std::to_string(i) + ".ogg";
+		path += std::to_string(i+1) + ".ogg";
 		LakituDrop[i] = LoadSoundChkF(path.c_str());
 	}
 }

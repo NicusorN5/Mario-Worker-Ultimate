@@ -13,6 +13,8 @@ Sound Resources::LakituDrop[3]{};
 std::random_device Resources::rd;
 std::mt19937 Resources::mt;
 
+TransparentFont Resources::LevelHudFont;
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, numSounds)]);
@@ -45,6 +47,58 @@ void Resources::LoadAll()
 		path += std::to_string(i+1) + ".ogg";
 		LakituDrop[i] = LoadSoundChkF(path.c_str());
 	}
+
+	Rectangle coords[] =
+	{
+		{0,0,1,1},
+		{0,0,11,16},
+		{11,0,15,16},
+		{26,0,15,16},
+		{41,0,15,16},
+		{56,0,15,16},
+		{71,0,15,16},
+		{86,0,15,16},
+		{101,0,15,16},
+		{116,0,15,16},
+		{131,0,15,16},
+		{146,0,15,16},
+		{161,0,15,16},
+		{176,0,15,16},
+		{191,0,15,16},
+		{206,0,15,16},
+		{221,0,15,16},
+		{236,0,15,16},
+		{251,0,15,16},
+		{266,0,11,16},
+		{277,0,15,16},
+		{292,0,15,16},
+		{307,0,13,16},
+		{320,0,15,16},
+		{335,0,15,16},
+		{350,0,15,16},
+		{365,0,15,16},
+		{380,0,15,16},
+		{395,0,15,16},
+		{410,0,15,16},
+		{425,0,15,16},
+		{440,0,15,16},
+		{455,0,15,16},
+		{470,0,15,16},
+		{485,0,15,16},
+		{500,0,15,16},
+		{515,0,15,16},
+		{530,0,7,16},
+		{537,0,15,16},
+		{522,0,15,16},
+		{567,0,15,16},
+		{582,0,15,16}
+	};
+
+	new (&LevelHudFont) TransparentFont(
+		LoadTextureChkF("Data\\UI\\Level_Font.png"),
+		" 1234567890ABCDEFGHIJKLMNOPRQSTUVWXYZ.-&[$",
+		coords,
+		1);
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

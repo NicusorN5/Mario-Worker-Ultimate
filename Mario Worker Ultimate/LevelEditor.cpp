@@ -30,9 +30,9 @@ void LevelEditor::LoadContent()
 
 	W_selectItem = Resources::LoadTextureChkF("Data\\Editor\\Wnd_SelectItem.png");
 
-	_tBlocksTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTab.png");
-	_tBlocksTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTabClosed.png");
-	_blocksBtn = TabButton(_tBlocksTabUnhov, _tBlocksTabHov,
+	_tabTexturesHovered[0] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTab.png");
+	_tabTexturesUnhovered[0] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTabClosed.png");
+	_tabButtons[0] = TabButton(_tabTexturesUnhovered[0], _tabTexturesHovered[0],
 		Game::ScreenRec({ 0.257f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.257f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -41,9 +41,9 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_tEnemiesTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_EnemiesTab.png");
-	_tEnemiesTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_EnemiesTabClosed.png");
-	_enemiesBtn = TabButton(_tEnemiesTabUnhov, _tEnemiesTabHov,
+	_tabTexturesHovered[1] = Resources::LoadTextureChkF("Data\\Editor\\Editor_EnemiesTab.png");
+	_tabTexturesUnhovered[1] = Resources::LoadTextureChkF("Data\\Editor\\Editor_EnemiesTabClosed.png");
+	_tabButtons[1] = TabButton(_tabTexturesUnhovered[1], _tabTexturesHovered[1],
 		Game::ScreenRec({ 0.333f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.333f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -52,9 +52,9 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_tBonusTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_BonusTab.png");
-	_tBonusTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_BonusTabClosed.png");
-	_bonusBtn = TabButton(_tBonusTabUnhov, _tBonusTabHov,
+	_tabTexturesHovered[2] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BonusTab.png");
+	_tabTexturesUnhovered[2] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BonusTabClosed.png");
+	_tabButtons[2] = TabButton(_tabTexturesUnhovered[2], _tabTexturesHovered[2],
 		Game::ScreenRec({ 0.409f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.409f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -63,9 +63,9 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_tMarksTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_MarksTab.png");
-	_tMarksTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_MarksTabClosed.png");
-	_marksBtn = TabButton(_tMarksTabUnhov, _tMarksTabHov,
+	_tabTexturesHovered[3] = Resources::LoadTextureChkF("Data\\Editor\\Editor_MarksTab.png");
+	_tabTexturesUnhovered[3] = Resources::LoadTextureChkF("Data\\Editor\\Editor_MarksTabClosed.png");
+	_tabButtons[3] = TabButton(_tabTexturesUnhovered[3], _tabTexturesHovered[3],
 		Game::ScreenRec({ 0.485f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.485f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -74,9 +74,9 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_tSceneryTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTab.png");
-	_tSceneryTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTabClosed.png");
-	_sceneryBtn = TabButton(_tSceneryTabUnhov, _tSceneryTabHov,
+	_tabTexturesHovered[4] = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTab.png");
+	_tabTexturesUnhovered[4] = Resources::LoadTextureChkF("Data\\Editor\\Editor_SceneryTabClosed.png");
+	_tabButtons[4] = TabButton(_tabTexturesUnhovered[4], _tabTexturesHovered[4],
 		Game::ScreenRec({ 0.561f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.561f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -85,9 +85,9 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_tSettingsTabHov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTab.png");
-	_tSettingsTabUnhov = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTabClosed.png");
-	_settingsBtn = TabButton(_tSettingsTabUnhov, _tSettingsTabHov,
+	_tabTexturesHovered[5] = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTab.png");
+	_tabTexturesUnhovered[5] = Resources::LoadTextureChkF("Data\\Editor\\Editor_SettingsTabClosed.png");
+	_tabButtons[5] = TabButton(_tabTexturesUnhovered[5], _tabTexturesHovered[5],
 		Game::ScreenRec({ 0.637f,0.067f,0.075f,0.075f }),
 		Game::ScreenRec({ 0.637f,0.067f,0.15f,0.075f }),
 		[]() -> void
@@ -122,113 +122,115 @@ void LevelEditor::LoadContent()
 	};
 
 	//blocks categories
-	_tTerrainSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Terrain.png");
-	_btnTerrain = ShinyButton(_tTerrainSub, _tGlint,Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }),ssc0);
+	_blocksBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Terrain.png");
+	_blocksButtons[0] = ShinyButton(_blocksBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
 
-	_tBlocksSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Blocks.png");
-	_btnBlocks = ShinyButton(_tBlocksSub, _tGlint,Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }),ssc1);
+	_blocksBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Blocks.png");
+	_blocksButtons[1] = ShinyButton(_blocksBtnTextures[1], _tGlint,Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }),ssc1);
 
-	_tTankSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Tank.png");
-	_btnTank = ShinyButton(_tTankSub, _tGlint,Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }),ssc2);
+	_blocksBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Tank.png");
+	_blocksButtons[2] = ShinyButton(_blocksBtnTextures[2], _tGlint,Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }),ssc2);
 
-	_tPipesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
-	_btnPipes = ShinyButton(_tPipesSub, _tGlint,Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }),ssc3);
+	_blocksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
+	_blocksButtons[3] = ShinyButton(_blocksBtnTextures[3], _tGlint,Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }),ssc3);
 
-	_tCustomBlocks = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBlocks.png");
-	_btnCustomBlocks = ShinyButton(_tCustomBlocks, _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }),ssc4);
+	_blocksBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBlocks.png");
+	_blocksButtons[4] = ShinyButton(_blocksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }),ssc4);
 
 	//enemies categories
-	_tEnemiesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Enemies.png");
-	_btnEnemies = ShinyButton(_tEnemiesSub, _tGlint,Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }),ssc0);
+	_enemiesBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Enemies.png");
+	_enemiesButtons[0] = ShinyButton(_enemiesBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
 
-	_tHazardsSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Hazards.png");
-	_btnHazard = ShinyButton(_tHazardsSub, _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+	_enemiesBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Hazards.png");
+	_enemiesButtons[1] = ShinyButton(_enemiesBtnTextures[1], _tGlint, Game::ScreenRec({0.095f,0.225f,0.15f,0.075f}), ssc1);
 
-	_tClonesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Clones.png");
-	_btnClones = ShinyButton(_tClonesSub, _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+	_enemiesBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Clones.png");
+	_enemiesButtons[2] = ShinyButton(_enemiesBtnTextures[2], _tGlint, Game::ScreenRec({0.095f,0.302f,0.15f,0.075f}), ssc2);
 
-	_tBossesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Bosses.png");
-	_btnBosses = ShinyButton(_tBossesSub, _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_enemiesBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Bosses.png");
+	_enemiesButtons[3] = ShinyButton(_enemiesBtnTextures[3], _tGlint, Game::ScreenRec({0.095f,0.379f,0.15f,0.075f}), ssc3);
 
-	_tCustomEnemiesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomEnemies.png");
-	_btnCustomEnemies = ShinyButton(_tCustomEnemiesSub, _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+	_enemiesBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomEnemies.png");
+	_enemiesButtons[4] = ShinyButton(_enemiesBtnTextures[4], _tGlint, Game::ScreenRec({0.095f,0.456f,0.15f,0.075f}), ssc4);
 
-	_tCustomBossesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBoss.png");
-	_btnCustomBosses = ShinyButton(_tCustomBossesSub, _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
+	_enemiesBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBoss.png");
+	_enemiesButtons[5] = ShinyButton(_enemiesBtnTextures[5], _tGlint, Game::ScreenRec({0.095f,0.533f,0.15f,0.075f}), ssc5);
 
-	_tBonusesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Bonuses.png");
-	_btnBonuses = ShinyButton(_tBonusesSub, _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+	//bonuses categories
+	_bonusesBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Bonuses.png");
+	_bonusesButtons[0] = ShinyButton(_bonusesBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
 
-	_tCustomBonuses = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBonuses.png");
-	_btnCustomBonuses = ShinyButton(_tCustomBonuses, _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+	_bonusesBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBonuses.png");
+	_bonusesButtons[1] = ShinyButton(_bonusesBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
+	//marks
+	_marksBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelProgress.png");
+	_marksButtons[0] = ShinyButton(_marksBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
 
-	_tLevelProgressSub = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelProgress.png");
-	_btnLevelProgress = ShinyButton(_tLevelProgressSub, _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+	_marksBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Platforms.png");
+	_marksButtons[1] = ShinyButton(_marksBtnTextures[1],_tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
-	_tPlatformsSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Platforms.png");
-	_btnPlatforms = ShinyButton(_tPlatformsSub,_tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+	_marksBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Marks.png");
+	_marksButtons[2] = ShinyButton(_marksBtnTextures[2],_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
-	_tMarksSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Marks.png");
-	_btnMarks = ShinyButton(_tMarksSub,_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+	_marksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
+	_marksButtons[3] = ShinyButton(_marksBtnTextures[3],_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
-	_tWarpsSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
-	_btnPipes = ShinyButton(_tWarpsSub,_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_marksBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
+	_marksButtons[4] = ShinyButton(_marksBtnTextures[4],_tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
-	_tScriptedInstances = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
-	_btnScripts = ShinyButton(_tScriptedInstances,_tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+	//scenery
+	_sceneryBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Overworld.png");
+	_sceneryButtons[0] = ShinyButton(_sceneryBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
 
-	_squareMouse = Resources::LoadTextureChkF("Data\\Editor\\CurrentTileSquare.png");
+	_sceneryBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Underground.png");
+	_sceneryButtons[1] = ShinyButton(_sceneryBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
-	_tOverworldSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Overworld.png");
-	_btnOverworld = ShinyButton(_tOverworldSub,_tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+	_sceneryBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
+	_sceneryButtons[2] = ShinyButton(_sceneryBtnTextures[2],_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
-	_tUndergroundSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Underground.png");
-	_btnUnderground = ShinyButton(_tUndergroundSub, _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+	_sceneryBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Snowland.png");
+	_sceneryButtons[3] = ShinyButton(_sceneryBtnTextures[3],_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
-	_tStarlandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
-	_btnStarland = ShinyButton(_tStarlandSub,_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+	_sceneryBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Darkland.png");
+	_sceneryButtons[4] = ShinyButton(_sceneryBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
-	_tSnowlandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
-	_btnSnowland = ShinyButton(_tSnowlandSub,_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_sceneryBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_Sunset.png");
+	_sceneryButtons[5] = ShinyButton(_sceneryBtnTextures[5], _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
 
-	_tDarklandSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Darkland.png");
-	_btnDarkland = ShinyButton(_tDarklandSub, _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
-
-	_tSunsetSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Sunset.png");
-	_btnSunset = ShinyButton(_tSunsetSub, _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
-
-	_tDesertSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Desert.png");
-	_btnDesert = ShinyButton(_tDesertSub, _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),
+	_sceneryBtnTextures[6] = Resources::LoadTextureChkF("Data\\Editor\\sb_Desert.png");
+	_sceneryButtons[6] = ShinyButton(_sceneryBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(6);
 		}
 	);
 
-	_tCastleSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
-	_btnCastle = ShinyButton(_tCastleSub,_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
+	_sceneryBtnTextures[7] = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
+	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(7);
 		}
 	);
 
-	_tTilesSub = Resources::LoadTextureChkF("Data\\Editor\\sb_Tiles.png");
-	_btnTiles = ShinyButton(_tTilesSub,_tGlint,Game::ScreenRec({ 0.095f,0.764f,0.15f,0.075f }),
+	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_Tiles.png");
+	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint,Game::ScreenRec({ 0.095f,0.764f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(8);
 		}
 	);
 
-	_tCustomDecoSub = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
-	_btnCustomDeco = ShinyButton(_tCustomDecoSub,_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
+	_sceneryBtnTextures[9] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
+	_sceneryButtons[9] = ShinyButton(_sceneryBtnTextures[9],_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(9);
 		}
 	);
+
+	_squareMouse = Resources::LoadTextureChkF("Data\\Editor\\CurrentTileSquare.png");
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -252,62 +254,30 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 	else if(_showElements)
 	{
 		//moving buttons to not overlap when hovered
-		if(_blocksBtn.Raised())
+
+		bool _anyBtnHovered = false;
+		for(size_t i = 0; i < 6; i++)
 		{
-			_enemiesBtn.SetXOffset(0.075f);
-			_bonusBtn.SetXOffset(0.075f);
-			_marksBtn.SetXOffset(0.075f);
-			_sceneryBtn.SetXOffset(0.075f);
-			_settingsBtn.SetXOffset(0.075f);
+			if(_tabButtons[i].IsHovered())
+			{
+				for(size_t j = i + 1; j < 6; j++)
+				{
+					_tabButtons[j].SetXOffset(0.075f);
+					_anyBtnHovered = true;
+				}
+			}
 		}
-		else if(_enemiesBtn.Raised())
+		for(size_t i = 0; i < 6; i++)
 		{
-			_enemiesBtn.SetXOffset(0);
-			_bonusBtn.SetXOffset(0.075f);
-			_marksBtn.SetXOffset(0.075f);
-			_sceneryBtn.SetXOffset(0.075f);
-			_settingsBtn.SetXOffset(0.075f);
+			if(!_anyBtnHovered) _tabButtons[i].SetXOffset(0);
+			_tabButtons[i].Update(ms, dt);
 		}
-		else if(_bonusBtn.Raised())
-		{
-			_marksBtn.SetXOffset(0.075f);
-			_sceneryBtn.SetXOffset(0.075f);
-			_settingsBtn.SetXOffset(0.075f);
-		}
-		else if(_marksBtn.Raised())
-		{
-			_sceneryBtn.SetXOffset(0.075f);
-			_settingsBtn.SetXOffset(0.075f);
-		}
-		else if(_sceneryBtn.Raised())
-		{
-			_settingsBtn.SetXOffset(0.075f);
-		}
-		else
-		{
-			_enemiesBtn.SetXOffset(0);
-			_bonusBtn.SetXOffset(0);
-			_marksBtn.SetXOffset(0);
-			_sceneryBtn.SetXOffset(0);
-			_settingsBtn.SetXOffset(0);
-		}
-		//updating tab buttons logic
-		_blocksBtn.Update(ms, dt);
-		_enemiesBtn.Update(ms, dt);
-		_bonusBtn.Update(ms, dt);
-		_marksBtn.Update(ms, dt);
-		_sceneryBtn.Update(ms, dt);
-		_settingsBtn.Update(ms, dt);
 
 		switch(categoryId)
 		{
 			case 0:
 			{
-				_btnTerrain.Update(ms, dt);
-				_btnBlocks.Update(ms, dt);
-				_btnTank.Update(ms, dt);
-				_btnPipes.Update(ms, dt);
-				_btnCustomBlocks.Update(ms, dt);
+				for(size_t i = 0; i < 5; i++) _blocksButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default:break;
@@ -316,12 +286,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			}
 			case 1:
 			{
-				_btnEnemies.Update(ms, dt);
-				_btnHazard.Update(ms, dt);
-				_btnClones.Update(ms, dt);
-				_btnBosses.Update(ms, dt);
-				_btnCustomEnemies.Update(ms, dt);
-				_btnCustomBosses.Update(ms, dt);
+				for(size_t i = 0; i < 6; i++) _enemiesButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default:break;
@@ -330,8 +295,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			}
 			case 2:
 			{
-				_btnBonuses.Update(ms, dt);
-				_btnCustomBonuses.Update(ms, dt);
+				for(size_t i = 0; i < 2; i++) _bonusesButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -340,12 +304,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			}
 			case 3:
 			{
-				_btnLevelProgress.Update(ms, dt);
-				_btnPlatforms.Update(ms, dt);
-				_btnMarks.Update(ms, dt);
-				_btnWarps.Update(ms, dt);
-				_btnPipes.Update(ms, dt);
-				_btnScripts.Update(ms, dt);
+				for(size_t i = 0; i < 5; i++) _marksButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -354,16 +313,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			}
 			case 4:
 			{
-				_btnOverworld.Update(ms,dt);
-				_btnUnderground.Update(ms, dt);
-				_btnStarland.Update(ms, dt);
-				_btnSnowland.Update(ms, dt);
-				_btnDarkland.Update(ms, dt);
-				_btnSunset.Update(ms, dt);
-				_btnDesert.Update(ms, dt);
-				_btnCastle.Update(ms, dt);
-				_btnTiles.Update(ms, dt);
-				_btnCustomDeco.Update(ms, dt);
+				for(size_t i = 0; i < 10; i++) _sceneryButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -389,22 +339,17 @@ void LevelEditor::Draw(float dt)
 	if(_showElements)
 	{
 		DrawTexturePro(W_selectItem, { 0,0,800,600 }, Game::ScreenRec({ 0,0,1,1 }), { 0,0 }, 0.0f, WHITE);
-		_blocksBtn.Draw(dt);
-		_enemiesBtn.Draw(dt);
-		_bonusBtn.Draw(dt);
-		_marksBtn.Draw(dt);
-		_sceneryBtn.Draw(dt);
-		_settingsBtn.Draw(dt);
+		for(size_t i = 0; i < 6; i++)
+		{
+			_tabButtons[i].Draw(dt);
+		}
 
 		switch(categoryId)
 		{
 			case 0:
 			{
-				_btnTerrain.Draw(dt);
-				_btnBlocks.Draw(dt);
-				_btnTank.Draw(dt);
-				_btnPipes.Draw(dt);
-				_btnCustomBlocks.Draw(dt);
+				for(size_t i = 0 ; i < 5; i++) _blocksButtons[i].Draw(dt);
+				
 				switch(subCategoryId)
 				{
 					default:break;
@@ -413,12 +358,8 @@ void LevelEditor::Draw(float dt)
 			}
 			case 1:
 			{
-				_btnEnemies.Draw(dt);
-				_btnHazard.Draw(dt);
-				_btnClones.Draw(dt);
-				_btnBosses.Draw(dt);
-				_btnCustomEnemies.Draw(dt);
-				_btnCustomBosses.Draw(dt);
+				for(size_t i = 0; i < 6; i++) _enemiesButtons[i].Draw(dt);
+
 				switch(subCategoryId)
 				{
 					default:break;
@@ -427,8 +368,7 @@ void LevelEditor::Draw(float dt)
 			}
 			case 2:
 			{
-				_btnBonuses.Draw(dt);
-				_btnCustomBonuses.Draw(dt);
+				for(size_t i = 0; i < 2; i++) _bonusesButtons[i].Draw(dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -437,12 +377,7 @@ void LevelEditor::Draw(float dt)
 			}
 			case 3:
 			{
-				_btnLevelProgress.Draw(dt);
-				_btnPlatforms.Draw(dt);
-				_btnMarks.Draw(dt);
-				_btnWarps.Draw(dt);
-				_btnPipes.Draw(dt);
-				_btnScripts.Draw(dt);
+				for(size_t i = 0; i < 5; i++) _marksButtons[i].Draw(dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -451,20 +386,16 @@ void LevelEditor::Draw(float dt)
 			}
 			case 4:
 			{
-				_btnOverworld.Draw(dt);
-				_btnUnderground.Draw(dt);
-				_btnStarland.Draw(dt);
-				_btnSnowland.Draw(dt);
-				_btnDarkland.Draw(dt);
-				_btnSunset.Draw(dt);
-				_btnDesert.Draw(dt);
-				_btnCastle.Draw(dt);
-				_btnTiles.Draw(dt);
-				_btnCustomDeco.Draw(dt);
+				for(size_t i = 0; i < 10; i++) _sceneryButtons[i].Draw(dt);
 				switch(subCategoryId)
 				{
 					default: break;
 				}
+				break;
+			}
+			case 5:
+			{
+				Resources::LevelHudFont.Draw("test", { 0.5f,0.5f }, {0.05f,0.05f});
 				break;
 			}
 			default:break;

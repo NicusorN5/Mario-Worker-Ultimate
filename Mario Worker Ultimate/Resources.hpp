@@ -3,6 +3,7 @@
 #include "Dialogs.hpp"
 #include "GameResourceLoadException.hpp"
 #include <random>
+#include "TransparentFont.hpp"
 
 namespace Resources
 {
@@ -22,6 +23,8 @@ namespace Resources
 	extern std::mt19937 mt;
 
 	int Random(int min, int max);
+
+	extern TransparentFont LevelHudFont;
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

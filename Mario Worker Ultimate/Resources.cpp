@@ -96,9 +96,8 @@ void Resources::LoadAll()
 
 	new (&LevelHudFont) TransparentFont(
 		LoadTextureChkF("Data\\UI\\Level_Font.png"),
-		" 1234567890ABCDEFGHIJKLMNOPRQSTUVWXYZ.-&[$",
-		coords,
-		1);
+		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[$",
+		coords);
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

@@ -4,6 +4,9 @@ D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(293,5): 
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(302,5): warning C4065: switch statement contains 'default' but no 'case' labels
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(311,5): warning C4065: switch statement contains 'default' but no 'case' labels
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(320,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(398,86): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(399,80): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(400,87): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(356,5): warning C4065: switch statement contains 'default' but no 'case' labels
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(366,5): warning C4065: switch statement contains 'default' but no 'case' labels
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(375,5): warning C4065: switch statement contains 'default' but no 'case' labels

@@ -3,7 +3,7 @@
 void Textbox::Draw(float dt)
 {
     DrawTexturePro(_textboxTexture, { 0,0,(float)_textboxTexture.width,(float)_textboxTexture.height }, _coords, { 0,0 }, 0.0, WHITE);
-    _textFont->Draw(_text, { _coords.x,_coords.y }, { _coords.width,_coords.height });
+    _textFont->Draw(_text, { _coords.x,_coords.y }, { _coords.width,_coords.height },0.001);
 }
 
 void Textbox::Update(MouseState* ms, float dt)

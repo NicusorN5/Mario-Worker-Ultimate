@@ -395,7 +395,17 @@ void LevelEditor::Draw(float dt)
 			}
 			case 5:
 			{
-				Resources::LevelHudFont.Draw("test", { 0.5f,0.5f }, {0.05f,0.05f});
+				switch(subCategoryId)
+				{
+					case 0:
+					{
+						Resources::LevelHudFont.Draw("Level Name", { 0.3f,0.175f }, { 0.025f,0.025f }, 0.001);
+						Resources::LevelHudFont.Draw("Author", { 0.3f,0.3f }, { 0.025f,0.025f }, 0.001);
+						Resources::LevelHudFont.Draw("Description", { 0.3f,0.375f }, { 0.025f,0.025f }, 0.001);
+						break;
+					}
+					default: break;
+				}
 				break;
 			}
 			default:break;

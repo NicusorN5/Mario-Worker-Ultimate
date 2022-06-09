@@ -1,5 +1,4 @@
 #include "TransparentFont.hpp"
-#include "Resolution.hpp"
 
 int TransparentFont::_getIndexForGlyph(char c)
 {
@@ -12,7 +11,8 @@ int TransparentFont::_getIndexForGlyph(char c)
 
 TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates):
 	_fontTexture(texture),
-	_letters(nullptr)
+	_letters(nullptr),
+	_maxLenght(std::numeric_limits<int>::min())
 {
 	_numLetters = strlen(avalableLetters);
 
@@ -22,6 +22,8 @@ TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters,
 	{
 		_letters[i].Letter = avalableLetters[i];
 		_letters[i].GlyphRectangle = glyphsImageCoordinates[i];
+		if(_letters[i].GlyphRectangle.width > _maxLenght)
+			_maxLenght = _letters[i].GlyphRectangle.width;
 	}
 }
 
@@ -36,12 +38,25 @@ void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vecto
 		int charIndex = _getIndexForGlyph(text_l[i]);
 		if(charIndex >= 0)
 		{
-			Rectangle gR = _letters[charIndex].GlyphRectangle;
-			Rectangle gS = { x,position_norm.y, scale.x , scale.y };
-			DrawTexturePro(_fontTexture,gR, Game::ScreenRec(gS),{0,0},0.0f,WHITE);
-			x += scale.x + spacing;
+			Rectangle glyphSource = _letters[charIndex].GlyphRectangle;
+			float lx = ((charIndex != _getIndexForGlyph(' ') ? glyphSource.width : _maxLenght) / _maxLenght) * scale.x;
+			DrawTexturePro(_fontTexture, glyphSource, Game::ScreenRec({ x,position_norm.y, lx , scale.y }), { 0,0 }, 0.0f, WHITE);
+			x += lx + spacing;
 		}
 	}
+}
+
+float TransparentFont::MeasureLenght(const std::string& text,Vector2 scale,float spacing)
+{
+	float c = 0;
+
+	for(auto&& chr : text)
+	{
+		int charIndex = _getIndexForGlyph(chr);
+		c += ((charIndex != _getIndexForGlyph(' ') ? _letters[charIndex].GlyphRectangle.width : _maxLenght) / _maxLenght) * scale.x;
+		c += spacing;
+	}
+	return c;
 }
 
 TransparentFont::~TransparentFont()

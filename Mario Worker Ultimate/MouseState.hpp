@@ -18,4 +18,5 @@ public:
 	bool MouseFinishedClickingRectangle(Rectangle r);
 	bool MouseInsideRectangle(Rectangle r);
 	bool MouseFinishedClickingOutsideRectangle(Rectangle r);
+	bool MouseClickingOutsideRectangle(Rectangle r);
 };

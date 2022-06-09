@@ -14,6 +14,7 @@ namespace Resources
 	extern Texture2D Goomba2; //gray goomba (immune to fire)
 
 	extern Texture2D Window;
+	extern Texture2D TxtboxRectangle;
 
 	extern Sound LakituDrop[3];
 	

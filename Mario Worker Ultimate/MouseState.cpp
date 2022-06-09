@@ -59,3 +59,12 @@ bool MouseState::MouseFinishedClickingOutsideRectangle(Rectangle r)
         this->Y <= r.y && this->Y >= r.y + r.height);
     }
 }
+
+bool MouseState::MouseClickingOutsideRectangle(Rectangle r)
+{
+    if(!LeftClick)
+    {
+        return (this->X <= r.x && this->X >= r.x + r.width &&
+        this->Y <= r.y && this->Y >= r.y + r.height);
+    }
+}

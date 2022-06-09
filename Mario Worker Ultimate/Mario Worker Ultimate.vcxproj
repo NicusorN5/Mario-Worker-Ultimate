@@ -128,6 +128,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +144,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +159,7 @@
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Decoration.cpp" />
+    <ClCompile Include="Dialogs.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameResourceLoadException.cpp" />
     <ClCompile Include="Goomba.cpp" />
@@ -168,7 +171,6 @@
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Dialogs.cpp" />
     <ClCompile Include="MouseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Resolution.cpp" />
@@ -184,6 +186,7 @@
     <ClInclude Include="Bonus.hpp" />
     <ClInclude Include="ControllerState.hpp" />
     <ClInclude Include="Decoration.hpp" />
+    <ClInclude Include="Dialogs.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameResourceLoadException.hpp" />
     <ClInclude Include="GameSection.hpp" />
@@ -196,7 +199,6 @@
     <ClInclude Include="LevelEditor.hpp" />
     <ClInclude Include="Libs.hpp" />
     <ClInclude Include="MainMenu.hpp" />
-    <ClInclude Include="Dialogs.hpp" />
     <ClInclude Include="MouseState.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Resolution.hpp" />

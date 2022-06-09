@@ -6,6 +6,7 @@
 #include "Resolution.hpp"
 #include "TabButton.hpp"
 #include "ShinyButton.hpp"
+#include "Textbox.hpp"
 
 class LevelEditor : public IGamePart
 {
@@ -25,7 +26,7 @@ class LevelEditor : public IGamePart
 	int subCategoryId = 0;
 
 	Texture2D W_selectItem{};
-	Texture2D _tGlint{ 11,256,256,7 };
+	Texture2D _tGlint{ 13,256,256,7 };
 
 	//main categories
 	TabButton _tabButtons[6];
@@ -52,8 +53,16 @@ class LevelEditor : public IGamePart
 	Texture2D _sceneryBtnTextures[10];
 	ShinyButton _sceneryButtons[10];
 
+	//level settings buttons
+	Texture2D _settingsBtnTextures[8];
+	ShinyButton _settingsButtons[8];
+
 	Texture2D _squareMouse;
 	Vector2 _lastMousePos;
+
+	Textbox _levelNameTbs[2];
+	Textbox emailTb;
+	Textbox websiteTb;
 
 	static LevelEditor* _singleton;
 public:

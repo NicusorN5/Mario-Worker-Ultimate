@@ -120,6 +120,14 @@ void LevelEditor::LoadContent()
 	{
 		LevelEditor::GetSingleton()->SetSubCategory(5);
 	};
+	std::function<void()> ssc6 = []() -> void
+	{
+		LevelEditor::GetSingleton()->SetSubCategory(6);
+	};
+	std::function<void()> ssc7 = []() -> void
+	{
+		LevelEditor::GetSingleton()->SetSubCategory(7);
+	};
 
 	//blocks categories
 	_blocksBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Terrain.png");
@@ -199,20 +207,10 @@ void LevelEditor::LoadContent()
 	_sceneryButtons[5] = ShinyButton(_sceneryBtnTextures[5], _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
 
 	_sceneryBtnTextures[6] = Resources::LoadTextureChkF("Data\\Editor\\sb_Desert.png");
-	_sceneryButtons[6] = ShinyButton(_sceneryBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),
-		[]() -> void
-		{
-			LevelEditor::GetSingleton()->SetSubCategory(6);
-		}
-	);
+	_sceneryButtons[6] = ShinyButton(_sceneryBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),ssc6);
 
 	_sceneryBtnTextures[7] = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
-	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
-		[]() -> void
-		{
-			LevelEditor::GetSingleton()->SetSubCategory(7);
-		}
-	);
+	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),ssc7);
 
 	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_Tiles.png");
 	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint,Game::ScreenRec({ 0.095f,0.764f,0.15f,0.075f }),
@@ -231,6 +229,34 @@ void LevelEditor::LoadContent()
 	);
 
 	_squareMouse = Resources::LoadTextureChkF("Data\\Editor\\CurrentTileSquare.png");
+
+	_settingsBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelInfo.png");
+	_settingsButtons[0] = ShinyButton(_settingsBtnTextures[0],_tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+
+	_settingsBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Settings.png");
+	_settingsButtons[1] = ShinyButton(_settingsBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+
+	_settingsBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Backrounds.png");
+	_settingsButtons[2] = ShinyButton(_settingsBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+
+	_settingsBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Music.png");
+	_settingsButtons[3] = ShinyButton(_settingsBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+
+	_settingsBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Fluids.png");
+	_settingsButtons[4] = ShinyButton(_settingsBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+
+	_settingsBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_BossSettings.png");
+	_settingsButtons[5] = ShinyButton(_settingsBtnTextures[5], _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
+
+	_settingsBtnTextures[6] = Resources::LoadTextureChkF("Data\\Editor\\sb_Effects.png");
+	_settingsButtons[6] = ShinyButton(_settingsBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }), ssc6);
+
+	_settingsBtnTextures[7] = Resources::LoadTextureChkF("Data\\Editor\\sb_FileIO.png");
+	_settingsButtons[7] = ShinyButton(_settingsBtnTextures[7], _tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }), ssc7);
+
+	_levelNameTbs[0] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "WORLD", Game::ScreenRec({ 0.6f,0.165f,0.3f,0.04f }), 10, 10);
+	_levelNameTbs[1] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "1-1", Game::ScreenRec({ 0.6f,0.21f,0.3f,0.04f }), 10, 10);
+
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -253,7 +279,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 		_showElements = true;
 	else if(_showElements)
 	{
-		//moving buttons to not overlap when hovered
+		//FIXME: buttons overlapping when hovering multiple buttons in a horizontal mouse movement
 
 		bool _anyBtnHovered = false;
 		for(size_t i = 0; i < 6; i++)
@@ -272,6 +298,8 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			if(!_anyBtnHovered) _tabButtons[i].SetXOffset(0);
 			_tabButtons[i].Update(ms, dt);
 		}
+
+		bool usingTxtbox = false;
 
 		switch(categoryId)
 		{
@@ -320,10 +348,27 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 				}
 				break;
 			}
+			case 5:
+			{
+				for(size_t i = 0; i < 8; i++) _settingsButtons[i].Update(ms, dt);
+				switch(subCategoryId)
+				{
+					case 0:
+					{
+						for(size_t j = 0; j < 2; j++)
+						{
+							_levelNameTbs[j].Update(ms, dt);
+							if(_levelNameTbs->IsFocused()) usingTxtbox = true;
+						}
+						break;
+					}
+					default:break;
+				}
+			}
 			default:break;
 		}
 
-		if(!_previousSpacePress && cs->Space) _showElements = false;
+		if(!_previousSpacePress && cs->Space && !usingTxtbox) _showElements = false;
 	}
 	_previousSpacePress = cs->Space;
 	_lastMousePos = { (float)ms->X,(float)ms->Y };
@@ -395,13 +440,20 @@ void LevelEditor::Draw(float dt)
 			}
 			case 5:
 			{
+				for(size_t i = 0; i < 8; i++) _settingsButtons[i].Draw(dt);
 				switch(subCategoryId)
 				{
 					case 0:
 					{
-						Resources::LevelHudFont.Draw("Level Name", { 0.3f,0.175f }, { 0.025f,0.025f }, 0.001);
-						Resources::LevelHudFont.Draw("Author", { 0.3f,0.3f }, { 0.025f,0.025f }, 0.001);
-						Resources::LevelHudFont.Draw("Description", { 0.3f,0.375f }, { 0.025f,0.025f }, 0.001);
+						Resources::LevelHudFont.Draw("Level Name", { 0.3f,0.175f }, { 0.025f,0.025f }, 0.001f);
+						Resources::LevelHudFont.Draw("Author", { 0.3f,0.3f }, { 0.025f,0.025f }, 0.001f);
+						Resources::LevelHudFont.Draw("Email", { 0.3f,0.375f }, { 0.025f,0.025f }, 0.001f);
+						Resources::LevelHudFont.Draw("Website", { 0.3f,0.450f }, { 0.025f,0.025f }, 0.001f);
+						
+						Resources::LevelHudFont.Draw("Level width", { 0.3f,0.525f }, { 0.025f,0.025f }, 0.001f);
+						Resources::LevelHudFont.Draw("Level height", { 0.3f,0.6f }, { 0.025f,0.025f }, 0.001f);
+
+						for(size_t j = 0; j < 2; j++) _levelNameTbs[j].Draw(dt);
 						break;
 					}
 					default: break;
@@ -444,4 +496,11 @@ void LevelEditor::SetSubCategory(int id)
 LevelEditor::~LevelEditor()
 {
 	UnloadTexture(_square);
+	UnloadTexture(_squareMouse);
+	for(size_t i = 0; i < 5; i++) UnloadTexture(_blocksBtnTextures[i]);
+	for(size_t i = 0; i < 6; i++) UnloadTexture(_enemiesBtnTextures[i]);
+	for(size_t i = 0; i < 2; i++) UnloadTexture(_bonusesBtnTextures[i]);
+	for(size_t i = 0; i < 5; i++) UnloadTexture(_marksBtnTextures[i]);
+	for(size_t i = 0; i < 10; i++) UnloadTexture(_sceneryBtnTextures[i]);
+	for(size_t i = 0; i < 8; i++) UnloadTexture(_settingsBtnTextures[i]);
 }

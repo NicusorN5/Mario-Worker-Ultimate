@@ -10,3 +10,4 @@
 #include <sstream>
 #include <algorithm>
 #include <functional>
+#include <limits>

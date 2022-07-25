@@ -2,7 +2,7 @@
 
 void MainMenu::LoadContent()
 {
-	_backroundImg = Resources::LoadTextureChkF("Data\\UI\\MainMenuBackround.png");
+	_backroundImg = Resources::LoadTextureChkF("Data\\UI\\MainMenuBackground.png");
 	_logo = Resources::LoadTextureChkF("Data\\UI\\MarioWorkerUltimate.png");
 	//buttons
 	_btnEdit = Resources::LoadTextureChkF("Data\\UI\\ButtonEdit.png");

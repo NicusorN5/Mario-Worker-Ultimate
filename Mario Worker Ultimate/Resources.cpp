@@ -37,8 +37,8 @@ void Resources::LoadAll()
 {
 	mt = std::mt19937(rd());
 
-	GradientA = LoadTextureChkF("Data\\Backrounds\\GradientA.png");
-	GradientB = LoadTextureChkF("Data\\Backrounds\\GradientB.png");
+	GradientA = LoadTextureChkF("Data\\Backgrounds\\GradientA.png");
+	GradientB = LoadTextureChkF("Data\\Backgrounds\\GradientB.png");
 
 	Goomba1 = LoadTextureChkF("Data\\Enemies\\BrownGoomba.png");
 

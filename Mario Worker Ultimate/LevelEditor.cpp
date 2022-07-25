@@ -161,7 +161,7 @@ void LevelEditor::LoadContent()
 	_enemiesBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomEnemies.png");
 	_enemiesButtons[4] = ShinyButton(_enemiesBtnTextures[4], _tGlint, Game::ScreenRec({0.095f,0.456f,0.15f,0.075f}), ssc4);
 
-	_enemiesBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBoss.png");
+	_enemiesBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBosses.png");
 	_enemiesButtons[5] = ShinyButton(_enemiesBtnTextures[5], _tGlint, Game::ScreenRec({0.095f,0.533f,0.15f,0.075f}), ssc5);
 
 	//bonuses categories

@@ -176,6 +176,7 @@
     <ClCompile Include="Resolution.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ShinyButton.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="TabButton.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="TransparentFont.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.hpp" />
     <ClInclude Include="ShinyButton.hpp" />
+    <ClInclude Include="Particle.hpp" />
     <ClInclude Include="TabButton.hpp" />
     <ClInclude Include="Textbox.hpp" />
     <ClInclude Include="TransparentFont.hpp" />

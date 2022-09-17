@@ -107,10 +107,7 @@ Sound Resources::LoadSoundChkF(const char* path)
 {
 	bool isWave = false;
 	size_t pathLen = strlen(path);
-	if(path[pathLen - 4] == '.' &&
-		path[pathLen - 3] == 'w' &&
-		path[pathLen - 2] == 'a' &&
-		path[pathLen - 1] == 'v')
+	if(strcmp(path+pathLen-4,".wav") == 0)
 		isWave = true;
 
 	if(isWave)

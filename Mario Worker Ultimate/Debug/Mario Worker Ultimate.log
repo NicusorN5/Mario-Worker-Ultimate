@@ -1,12 +1,2 @@
-﻿  LevelEditor.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(312,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(321,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(330,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(339,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(348,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(401,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(411,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(420,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(429,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(438,5): warning C4065: switch statement contains 'default' but no 'case' labels
+﻿  Backround.cpp
   Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Debug\Mario Worker Ultimate.exe

@@ -10,8 +10,22 @@ void Backround::Draw(Vector2 camCoords,Vector2 levelSize)
 
 	if(_gradient)
 	{
-		DrawTexturePro(Resources::GradientA, { 0,0,1920,1080 }, backroundRect, {0,0}, 0, ColorA);
-		DrawTexturePro(Resources::GradientB, { 0,0,1920,1080 }, backroundRect, { 0,0 }, 0, ColorB);
+		DrawTexturePro(
+			Resources::GradientA, 
+			{0,0,(float)Resources::GradientA.width, (float)Resources::GradientA.height},
+			backroundRect,
+			{0,0},
+			0,
+			ColorA
+		);
+		DrawTexturePro(
+			Resources::GradientB, 
+			{ 0,0,(float)Resources::GradientB.width, (float)Resources::GradientB.height },
+			backroundRect, 
+			{ 0,0 }, 
+			0,
+			ColorB
+		);
 	}
 	else
 		DrawTexturePro(_backroundTexture, { 0,0,(float)_backroundTexture.width,(float)_backroundTexture.height}, screenRect, {0,0}, 0.0f, WHITE);

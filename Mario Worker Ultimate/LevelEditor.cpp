@@ -212,19 +212,11 @@ void LevelEditor::LoadContent()
 	_sceneryBtnTextures[7] = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
 	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),ssc7);
 
-	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_Tiles.png");
-	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint,Game::ScreenRec({ 0.095f,0.764f,0.15f,0.075f }),
+	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
+	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(8);
-		}
-	);
-
-	_sceneryBtnTextures[9] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
-	_sceneryButtons[9] = ShinyButton(_sceneryBtnTextures[9],_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
-		[]() -> void
-		{
-			LevelEditor::GetSingleton()->SetSubCategory(9);
 		}
 	);
 
@@ -236,7 +228,7 @@ void LevelEditor::LoadContent()
 	_settingsBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Settings.png");
 	_settingsButtons[1] = ShinyButton(_settingsBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
-	_settingsBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Backrounds.png");
+	_settingsBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Backgrounds.png");
 	_settingsButtons[2] = ShinyButton(_settingsBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_settingsBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Music.png");
@@ -341,7 +333,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 			}
 			case 4:
 			{
-				for(size_t i = 0; i < 10; i++) _sceneryButtons[i].Update(ms, dt);
+				for(size_t i = 0; i < 9; i++) _sceneryButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -431,7 +423,7 @@ void LevelEditor::Draw(float dt)
 			}
 			case 4:
 			{
-				for(size_t i = 0; i < 10; i++) _sceneryButtons[i].Draw(dt);
+				for(size_t i = 0; i < 9; i++) _sceneryButtons[i].Draw(dt);
 				switch(subCategoryId)
 				{
 					default: break;
@@ -501,6 +493,6 @@ LevelEditor::~LevelEditor()
 	for(size_t i = 0; i < 6; i++) UnloadTexture(_enemiesBtnTextures[i]);
 	for(size_t i = 0; i < 2; i++) UnloadTexture(_bonusesBtnTextures[i]);
 	for(size_t i = 0; i < 5; i++) UnloadTexture(_marksBtnTextures[i]);
-	for(size_t i = 0; i < 10; i++) UnloadTexture(_sceneryBtnTextures[i]);
+	for(size_t i = 0; i < 9; i++) UnloadTexture(_sceneryBtnTextures[i]);
 	for(size_t i = 0; i < 8; i++) UnloadTexture(_settingsBtnTextures[i]);
 }

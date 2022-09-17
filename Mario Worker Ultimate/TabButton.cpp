@@ -32,9 +32,9 @@ void TabButton::Update(MouseState* ms, float dt)
 	_rAnim =
 	{
 		_rHovered.x,
-		_rHovered.y + _rHovered.height - std::lerp(0,_rHovered.height,movingAnim),
+		_rHovered.y + _rHovered.height - std::lerp(0.0f,_rHovered.height,movingAnim),
 		_rHovered.width,
-		std::lerp(0,_rHovered.height,movingAnim)
+		std::lerp(0.0f,_rHovered.height,movingAnim)
 	};
 
 	if(_isHovered) movingAnim += 2.5f * dt;

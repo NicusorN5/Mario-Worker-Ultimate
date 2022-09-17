@@ -50,8 +50,8 @@ class LevelEditor : public IGamePart
 	ShinyButton _marksButtons[5];
 
 	//decoration types
-	Texture2D _sceneryBtnTextures[10];
-	ShinyButton _sceneryButtons[10];
+	Texture2D _sceneryBtnTextures[9];
+	ShinyButton _sceneryButtons[9];
 
 	//level settings buttons
 	Texture2D _settingsBtnTextures[8];

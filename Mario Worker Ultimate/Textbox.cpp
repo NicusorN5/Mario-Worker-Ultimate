@@ -1,5 +1,18 @@
 #include "Textbox.hpp"
 
+Textbox::Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLenght, size_t displayedChars, float spacing) :
+	_textboxTexture(texture),
+	_textFont(font),
+	_text(defaultText),
+	_coords(r),
+	_maxLenght(maxLenght),
+	_spacing(spacing),
+	_displayedCharacters(displayedChars),
+	_textIndex(defaultText.length())
+{
+};
+
+
 void Textbox::Draw(float dt)
 {
 	DrawTexturePro(_textboxTexture, { 0,0,(float)_textboxTexture.width,(float)_textboxTexture.height }, _coords, { 0,0 }, 0.0, WHITE);
@@ -16,12 +29,23 @@ void Textbox::Draw(float dt)
 	scale.x /= rezx;
 	scale.y /= rezy;
 
-	_textFont->Draw(_text, txtpos,scale,_spacing);
-	
+	int startLen = 0;
+
+	if(_textIndex > _displayedCharacters)
+		startLen = std::max(_textIndex - (int)_displayedCharacters, 0);
+
+	_textFont->Draw(_text, txtpos,scale,_spacing, startLen, _displayedCharacters);
+
 	if(_focus)
 	{
-		float tl = _textFont->MeasureLenght(std::string(_text).erase(this->_textIndex),scale,_spacing) * rezx;
-		float il = _textFont->MeasureLenght("I", scale,_spacing) * rezx *  0.25f ;
+		std::string measuredText(_text);
+
+		measuredText.erase(measuredText.begin() + _textIndex, measuredText.end());
+		if(_textIndex > _displayedCharacters)
+			measuredText.erase(measuredText.begin() + _displayedCharacters, measuredText.end());
+
+		float tl = _textFont->MeasureLenght(measuredText,scale,_spacing) * rezx;
+		float il = _textFont->MeasureLenght("I", scale,_spacing) * rezx *  0.25f;
 		DrawRectangle((int)(_coords.x + tl),(int)_coords.y, (int)il, (int)(_coords.height), {255, 0, 0,128});
 	}
 }

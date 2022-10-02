@@ -61,8 +61,9 @@ class LevelEditor : public IGamePart
 	Vector2 _lastMousePos;
 
 	Textbox _levelNameTbs[2];
-	Textbox emailTb;
-	Textbox websiteTb;
+	Textbox _authorTb;
+	Textbox _emailTb;
+	Textbox _websiteTb;
 
 	static LevelEditor* _singleton;
 public:

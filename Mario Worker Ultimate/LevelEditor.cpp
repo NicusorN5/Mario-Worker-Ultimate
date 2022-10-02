@@ -247,8 +247,11 @@ void LevelEditor::LoadContent()
 	_settingsButtons[7] = ShinyButton(_settingsBtnTextures[7], _tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }), ssc7);
 
 	_levelNameTbs[0] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "WORLD", Game::ScreenRec({ 0.6f,0.165f,0.3f,0.04f }), 10, 10);
-	_levelNameTbs[1] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "1-1", Game::ScreenRec({ 0.6f,0.21f,0.3f,0.04f }), 10, 10);
-
+	_levelNameTbs[1] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "1-1", Game::ScreenRec({ 0.6f,0.22f,0.3f,0.04f }), 10, 10);
+	
+	_authorTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "YOUR NAME", Game::ScreenRec({ 0.6f,0.3f,0.3f,0.04f }), 10, 10);
+	_emailTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "USERNAME@EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.375f,0.3f,0.04f }), 50, 10);
+	_websiteTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.45f,0.3f,0.04f }), 50, 10);
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -350,8 +353,18 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 						for(size_t j = 0; j < 2; j++)
 						{
 							_levelNameTbs[j].Update(ms, dt);
-							if(_levelNameTbs->IsFocused()) usingTxtbox = true;
+							if(_levelNameTbs[j].IsFocused()) usingTxtbox = true;
 						}
+
+						_authorTb.Update(ms, dt);
+						if(_authorTb.IsFocused()) usingTxtbox = true;
+
+						_emailTb.Update(ms, dt);
+						if(_emailTb.IsFocused()) usingTxtbox = true;
+
+						_websiteTb.Update(ms, dt);
+						if(_websiteTb.IsFocused()) usingTxtbox = true;
+
 						break;
 					}
 					default:break;
@@ -446,6 +459,9 @@ void LevelEditor::Draw(float dt)
 						Resources::LevelHudFont.Draw("Level height", { 0.3f,0.6f }, { 0.025f,0.025f }, 0.001f);
 
 						for(size_t j = 0; j < 2; j++) _levelNameTbs[j].Draw(dt);
+						_authorTb.Draw(dt);
+						_emailTb.Draw(dt);
+						_websiteTb.Draw(dt);
 						break;
 					}
 					default: break;

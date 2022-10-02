@@ -20,13 +20,9 @@ class TransparentFont
 
 public:
 	TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates);
-	TransparentFont() :
-		_fontTexture{}, 
-		_numLetters(0),
-		_maxLenght(std::numeric_limits<int>::min())
-	{};
+	TransparentFont();
 
-	void Draw(const std::string& text,Vector2 position_norm,Vector2 scale,float spacing);
+	void Draw(const std::string& text,Vector2 position_norm,Vector2 scale,float spacing,size_t startIndex = 0,int maxLen = -1);
 
 	float MeasureLenght(const std::string &text,Vector2 scale,float spacing);
 

@@ -27,13 +27,22 @@ TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters,
 	}
 }
 
-void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vector2 scale,float spacing)
+TransparentFont::TransparentFont() :
+	_fontTexture{},
+	_numLetters(0),
+	_maxLenght(std::numeric_limits<int>::min())
+{
+};
+
+void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vector2 scale,float spacing,size_t maxIndex, int maxLen)
 {
 	std::string text_l(text);
+	if(maxLen == -1) maxLen = text_l.length();
+	if(text_l.length() < maxLen) maxLen = text_l.length();
 
 	std::transform(text_l.begin(), text_l.end(), text_l.begin(), std::toupper);
 	float x = position_norm.x;
-	for(size_t i = 0; i < text_l.length(); i++)
+	for(size_t i = maxIndex, j = 0; i < text_l.length() && j <= maxLen; i++, j++)
 	{
 		int charIndex = _getIndexForGlyph(text_l[i]);
 		if(charIndex >= 0)

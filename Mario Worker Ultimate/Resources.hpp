@@ -17,6 +17,9 @@ namespace Resources
 	extern Texture2D TxtboxRectangle;
 
 	extern Sound LakituDrop[3];
+
+	extern Texture2D SliderBar;
+	extern Texture2D SliderBox;
 	
 	void PlayRandomSound(Sound* sounds, size_t numSounds);
 

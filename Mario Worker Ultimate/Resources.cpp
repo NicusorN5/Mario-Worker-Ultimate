@@ -8,6 +8,9 @@ Texture2D Resources::Goomba2{};
 
 Texture2D Resources::Window{};
 
+Texture2D Resources::SliderBar{};
+Texture2D Resources::SliderBox{};
+
 Sound Resources::LakituDrop[3]{};
 
 std::random_device Resources::rd;
@@ -97,10 +100,13 @@ void Resources::LoadAll()
 
 	new (&LevelHudFont) TransparentFont(
 		LoadTextureChkF("Data\\UI\\Level_Font.png"),
-		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[$",
+		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[]",
 		coords);
 	
 	TxtboxRectangle = LoadTextureChkF("Data\\Editor\\Textbox_Rectangle.png");
+
+	SliderBar = LoadTextureChkF("Data\\Editor\\SliderBar.png");
+	SliderBox = LoadTextureChkF("Data\\Editor\\SliderBox.png");
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

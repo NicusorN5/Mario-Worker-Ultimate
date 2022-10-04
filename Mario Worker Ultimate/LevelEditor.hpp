@@ -7,6 +7,7 @@
 #include "TabButton.hpp"
 #include "ShinyButton.hpp"
 #include "Textbox.hpp"
+#include "Slider.hpp"
 
 class LevelEditor : public IGamePart
 {
@@ -26,7 +27,7 @@ class LevelEditor : public IGamePart
 	int subCategoryId = 0;
 
 	Texture2D W_selectItem{};
-	Texture2D _tGlint{ 13,256,256,7 };
+	Texture2D _tGlint{ 15,256,256,7 };
 
 	//main categories
 	TabButton _tabButtons[6];
@@ -64,6 +65,9 @@ class LevelEditor : public IGamePart
 	Textbox _authorTb;
 	Textbox _emailTb;
 	Textbox _websiteTb;
+
+	Slider _levelWidthSl;
+	Slider _levelHeightSl;
 
 	static LevelEditor* _singleton;
 public:

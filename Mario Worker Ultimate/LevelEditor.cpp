@@ -213,7 +213,7 @@ void LevelEditor::LoadContent()
 	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),ssc7);
 
 	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
-	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint, Game::ScreenRec({ 0.095f,0.841f,0.15f,0.075f }),
+	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(8);
@@ -250,8 +250,11 @@ void LevelEditor::LoadContent()
 	_levelNameTbs[1] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "1-1", Game::ScreenRec({ 0.6f,0.22f,0.3f,0.04f }), 10, 10);
 	
 	_authorTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "YOUR NAME", Game::ScreenRec({ 0.6f,0.3f,0.3f,0.04f }), 10, 10);
-	_emailTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "USERNAME@EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.375f,0.3f,0.04f }), 50, 10);
+	_emailTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "USERNAME[EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.375f,0.3f,0.04f }), 50, 10);
 	_websiteTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.45f,0.3f,0.04f }), 50, 10);
+
+	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.6f,0.52f,0.3f,0.04f}), 20, 400, 40);
+	_levelHeightSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.6f,0.59f,0.3f,0.04f }), 15, 225, 30);
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -365,6 +368,9 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 						_websiteTb.Update(ms, dt);
 						if(_websiteTb.IsFocused()) usingTxtbox = true;
 
+						_levelWidthSl.Update(ms, dt);
+						_levelHeightSl.Update(ms, dt);
+
 						break;
 					}
 					default:break;
@@ -462,6 +468,12 @@ void LevelEditor::Draw(float dt)
 						_authorTb.Draw(dt);
 						_emailTb.Draw(dt);
 						_websiteTb.Draw(dt);
+
+						_levelWidthSl.Draw(dt);
+						Resources::LevelHudFont.Draw(std::to_string(_levelWidthSl.GetValue<int>()), { 0.91f,0.525f}, { 0.025f,0.025f }, 0.001f);
+
+						_levelHeightSl.Draw(dt);
+						Resources::LevelHudFont.Draw(std::to_string(_levelHeightSl.GetValue<int>()), { 0.91f,0.6f }, { 0.025f,0.025f }, 0.001f);
 						break;
 					}
 					default: break;

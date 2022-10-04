@@ -11,3 +11,12 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
+
+template<typename N>
+concept SignedInteger = std::is_signed_v<N>;
+
+template <SignedInteger T>
+int signum(T val)
+{
+    return (T(0) < val) - (val < T(0));
+}

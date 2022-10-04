@@ -14,9 +14,9 @@ public:
 	unsigned X;
 	unsigned Y;
 
-	bool MouseClickingRectangle(Rectangle r);
-	bool MouseFinishedClickingRectangle(Rectangle r);
-	bool MouseInsideRectangle(Rectangle r);
-	bool MouseFinishedClickingOutsideRectangle(Rectangle r);
-	bool MouseClickingOutsideRectangle(Rectangle r);
+	bool MouseClickingRectangle(Rectangle r) const;
+	bool MouseFinishedClickingRectangle(Rectangle r) const;
+	bool MouseInsideRectangle(Rectangle r) const;
+	bool MouseFinishedClickingOutsideRectangle(Rectangle r) const;
+	bool MouseClickingOutsideRectangle(Rectangle r) const;
 };

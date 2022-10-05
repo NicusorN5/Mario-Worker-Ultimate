@@ -253,8 +253,19 @@ void LevelEditor::LoadContent()
 	_emailTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "USERNAME[EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.375f,0.3f,0.04f }), 50, 10);
 	_websiteTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.45f,0.3f,0.04f }), 50, 10);
 
-	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.6f,0.52f,0.3f,0.04f}), 20, 400, 40);
+	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.6f,0.52f,0.3f,0.04f}), 20, 400, 60);
+	_levelWidthSl.OnValueChange = [this](double oldVlaue, double newValue)
+	{
+		Game::CurrentLevel.Size.x = newValue;
+		levelPx = Game::CurrentLevel.Size.x * Game::Resolution::X / 20.0f;
+	};
+
 	_levelHeightSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.6f,0.59f,0.3f,0.04f }), 15, 225, 30);
+	_levelHeightSl.OnValueChange = [this](double oldValue, double newValue)
+	{
+		Game::CurrentLevel.Size.y = newValue;
+		levelPy = Game::CurrentLevel.Size.y * Game::Resolution::Y / 15.0f;
+	};
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -381,6 +392,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 		if(!_previousSpacePress && cs->Space && !usingTxtbox) _showElements = false;
 	}
+
 	_previousSpacePress = cs->Space;
 	_lastMousePos = { (float)ms->X,(float)ms->Y };
 }
@@ -390,7 +402,16 @@ void LevelEditor::Draw(float dt)
 	Game::CurrentLevel.LvlBackround.Draw(cameraPosition, Game::CurrentLevel.Size);
 	
 	DrawTexturePro(_square, { 0,0,64 * Game::CurrentLevel.Size.x,64 * Game::CurrentLevel.Size.y}, calculateTileTransformation(Game::ScreenRec({0,0,Game::CurrentLevel.Size.x / 20,Game::CurrentLevel.Size.y / 15})), {0,0}, 0.0f, WHITE);
+	//debug goomba
 	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateWorldTransformation(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
+
+	//TODO: draw level stuff
+	Resources::LevelHudFont.Draw(
+		"CamPos " + std::to_string(cameraPosition.x) + " " + std::to_string(cameraPosition.y),
+		{ 0.01f,0.97f }, 
+		{ 0.025f,0.025f },
+		0.001f
+	);
 
 	if(_showElements)
 	{

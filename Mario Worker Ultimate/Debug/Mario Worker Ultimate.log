@@ -1,20 +1,20 @@
 ﻿  LevelEditor.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(310,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(319,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(328,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(337,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(346,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(412,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(422,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(431,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(440,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(449,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(26,22): warning C4244: 'return': conversion from '_Ty' to 'int', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(259,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(266,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(321,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(330,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(339,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(348,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(357,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(433,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(443,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(452,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(461,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(470,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(30,22): warning C4244: 'return': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(473): message : see reference to function template instantiation 'int Slider::GetValue<int>(void)' being compiled
-raylib.lib(raudio.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(raudio.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(rcore.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rcore.obj)' or at 'D:\Projects\Mario Worker Ultimate\Debug\raylib.pdb'; linking object as if no debug info
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(494): message : see reference to function template instantiation 'int Slider::GetValue<int>(void)' being compiled
   Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Debug\Mario Worker Ultimate.exe

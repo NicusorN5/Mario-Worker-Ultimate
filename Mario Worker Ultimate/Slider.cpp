@@ -1,5 +1,14 @@
 #include "Slider.hpp"
 
+Rectangle Slider::_coordsLim()
+{
+	Rectangle coordsC = _coords;
+	coordsC.x += Game::Resolution::X * 0.005;
+	coordsC.width -= Game::Resolution::X * 0.02;
+
+	return coordsC;
+}
+
 Slider::Slider():
 	_min(0),
 	_max(0),
@@ -11,19 +20,22 @@ Slider::Slider():
 {
 }
 
-Slider::Slider(Texture2D& bar, Texture2D& slider,const Rectangle& coords, int min, int max, int defaultValue) :
+Slider::Slider(Texture2D& bar, Texture2D& slider,const Rectangle& coords, int min, int max, int defaultValue, std::function<void(double,double)> valchange) :
 	_min(min),
 	_max(max),
 	_value(defaultValue),
 	_sliderPos((float)(defaultValue - min) / max),
 	_bar(bar),
 	_slider(slider),
-	_coords(coords)
+	_coords(coords),
+	OnValueChange(valchange)
 {
 }
 
 void Slider::Draw(float dt)
 {
+	Rectangle coordsC = this->_coordsLim();
+
 	DrawTexturePro(
 		_bar,
 		{
@@ -37,6 +49,7 @@ void Slider::Draw(float dt)
 		0.0f,
 		WHITE
 	);
+
 	DrawTexturePro(
 		_slider,
 		{
@@ -46,10 +59,10 @@ void Slider::Draw(float dt)
 			(float)_slider.height
 		},
 		{
-			_coords.x + (_sliderPos * _coords.width),
-			_coords.y,
-			std::max<float>(_coords.width / (_max - _min), 0.01f * Game::Resolution::X),
-			_coords.height
+			(float)( coordsC.x + (_sliderPos * coordsC.width) ),
+			coordsC.y,
+			std::max<float>(coordsC.width / (_max - _min), 0.01f * Game::Resolution::X),
+			coordsC.height
 		},
 		{0,0},
 		0.0f,
@@ -59,20 +72,33 @@ void Slider::Draw(float dt)
 
 void Slider::Update(const MouseState* ms, float dt)
 {
-	Rectangle _slideRect = _coords;
+	Rectangle coordsC = this->_coordsLim();
+
+	Rectangle _slideRect = coordsC;
 	_slideRect.x += _sliderPos * _slideRect.width;
 	_slideRect.width /= _max - _min;
 
 	float gx = Game::Resolution::X;
 	float gy = Game::Resolution::Y;
 
-	float sliderNewPos = (ms->X - (_coords.x )) / (_coords.width);
+	float sliderNewPos = (ms->X - (coordsC.x )) / (coordsC.width);
+
+	bool _valChange = false;
+	float oldValue = this->GetValue<double>();
 
 	if(ms->MouseClickingRectangle(_slideRect))
+	{
+		_valChange = true;
 		_sliderPos = sliderNewPos;
-
+	}
 	else if(ms->MouseClickingRectangle(_coords))
+	{
+		_valChange = true;
 		_sliderPos = std::lerp(_sliderPos, sliderNewPos, 0.1f);
+	}
 
 	_sliderPos = std::clamp<float>(_sliderPos, 0.0f, 1.0f);
+
+	if(_valChange)
+		OnValueChange(oldValue, this->GetValue<double>());
 }

@@ -26,5 +26,7 @@ public:
 
 	float MeasureLenght(const std::string &text,Vector2 scale,float spacing);
 
+	bool SupportsChar(char c);
+
 	~TransparentFont();
 };

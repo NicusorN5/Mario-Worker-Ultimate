@@ -29,6 +29,7 @@ namespace Resources
 	int Random(int min, int max);
 
 	extern TransparentFont LevelHudFont;
+	extern TransparentFont NumericLevelHudFont;
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

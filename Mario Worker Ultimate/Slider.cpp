@@ -24,12 +24,25 @@ Slider::Slider(Texture2D& bar, Texture2D& slider,const Rectangle& coords, int mi
 	_min(min),
 	_max(max),
 	_value(defaultValue),
-	_sliderPos((float)(defaultValue - min) / max),
+	//_sliderPos((double)( (double)(defaultValue - min)) / (double)max), <- Loss of accuracy :(
+	_sliderPos(0),
 	_bar(bar),
 	_slider(slider),
 	_coords(coords),
 	OnValueChange(valchange)
 {
+	//Floating point arithmetic moment
+	double dmax = max;
+	double dmin = min;
+	double ddef = defaultValue;
+
+	_sliderPos = defaultValue;
+	_sliderPos /= max - min;
+
+	//Wachy floating point hack
+	for(; GetValue<int>() > defaultValue; _sliderPos -= 1.0 / (double)(max - min))
+	{
+	}
 }
 
 void Slider::Draw(float dt)

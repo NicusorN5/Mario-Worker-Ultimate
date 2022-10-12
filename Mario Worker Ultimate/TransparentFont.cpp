@@ -68,6 +68,11 @@ float TransparentFont::MeasureLenght(const std::string& text,Vector2 scale,float
 	return c;
 }
 
+bool TransparentFont::SupportsChar(char c)
+{
+	return _getIndexForGlyph(c) != -1;
+}
+
 TransparentFont::~TransparentFont()
 {
 	UnloadTexture(_fontTexture);

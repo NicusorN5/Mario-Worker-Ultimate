@@ -69,6 +69,10 @@ class LevelEditor : public IGamePart
 	Slider _levelWidthSl;
 	Slider _levelHeightSl;
 
+	Textbox _levelTime;
+
+	Texture2D _levelSettings[12];
+
 	static LevelEditor* _singleton;
 public:
 	LevelEditor();

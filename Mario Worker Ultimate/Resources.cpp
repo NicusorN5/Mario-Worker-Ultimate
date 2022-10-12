@@ -17,6 +17,7 @@ std::random_device Resources::rd;
 std::mt19937 Resources::mt;
 
 TransparentFont Resources::LevelHudFont;
+TransparentFont Resources::NumericLevelHudFont;
 Texture2D Resources::TxtboxRectangle;
 
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
@@ -98,10 +99,32 @@ void Resources::LoadAll()
 		{582,0,15,16}
 	};
 
+	Rectangle coords2[] =
+	{
+		{0,0,11,16},
+		{11,0,15,16},
+		{26,0,15,16},
+		{41,0,15,16},
+		{56,0,15,16},
+		{71,0,15,16},
+		{86,0,15,16},
+		{101,0,15,16},
+		{116,0,15,16},
+		{131,0,15,16}
+	};
+
+	Texture2D hudFont = LoadTextureChkF("Data\\UI\\Level_Font.png");
+	
 	new (&LevelHudFont) TransparentFont(
-		LoadTextureChkF("Data\\UI\\Level_Font.png"),
+		hudFont,
 		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[]",
 		coords);
+
+	new (&NumericLevelHudFont) TransparentFont(
+		hudFont,
+		"1234567890",
+		coords2
+	);
 	
 	TxtboxRectangle = LoadTextureChkF("Data\\Editor\\Textbox_Rectangle.png");
 

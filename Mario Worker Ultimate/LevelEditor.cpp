@@ -266,6 +266,8 @@ void LevelEditor::LoadContent()
 		Game::CurrentLevel.Size.y = newValue;
 		levelPy = Game::CurrentLevel.Size.y * Game::Resolution::Y / 15.0f;
 	};
+
+	_levelTime = Textbox(Resources::TxtboxRectangle, &Resources::NumericLevelHudFont, "360", Game::ScreenRec({ 0.6f,0.66f,0.3f,0.04f }), 5, 10);
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -381,6 +383,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 						_levelWidthSl.Update(ms, dt);
 						_levelHeightSl.Update(ms, dt);
+						_levelTime.Update(ms, dt);
 
 						break;
 					}
@@ -495,6 +498,9 @@ void LevelEditor::Draw(float dt)
 
 						_levelHeightSl.Draw(dt);
 						Resources::LevelHudFont.Draw(std::to_string(_levelHeightSl.GetValue<int>()), { 0.91f,0.6f }, { 0.025f,0.025f }, 0.001f);
+
+						_levelTime.Draw(dt);
+						Resources::LevelHudFont.Draw("Level time", { 0.3f,0.7f }, { 0.025f,0.025f }, 0.001f);
 						break;
 					}
 					default: break;

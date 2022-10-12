@@ -60,7 +60,7 @@ void Textbox::Update(MouseState* ms, float dt)
 		for(int key = GetKeyPressed(); key > 0; key = GetKeyPressed())
 		{
 			key = key >= 32 && key <= 126 ? key : 0;
-			if(key)
+			if(key && _textFont->SupportsChar((char)key))
 			{
 				if(_text.length() <= (int)_maxLenght)
 				{

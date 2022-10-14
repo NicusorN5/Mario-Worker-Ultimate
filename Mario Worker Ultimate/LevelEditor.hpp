@@ -71,7 +71,11 @@ class LevelEditor : public IGamePart
 
 	Textbox _levelTime;
 
-	Texture2D _levelSettings[12];
+	Texture2D _levelSettingsTxs[12];
+	ShinyButton _levelSettingsBtns[12];
+
+	int _currentSettingId;
+	Slider _levelSettingsSliders[12];
 
 	static LevelEditor* _singleton;
 public:

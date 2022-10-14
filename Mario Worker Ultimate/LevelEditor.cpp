@@ -267,7 +267,163 @@ void LevelEditor::LoadContent()
 		levelPy = Game::CurrentLevel.Size.y * Game::Resolution::Y / 15.0f;
 	};
 
-	_levelTime = Textbox(Resources::TxtboxRectangle, &Resources::NumericLevelHudFont, "360", Game::ScreenRec({ 0.6f,0.66f,0.3f,0.04f }), 5, 10);
+	_levelTime = Textbox(Resources::TxtboxRectangle, &Resources::NumericLevelHudFont, "360", Game::ScreenRec({ 0.6f,0.69f,0.3f,0.04f }), 5, 10);
+
+	_levelSettingsTxs[0] = Resources::LoadTextureChkF("Data\\Editor\\Param_PlayerGravity.png");
+	_levelSettingsBtns[0] = ShinyButton(_levelSettingsTxs[0], _tGlint, Game::ScreenRec({ 0.3f, 0.35f, 0.1f, 0.1f }), [this]()
+		{
+			_currentSettingId = 0;
+		}
+	);
+
+	_levelSettingsTxs[1] = Resources::LoadTextureChkF("Data\\Editor\\Param_EnemySpeed.png");
+	_levelSettingsBtns[1] = ShinyButton(_levelSettingsTxs[1], _tGlint, Game::ScreenRec({ 0.41f,0.35f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 1;
+		}
+	);
+
+	_levelSettingsTxs[2] = Resources::LoadTextureChkF("Data\\Editor\\Param_BillBlasterRoF.png");
+	_levelSettingsBtns[2] = ShinyButton(_levelSettingsTxs[2], _tGlint, Game::ScreenRec({ 0.52f,0.35f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 2;
+		}
+	);
+
+	_levelSettingsTxs[3] = Resources::LoadTextureChkF("Data\\Editor\\Param_ProjectileSpeed.png");
+	_levelSettingsBtns[3] = ShinyButton(_levelSettingsTxs[3], _tGlint, Game::ScreenRec({ 0.63f,0.35f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 3;
+		}
+	);
+
+	_levelSettingsTxs[4] = Resources::LoadTextureChkF("Data\\Editor\\Param_PinkFlowerFireballsCount.png");
+	_levelSettingsBtns[4] = ShinyButton(_levelSettingsTxs[4], _tGlint, Game::ScreenRec({ 0.3f,0.46f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 4;
+		}
+	);
+
+	_levelSettingsTxs[5] = Resources::LoadTextureChkF("Data\\Editor\\Param_PlantSpeed.png");
+	_levelSettingsBtns[5] = ShinyButton(_levelSettingsTxs[5], _tGlint, Game::ScreenRec({ 0.41f,0.46f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 5;
+		}
+	);
+
+	_levelSettingsTxs[6] = Resources::LoadTextureChkF("Data\\Editor\\Param_PodoboosSpeed.png");
+	_levelSettingsBtns[6] = ShinyButton(_levelSettingsTxs[6], _tGlint, Game::ScreenRec({ 0.52f,0.46f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 6;
+		}
+	);
+
+	_levelSettingsTxs[7] = Resources::LoadTextureChkF("Data\\Editor\\Param_LakituAttackSpeed.png");
+	_levelSettingsBtns[7] = ShinyButton(_levelSettingsTxs[7], _tGlint, Game::ScreenRec({ 0.63f,0.46f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 7;
+		}
+	);
+
+	_levelSettingsTxs[8] = Resources::LoadTextureChkF("Data\\Editor\\Param_FallingSpikes.png");
+	_levelSettingsBtns[8] = ShinyButton(_levelSettingsTxs[8], _tGlint, Game::ScreenRec({ 0.3f,0.57f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 8;
+		}
+	);
+
+	_levelSettingsTxs[9] = Resources::LoadTextureChkF("Data\\Editor\\Param_PlatformSpeed.png");
+	_levelSettingsBtns[9] = ShinyButton(_levelSettingsTxs[9], _tGlint, Game::ScreenRec({ 0.41f,0.57f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 9;
+		}
+	);
+
+	_levelSettingsTxs[10] = Resources::LoadTextureChkF("Data\\Editor\\Param_FishDensity.png");
+	_levelSettingsBtns[10] = ShinyButton(_levelSettingsTxs[10], _tGlint, Game::ScreenRec({ 0.52f,0.57f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 10;
+		}
+	);
+
+	_levelSettingsTxs[11] = Resources::LoadTextureChkF("Data\\Editor\\Param_BroHammerThrowRate.png");
+	_levelSettingsBtns[11] = ShinyButton(_levelSettingsTxs[11], _tGlint, Game::ScreenRec({ 0.63,0.57f,0.1f,0.1f }), [this]()
+		{
+			_currentSettingId = 11;
+		}
+	);
+
+	_levelSettingsSliders[0] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 6); //gravity
+	_levelSettingsSliders[0].OnValueChange = [](double old, double newVal)
+	{
+		Game::CurrentLevel.Gravity = newVal;
+	};
+
+	_levelSettingsSliders[1] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //enemy speed
+	_levelSettingsSliders[1].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.EnemySpeed = newV;
+	};
+
+	_levelSettingsSliders[2] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //bill rof
+	_levelSettingsSliders[2].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.BillBlasterROF = newV;
+	};
+
+	_levelSettingsSliders[3] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //bill mov speed
+	_levelSettingsSliders[3].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.BillBulletSpeed = newV;
+	};
+
+	_levelSettingsSliders[4] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 20, 3); //pink flower fireballs
+	_levelSettingsSliders[4].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.PinkFlowerFireballs = newV;
+	};
+
+	_levelSettingsSliders[5] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //plant hiding timespan
+	_levelSettingsSliders[5].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.PlantSpeed = newV;
+	};
+
+	_levelSettingsSliders[6] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //podoboos frequency
+	_levelSettingsSliders[6].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.PodoboosSpeed = newV;
+	};
+
+	_levelSettingsSliders[7] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 7, 5); //lakitu attack speed
+	_levelSettingsSliders[7].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.LakituAttackSpeed = newV;
+	};
+
+	_levelSettingsSliders[8] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 0, 20, 0); //falling spikes
+	_levelSettingsSliders[8].OnValueChange = [](double old, double newV)
+	{
+		Game::CurrentLevel.FallingSpikesSpeed = newV;
+	};
+
+	_levelSettingsSliders[9] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 3, 1); //platform speed
+	_levelSettingsSliders[9].OnValueChange = [](double oldV, double newV)
+	{
+		Game::CurrentLevel.PlatformSpeed = newV;
+	};
+
+	_levelSettingsSliders[10] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 0, 5, 1); //fish density
+	_levelSettingsSliders[10].OnValueChange = [](double o, double n)
+	{
+		Game::CurrentLevel.FishDensity = n;
+	};
+
+	_levelSettingsSliders[11] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 5, 2); //bro hammer throw rate
+	_levelSettingsSliders[11].OnValueChange = [](double o, double n)
+	{
+		Game::CurrentLevel.BroHammerAttackRate = n;
+	};
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -387,6 +543,16 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 						break;
 					}
+					case 1:
+					{
+						_levelSettingsSliders[_currentSettingId].Update(ms, dt);
+
+						for(size_t i = 0; i < 12; i++)
+						{
+							_levelSettingsBtns[i].Update(ms, dt);
+						}
+						break;
+					}
 					default:break;
 				}
 			}
@@ -503,6 +669,32 @@ void LevelEditor::Draw(float dt)
 						Resources::LevelHudFont.Draw("Level time", { 0.3f,0.7f }, { 0.025f,0.025f }, 0.001f);
 						break;
 					}
+					case 1:
+					{
+						const char *settingNames[12] = {
+							"Player gravity",
+							"Enemy speed",
+							"Bill Blaster rate of fire",
+							"Bullet Bill speed",
+							"Pink plant fireball count",
+							"Plant hiding frequency",
+							"Podoboos rising rate",
+							"Lakitu attack rate",
+							"Falling spike floor speed",
+							"Moving platform speed",
+							"Fish density",
+							"Bro's attack rate"
+						};
+
+						Resources::LevelHudFont.Draw(settingNames[_currentSettingId],{0.3f, 0.19f },{0.025f,0.025f},0.001f);
+
+						_levelSettingsSliders[_currentSettingId].Draw(dt);
+						Resources::LevelHudFont.Draw(std::to_string(_levelSettingsSliders[_currentSettingId].GetValue<int>()), {0.61f,0.26f}, { 0.025f,0.025f }, 0.001f);
+
+						for(size_t i = 0; i < 12; i++)
+							_levelSettingsBtns[i].Draw(dt);
+						break;
+					}
 					default: break;
 				}
 				break;
@@ -544,10 +736,13 @@ LevelEditor::~LevelEditor()
 {
 	UnloadTexture(_square);
 	UnloadTexture(_squareMouse);
+
 	for(size_t i = 0; i < 5; i++) UnloadTexture(_blocksBtnTextures[i]);
 	for(size_t i = 0; i < 6; i++) UnloadTexture(_enemiesBtnTextures[i]);
 	for(size_t i = 0; i < 2; i++) UnloadTexture(_bonusesBtnTextures[i]);
 	for(size_t i = 0; i < 5; i++) UnloadTexture(_marksBtnTextures[i]);
 	for(size_t i = 0; i < 9; i++) UnloadTexture(_sceneryBtnTextures[i]);
 	for(size_t i = 0; i < 8; i++) UnloadTexture(_settingsBtnTextures[i]);
+
+	for(size_t i = 0; i < 12; i++) UnloadTexture(_levelSettingsTxs[i]);
 }

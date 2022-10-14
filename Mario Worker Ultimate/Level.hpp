@@ -23,11 +23,22 @@ public:
 
 	bool IsValid = false;
 	int Time = 360;
-	float Gravity = 9.81f;
+	float Gravity = 1.0f;
 	float LiquidLevel = -5.0f;
 
-	int EnemySpeedMultiplier = 1;
 	const char* MusicPath = nullptr;
+	
+	unsigned EnemySpeed;
+	unsigned BillBlasterROF;
+	unsigned BillBulletSpeed;
+	unsigned PinkFlowerFireballs;
+	unsigned PlantSpeed;
+	unsigned PodoboosSpeed;
+	unsigned LakituAttackSpeed;
+	unsigned FallingSpikesSpeed; // 0 = disabled
+	unsigned PlatformSpeed;
+	unsigned FishDensity;
+	unsigned BroHammerAttackRate;
 
 	Vector2 Size = { 60,40 };
 

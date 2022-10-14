@@ -74,7 +74,7 @@ void Slider::Draw(float dt)
 		{
 			(float)( coordsC.x + (_sliderPos * coordsC.width) ),
 			coordsC.y,
-			std::max<float>(coordsC.width / (_max - _min), 0.01f * Game::Resolution::X),
+			0.01f * Game::Resolution::X,
 			coordsC.height
 		},
 		{0,0},

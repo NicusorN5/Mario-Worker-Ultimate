@@ -4,7 +4,7 @@ Level::Level(const char* path) : LvlBackround(WHITE, {60,120,160,255})
 {
 	if(path == nullptr)
 	{
-		EnemySpeedMultiplier = 1;
+		EnemySpeed = 1;
 		Gravity = 1;
 		MusicPath = nullptr;
 		Time = 360;
@@ -15,7 +15,7 @@ Level::Level(const char* path) : LvlBackround(WHITE, {60,120,160,255})
 	if(strlen(path) == 0)
 	{
 		LvlBackround = Backround(nullptr, false, false);
-		EnemySpeedMultiplier = 1;
+		EnemySpeed = 1;
 		Gravity = 1;
 		MusicPath = nullptr;
 		Time = 360;

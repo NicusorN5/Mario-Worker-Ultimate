@@ -13,7 +13,7 @@ void Goomba::Update(float dt)
     {
         _animTimer = 0;
     }
-    this->Position.x += _direction * 5 * Game::CurrentLevel.EnemySpeedMultiplier  * dt;
+    this->Position.x += _direction * 5 * Game::CurrentLevel.EnemySpeed * dt;
 }
 
 void Goomba::Draw(float dt)

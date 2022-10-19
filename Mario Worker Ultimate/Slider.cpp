@@ -3,8 +3,8 @@
 Rectangle Slider::_coordsLim()
 {
 	Rectangle coordsC = _coords;
-	coordsC.x += Game::Resolution::X * 0.005;
-	coordsC.width -= Game::Resolution::X * 0.02;
+	coordsC.x += Game::Resolution::X * 0.005f;
+	coordsC.width -= Game::Resolution::X * 0.02f;
 
 	return coordsC;
 }

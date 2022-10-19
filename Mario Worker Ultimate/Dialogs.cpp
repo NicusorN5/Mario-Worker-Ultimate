@@ -80,3 +80,28 @@ FileDialogResult::~FileDialogResult()
 {
 	delete[] File;
 }
+
+COLORREF customColors[16];
+
+ColorDialogResult::ColorDialogResult(unsigned char defR,unsigned char defG,unsigned char defB)
+{
+	CHOOSECOLORA ccd{};
+	ccd.lStructSize = sizeof(CHOOSECOLORA);
+	ccd.rgbResult = RGB(defR, defG, defB);
+	ccd.Flags = CC_RGBINIT | CC_FULLOPEN;
+	ccd.lpCustColors = customColors;
+
+	if(ChooseColorA(&ccd) == true)
+	{
+		this->Result = 0;
+
+		this->ResultColor.R = GetRValue(ccd.rgbResult);
+		this->ResultColor.G = GetGValue(ccd.rgbResult);
+		this->ResultColor.B = GetBValue(ccd.rgbResult);
+	}
+	else
+	{
+		this->Result = (GetLastError() != 0 ? GetLastError() : -1);
+		this->ResultColor = { defR, defG, defB };
+	}
+}

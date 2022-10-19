@@ -5,16 +5,8 @@
 #include "IEnemy.hpp"
 #include "Decoration.hpp"
 #include "Bonus.hpp"
-#include "Backround.hpp"
+#include "Background.hpp"
 #include "Resolution.hpp"
-
-enum class Liqiud
-{
-	None = 0,
-	Water,
-	Lava,
-	Poison
-};
 
 class Level
 {
@@ -46,6 +38,14 @@ public:
 	std::vector<IEnemy*> Enemies;
 	std::vector<Decoration> Decorations;
 	std::vector<Bonus> Bonuses;
-	Backround LvlBackround;
+	std::unique_ptr<Background> LvlBackground;
+
+	enum class LiquidType
+	{
+		None = 0,
+		Water,
+		Lava,
+		Poison
+	} Liqiud;
 };
 

@@ -25,7 +25,7 @@ public:
 	std::function<void(double,double)> OnValueChange; // oldValue, newValue;
 
 	template<typename N>
-	int GetValue()
+	N GetValue()
 	{
 		return std::lerp<N>(_min, _max, _sliderPos);
 	}

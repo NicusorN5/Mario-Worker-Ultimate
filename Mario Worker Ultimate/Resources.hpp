@@ -31,6 +31,13 @@ namespace Resources
 	extern TransparentFont LevelHudFont;
 	extern TransparentFont NumericLevelHudFont;
 
+	extern Texture2D LeftBtn;
+	extern Texture2D RightBtn;
+
+	extern Sound ClickSound1;
+
+	extern Texture2D BtnGlint;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

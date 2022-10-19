@@ -6,7 +6,7 @@
 
 class MainMenu : public IGamePart
 {
-	Texture2D _backroundImg{};
+	Texture2D _BackgroundImg{};
 	Texture2D _btnEdit{};
 	Texture2D _logo{};
 	Texture2D _btnPlay{};
@@ -31,6 +31,8 @@ class MainMenu : public IGamePart
 
 	bool playingMusic = false;
 	Music _mainMenuMusic{};
+
+	bool _disableAnimations = false;
 public:
 	void LoadContent() override;
 	void Update(float dt,MouseState *ms, ControllerState* cs) override;

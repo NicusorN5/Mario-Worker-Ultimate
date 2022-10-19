@@ -1,7 +1,7 @@
 #include "Level.hpp"
 
-Level::Level(const char* path) : LvlBackround(WHITE, {60,120,160,255})
-{
+Level::Level(const char* path) : LvlBackground(std::make_unique<Background>(WHITE, Color(60, 120, 160, 255)))
+{	
 	if(path == nullptr)
 	{
 		EnemySpeed = 1;
@@ -14,7 +14,7 @@ Level::Level(const char* path) : LvlBackround(WHITE, {60,120,160,255})
 	}
 	if(strlen(path) == 0)
 	{
-		LvlBackround = Backround(nullptr, false, false);
+		LvlBackground = std::make_unique<Background>(nullptr, false, false);
 		EnemySpeed = 1;
 		Gravity = 1;
 		MusicPath = nullptr;
@@ -24,7 +24,7 @@ Level::Level(const char* path) : LvlBackround(WHITE, {60,120,160,255})
 	}
 
 	IsValid = true;
-	LvlBackround = Backround("",false,false);
+	LvlBackground = std::make_unique<Background>("",false,false);
 
 	std::ifstream file(path);
 	if(file.bad() || file.fail())

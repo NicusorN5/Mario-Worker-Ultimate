@@ -11,6 +11,8 @@
 
 class LevelEditor : public IGamePart
 {
+	static LevelEditor* _singleton;
+
 	Vector2 cameraPosition = { 0,0 };
 	Texture2D _square{};
 
@@ -27,7 +29,7 @@ class LevelEditor : public IGamePart
 	int subCategoryId = 0;
 
 	Texture2D W_selectItem{};
-	Texture2D _tGlint{ 15,256,256,7 };
+	Texture2D _tGlint;
 
 	//main categories
 	TabButton _tabButtons[6];
@@ -58,9 +60,14 @@ class LevelEditor : public IGamePart
 	Texture2D _settingsBtnTextures[8];
 	ShinyButton _settingsButtons[8];
 
+	//level editor stuff
 	Texture2D _squareMouse;
 	Vector2 _lastMousePos;
 
+	bool _progressSaved = true;
+	bool _showNotifNotSaved = false;
+
+	//settings -> level info
 	Textbox _levelNameTbs[2];
 	Textbox _authorTb;
 	Textbox _emailTb;
@@ -71,13 +78,28 @@ class LevelEditor : public IGamePart
 
 	Textbox _levelTime;
 
+	//settings -> settings
 	Texture2D _levelSettingsTxs[12];
 	ShinyButton _levelSettingsBtns[12];
 
-	int _currentSettingId;
+	int _currentSettingId = 0;
 	Slider _levelSettingsSliders[12];
 
-	static LevelEditor* _singleton;
+	//settings -> backrounds
+	int _backgroundSettingId = 0;
+
+	ShinyButton _bckLeftBtn;
+	ShinyButton _bckRightBtn;
+
+	Texture2D _backgroundsTxds[9];
+	ShinyButton _backgroundsBtns[9];
+
+	Texture2D _topColorTxd;
+	ShinyButton _topColorBtn;
+
+	Texture2D _bottomColorTxd;
+	ShinyButton _bottomColorBtn;
+
 public:
 	LevelEditor();
 

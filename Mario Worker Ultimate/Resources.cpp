@@ -20,6 +20,13 @@ TransparentFont Resources::LevelHudFont;
 TransparentFont Resources::NumericLevelHudFont;
 Texture2D Resources::TxtboxRectangle;
 
+Texture2D Resources::LeftBtn;
+Texture2D Resources::RightBtn;
+
+Sound Resources::ClickSound1;
+
+Texture2D Resources::BtnGlint;
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, numSounds)]);
@@ -33,7 +40,7 @@ int Resources::Random(int min, int max)
 Texture2D Resources::LoadTextureChkF(const char* path)
 {
 	Texture2D t = LoadTexture(path);
-	if(t.id <= 0) throw GameResourceLoadException(path);
+	if(t.id == 0) throw GameResourceLoadException(path);
 	return t;
 }
 
@@ -118,7 +125,8 @@ void Resources::LoadAll()
 	new (&LevelHudFont) TransparentFont(
 		hudFont,
 		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[]",
-		coords);
+		coords
+	);
 
 	new (&NumericLevelHudFont) TransparentFont(
 		hudFont,
@@ -126,10 +134,17 @@ void Resources::LoadAll()
 		coords2
 	);
 	
-	TxtboxRectangle = LoadTextureChkF("Data\\Editor\\Textbox_Rectangle.png");
+	TxtboxRectangle = LoadTextureChkF("Data\\UI\\Textbox_Rectangle.png");
 
-	SliderBar = LoadTextureChkF("Data\\Editor\\SliderBar.png");
-	SliderBox = LoadTextureChkF("Data\\Editor\\SliderBox.png");
+	SliderBar = LoadTextureChkF("Data\\UI\\SliderBar.png");
+	SliderBox = LoadTextureChkF("Data\\UI\\SliderBox.png");
+
+	LeftBtn = LoadTextureChkF("Data\\UI\\LeftBtn.png");
+	RightBtn = LoadTextureChkF("Data\\UI\\RightBtn.png");
+
+	ClickSound1 = LoadSoundChkF("Data\\Sounds\\ClickOption.mp3");
+
+	BtnGlint = Resources::LoadTextureChkF("Data\\UI\\ButtonGlint.png");
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

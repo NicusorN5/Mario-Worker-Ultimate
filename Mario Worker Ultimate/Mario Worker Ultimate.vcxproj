@@ -154,9 +154,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Backround.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Decoration.cpp" />
     <ClCompile Include="Dialogs.cpp" />
@@ -183,9 +184,10 @@
     <ClCompile Include="TransparentFont.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Backround.hpp" />
+    <ClInclude Include="Background.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
+    <ClInclude Include="Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />
     <ClInclude Include="Decoration.hpp" />
     <ClInclude Include="Dialogs.hpp" />

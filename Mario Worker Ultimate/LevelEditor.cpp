@@ -30,6 +30,8 @@ void LevelEditor::LoadContent()
 
 	W_selectItem = Resources::LoadTextureChkF("Data\\Editor\\Wnd_SelectItem.png");
 
+	_tGlint = Resources::BtnGlint;
+
 	_tabTexturesHovered[0] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTab.png");
 	_tabTexturesUnhovered[0] = Resources::LoadTextureChkF("Data\\Editor\\Editor_BlocksTabClosed.png");
 	_tabButtons[0] = TabButton(_tabTexturesUnhovered[0], _tabTexturesHovered[0],
@@ -256,14 +258,14 @@ void LevelEditor::LoadContent()
 	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.6f,0.52f,0.3f,0.04f}), 20, 400, 60);
 	_levelWidthSl.OnValueChange = [this](double oldVlaue, double newValue)
 	{
-		Game::CurrentLevel.Size.x = newValue;
+		Game::CurrentLevel.Size.x = (float)newValue;
 		levelPx = Game::CurrentLevel.Size.x * Game::Resolution::X / 20.0f;
 	};
 
 	_levelHeightSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.6f,0.59f,0.3f,0.04f }), 15, 225, 30);
 	_levelHeightSl.OnValueChange = [this](double oldValue, double newValue)
 	{
-		Game::CurrentLevel.Size.y = newValue;
+		Game::CurrentLevel.Size.y = (float)newValue;
 		levelPy = Game::CurrentLevel.Size.y * Game::Resolution::Y / 15.0f;
 	};
 
@@ -273,6 +275,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[0] = ShinyButton(_levelSettingsTxs[0], _tGlint, Game::ScreenRec({ 0.3f, 0.35f, 0.1f, 0.1f }), [this]()
 		{
 			_currentSettingId = 0;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -280,6 +283,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[1] = ShinyButton(_levelSettingsTxs[1], _tGlint, Game::ScreenRec({ 0.41f,0.35f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 1;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -287,6 +291,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[2] = ShinyButton(_levelSettingsTxs[2], _tGlint, Game::ScreenRec({ 0.52f,0.35f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 2;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -294,6 +299,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[3] = ShinyButton(_levelSettingsTxs[3], _tGlint, Game::ScreenRec({ 0.63f,0.35f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 3;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -301,6 +307,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[4] = ShinyButton(_levelSettingsTxs[4], _tGlint, Game::ScreenRec({ 0.3f,0.46f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 4;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -308,6 +315,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[5] = ShinyButton(_levelSettingsTxs[5], _tGlint, Game::ScreenRec({ 0.41f,0.46f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 5;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -315,6 +323,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[6] = ShinyButton(_levelSettingsTxs[6], _tGlint, Game::ScreenRec({ 0.52f,0.46f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 6;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -322,6 +331,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[7] = ShinyButton(_levelSettingsTxs[7], _tGlint, Game::ScreenRec({ 0.63f,0.46f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 7;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -329,6 +339,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[8] = ShinyButton(_levelSettingsTxs[8], _tGlint, Game::ScreenRec({ 0.3f,0.57f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 8;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -336,6 +347,7 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[9] = ShinyButton(_levelSettingsTxs[9], _tGlint, Game::ScreenRec({ 0.41f,0.57f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 9;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -343,91 +355,236 @@ void LevelEditor::LoadContent()
 	_levelSettingsBtns[10] = ShinyButton(_levelSettingsTxs[10], _tGlint, Game::ScreenRec({ 0.52f,0.57f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 10;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
 	_levelSettingsTxs[11] = Resources::LoadTextureChkF("Data\\Editor\\Param_BroHammerThrowRate.png");
-	_levelSettingsBtns[11] = ShinyButton(_levelSettingsTxs[11], _tGlint, Game::ScreenRec({ 0.63,0.57f,0.1f,0.1f }), [this]()
+	_levelSettingsBtns[11] = ShinyButton(_levelSettingsTxs[11], _tGlint, Game::ScreenRec({ 0.63f,0.57f,0.1f,0.1f }), [this]()
 		{
 			_currentSettingId = 11;
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
 	_levelSettingsSliders[0] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 6); //gravity
 	_levelSettingsSliders[0].OnValueChange = [](double old, double newVal)
 	{
-		Game::CurrentLevel.Gravity = newVal;
+		Game::CurrentLevel.Gravity = (float)newVal;
 	};
 
 	_levelSettingsSliders[1] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //enemy speed
 	_levelSettingsSliders[1].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.EnemySpeed = newV;
+		Game::CurrentLevel.EnemySpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[2] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //bill rof
 	_levelSettingsSliders[2].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.BillBlasterROF = newV;
+		Game::CurrentLevel.BillBlasterROF = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[3] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //bill mov speed
 	_levelSettingsSliders[3].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.BillBulletSpeed = newV;
+		Game::CurrentLevel.BillBulletSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[4] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 20, 3); //pink flower fireballs
 	_levelSettingsSliders[4].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.PinkFlowerFireballs = newV;
+		Game::CurrentLevel.PinkFlowerFireballs = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[5] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //plant hiding timespan
 	_levelSettingsSliders[5].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.PlantSpeed = newV;
+		Game::CurrentLevel.PlantSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[6] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 10, 5); //podoboos frequency
 	_levelSettingsSliders[6].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.PodoboosSpeed = newV;
+		Game::CurrentLevel.PodoboosSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[7] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 7, 5); //lakitu attack speed
 	_levelSettingsSliders[7].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.LakituAttackSpeed = newV;
+		Game::CurrentLevel.LakituAttackSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[8] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 0, 20, 0); //falling spikes
 	_levelSettingsSliders[8].OnValueChange = [](double old, double newV)
 	{
-		Game::CurrentLevel.FallingSpikesSpeed = newV;
+		Game::CurrentLevel.FallingSpikesSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[9] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 3, 1); //platform speed
 	_levelSettingsSliders[9].OnValueChange = [](double oldV, double newV)
 	{
-		Game::CurrentLevel.PlatformSpeed = newV;
+		Game::CurrentLevel.PlatformSpeed = (unsigned int)newV;
 	};
 
 	_levelSettingsSliders[10] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 0, 5, 1); //fish density
 	_levelSettingsSliders[10].OnValueChange = [](double o, double n)
 	{
-		Game::CurrentLevel.FishDensity = n;
+		Game::CurrentLevel.FishDensity = (unsigned int)n;
 	};
 
 	_levelSettingsSliders[11] = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.3f, 0.25f, 0.3f, 0.04f }), 1, 5, 2); //bro hammer throw rate
 	_levelSettingsSliders[11].OnValueChange = [](double o, double n)
 	{
-		Game::CurrentLevel.BroHammerAttackRate = n;
+		Game::CurrentLevel.BroHammerAttackRate = (unsigned int)n;
 	};
+
+	_bckLeftBtn = ShinyButton(Resources::LeftBtn, Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.9f,0.05f,0.05f }), [this]()
+	   {
+		  _backgroundSettingId -= 1;
+		  _backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
+	   }
+	);
+	_bckRightBtn = ShinyButton(Resources::RightBtn, Resources::BtnGlint, Game::ScreenRec({ 0.9f,0.9f,0.05f,0.05f }), [this]()
+		{
+			_backgroundSettingId += 1;
+			_backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
+		}
+	);
+
+	_backgroundsTxds[0] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_NoBackground.png");
+	_backgroundsBtns[0] = ShinyButton(_backgroundsTxds[0], Resources::BtnGlint, Game::ScreenRec({0.3f,0.25f,0.2f,0.2f}), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>(WHITE, Color(60,120,160,255 )); //load default Background
+		}
+	);
+
+	_backgroundsTxds[1] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Underground.png");
+	_backgroundsBtns[1] = ShinyButton(_backgroundsTxds[1], Resources::BtnGlint, Game::ScreenRec({ 0.51f,0.25f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underground.png",true,true,WHITE,WHITE);
+		}
+	);
+
+	_backgroundsTxds[2] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Rocky.png");
+	_backgroundsBtns[2] = ShinyButton(_backgroundsTxds[2], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.25f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Rocky.png", true, false, WHITE, Color( 60, 120, 160, 255 ));
+		}
+	);
+
+	_backgroundsTxds[3] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Castle.png");
+	_backgroundsBtns[3] = ShinyButton(_backgroundsTxds[3], Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.46f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Castle.png", true, true, WHITE, WHITE);
+		}
+	);
+
+	_backgroundsTxds[4] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Underwater.png");
+	_backgroundsBtns[4] = ShinyButton(_backgroundsTxds[4], Resources::BtnGlint, Game::ScreenRec({ 0.51f,0.46f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underwater.png",true,false,WHITE,Color(60,120,160,255));
+		}
+	);
+
+	_backgroundsTxds[5] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Night.png");
+	_backgroundsBtns[5] = ShinyButton(_backgroundsTxds[5], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.46f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Night.png", true, false, Color(60,120,160,255), Color(0, 0, 255, 255));
+		}
+	);
+	
+	_backgroundsTxds[6] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_DarkCave.png");
+	_backgroundsBtns[6] = ShinyButton(_backgroundsTxds[6], Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.67f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\DarkCave.png",true,true,WHITE,WHITE);
+		}
+	);
+
+	_backgroundsTxds[7] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_LavaCave.png");
+	_backgroundsBtns[7] = ShinyButton(_backgroundsTxds[7], Resources::BtnGlint, Game::ScreenRec({ 0.51f,0.67f,0.2f,0.2f }), []()
+		{
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\LavaCave.png", true, true, WHITE, WHITE);
+		}
+	);
+
+	_backgroundsTxds[8] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Custom.png");
+	_backgroundsBtns[8] = ShinyButton(_backgroundsTxds[8], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.67f,0.2f,0.2f }), []()
+		{
+			FileDialogResult *r = ShowOpenFileDialog("Open a background image...");
+			if(r->Result == 0)
+			{
+				Texture2D t{};
+				bool s = true;
+				try
+				{
+					t = Resources::LoadTextureChkF(r->File);
+				}
+				catch(GameResourceLoadException &e)
+				{
+					std::stringstream errmsg("The file you selected: \r\n");
+					errmsg << e.what() << "\r\n is not a valid or supported image format!";
+					ShowMessageBoxError(GetWindowHandle(), errmsg.str().c_str(), "Error!");
+					s = false;
+				}
+				if(s)
+				{
+					UnloadTexture(t);
+					Game::CurrentLevel.LvlBackground = std::make_unique<Background>(r->File, true, true, WHITE, Color(60, 120, 160, 255));
+					ProperlySetWorkingPath();
+				}
+			}
+
+			delete r;
+		}
+	);
+
+	_topColorTxd = Resources::LoadTextureChkF("Data\\Editor\\Btn_TopColor.png");
+	_topColorBtn = ShinyButton(_topColorTxd, Resources::BtnGlint, Game::ScreenRec({0.46f,0.3f,0.15f,0.075f}), []()
+		{
+			ColorDialogResult r(
+				Game::CurrentLevel.LvlBackground->ColorB.r,
+				Game::CurrentLevel.LvlBackground->ColorB.g,
+				Game::CurrentLevel.LvlBackground->ColorB.b
+			);
+			if(r.Result == 0)
+				Game::CurrentLevel.LvlBackground->ColorB = {
+					r.ResultColor.R,
+					r.ResultColor.G,
+					r.ResultColor.B,
+					255
+			};
+		}
+	);
+
+	_bottomColorTxd = Resources::LoadTextureChkF("Data\\Editor\\Btn_BottomColor.png");
+	_bottomColorBtn = ShinyButton(_bottomColorTxd, Resources::BtnGlint, Game::ScreenRec({ 0.46f, 0.38f, 0.15f, 0.075f }), []()
+		{
+			ColorDialogResult r(
+				Game::CurrentLevel.LvlBackground->ColorA.r,
+				Game::CurrentLevel.LvlBackground->ColorA.g,
+				Game::CurrentLevel.LvlBackground->ColorA.b
+			);
+
+			if(r.Result == 0)
+				Game::CurrentLevel.LvlBackground->ColorA = {
+					r.ResultColor.R,
+					r.ResultColor.G,
+					r.ResultColor.B,
+					255
+			};
+		}
+	);
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 {
+	if(IsKeyReleased(KEY_ESCAPE))
+	{
+		if(_progressSaved) Game::CurrentGameSection = 1;
+		else _showNotifNotSaved = true;
+	}
+
 	//camera movment stuff
 	float movmentSpeed = 500 * dt * (cs->Shift ? 5 : 1);
 
@@ -437,8 +594,8 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 	if(cs->Left) cameraPosition.x -= movmentSpeed;
 	if(cs->Right) cameraPosition.x += movmentSpeed;
 
-	cameraPosition.x = std::clamp<float>(cameraPosition.x, 0.0f, levelPx);
-	cameraPosition.y = std::clamp<float>(cameraPosition.y, 0.0f, levelPy);
+	cameraPosition.x = std::clamp<float>(cameraPosition.x, 0.0f, levelPx - (Game::Resolution::FltX()));
+	cameraPosition.y = std::clamp<float>(cameraPosition.y, 0.0f, levelPy - (Game::Resolution::FltY()));
 
 	//allowing the player to select a block
 
@@ -553,6 +710,33 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 						}
 						break;
 					}
+					case 2:
+					{
+						_bckLeftBtn.Update(ms, dt);
+						_bckRightBtn.Update(ms, dt);
+
+						switch(_backgroundSettingId)
+						{
+							case 0:
+							{
+								for(size_t i = 0; i < 9; i++)
+									_backgroundsBtns[i].Update(ms, dt);
+								break;
+							}
+							case 1:
+							{
+								_topColorBtn.Update(ms, dt);
+								_bottomColorBtn.Update(ms, dt);
+								break;
+							}
+							case 2:
+							{
+								break;
+							}
+							default: break;
+						}
+						break;
+					}
 					default:break;
 				}
 			}
@@ -568,9 +752,28 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 void LevelEditor::Draw(float dt)
 {
-	Game::CurrentLevel.LvlBackround.Draw(cameraPosition, Game::CurrentLevel.Size);
+	Game::CurrentLevel.LvlBackground->Draw(cameraPosition, Game::CurrentLevel.Size);
 	
-	DrawTexturePro(_square, { 0,0,64 * Game::CurrentLevel.Size.x,64 * Game::CurrentLevel.Size.y}, calculateTileTransformation(Game::ScreenRec({0,0,Game::CurrentLevel.Size.x / 20,Game::CurrentLevel.Size.y / 15})), {0,0}, 0.0f, WHITE);
+	DrawTexturePro(
+		_square,
+		{ 
+			0,
+			0,
+			64 * Game::CurrentLevel.Size.x,
+			64 * Game::CurrentLevel.Size.y
+		},
+		calculateTileTransformation(Game::ScreenRec(
+			{
+				0,
+				0,
+				Game::CurrentLevel.Size.x / 20,
+				Game::CurrentLevel.Size.y / 15
+			}
+		)), 
+		{0,0}, 
+		0.0f,
+		WHITE
+	);
 	//debug goomba
 	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateWorldTransformation(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
 
@@ -693,6 +896,63 @@ void LevelEditor::Draw(float dt)
 
 						for(size_t i = 0; i < 12; i++)
 							_levelSettingsBtns[i].Draw(dt);
+						break;
+					}
+					case 2:
+					{
+						const char* BackgroundSettings[3] = {
+							"Background image",
+							"Background gradients",
+							"Background settings"
+						};
+
+						Resources::LevelHudFont.Draw(BackgroundSettings[_backgroundSettingId], {0.3f,0.19f}, {0.025f,0.025f}, 0.001f);
+
+						_bckLeftBtn.Draw(dt);
+						_bckRightBtn.Draw(dt);
+
+						switch(_backgroundSettingId)
+						{
+							case 0:
+							{
+								for(size_t i = 0; i < 9; i++)
+									_backgroundsBtns[i].Draw(dt);
+								break;
+							}
+							case 1:
+							{
+								Resources::LevelHudFont.Draw("Background main gradient", { 0.3f,0.25f }, { 0.025f,0.025f }, 0.001f);
+
+								DrawTexturePro(
+									Resources::GradientA,
+									{ 0,0, (float)Resources::GradientA.width, (float)Resources::GradientA.height },
+									Game::ScreenRec({ 0.3f,0.3f,0.15f,0.15f }),
+									{ 0,0 },
+									0.0f,
+									Game::CurrentLevel.LvlBackground->ColorA
+								);
+
+								DrawTexturePro(
+									Resources::GradientB,
+									{ 0,0, (float)Resources::GradientB.width, (float)Resources::GradientB.height },
+									Game::ScreenRec({ 0.3f,0.3f,0.15f,0.15f }),
+									{ 0,0 },
+									0.0f,
+									Game::CurrentLevel.LvlBackground->ColorB
+								);
+
+								_topColorBtn.Draw(dt);
+								_bottomColorBtn.Draw(dt);
+								break;
+							}
+							case 2:
+							{
+								break;
+							}
+							default:
+								break;
+
+						}
 						break;
 					}
 					default: break;

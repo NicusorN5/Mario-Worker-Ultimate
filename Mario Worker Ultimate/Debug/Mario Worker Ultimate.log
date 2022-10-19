@@ -1,33 +1,26 @@
 ﻿  LevelEditor.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(259,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(266,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(350,111): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(359,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(365,35): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(371,39): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(377,40): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(383,44): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(389,35): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(395,38): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(401,42): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(407,43): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(413,38): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(419,36): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(425,44): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(479,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(488,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(497,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(506,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(515,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(602,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(612,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(621,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(630,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(639,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(30,22): warning C4244: 'return': conversion from '_Ty' to 'int', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(636,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(645,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(654,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(663,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(672,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(805,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(815,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(824,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(833,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(842,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(30,22): warning C4244: 'return': conversion from '_Ty' to 'N', possible loss of data
           with
           [
               _Ty=double
           ]
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(663): message : see reference to function template instantiation 'int Slider::GetValue<int>(void)' being compiled
+          and
+          [
+              N=int
+          ]
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(866): message : see reference to function template instantiation 'N Slider::GetValue<int>(void)' being compiled
+          with
+          [
+              N=int
+          ]
   Mario Worker Ultimate.vcxproj -> D:\Projects\Mario Worker Ultimate\Debug\Mario Worker Ultimate.exe

@@ -8,6 +8,7 @@
 #include "ShinyButton.hpp"
 #include "Textbox.hpp"
 #include "Slider.hpp"
+#include "Checkbox.hpp"
 
 class LevelEditor : public IGamePart
 {
@@ -99,6 +100,20 @@ class LevelEditor : public IGamePart
 
 	Texture2D _bottomColorTxd;
 	ShinyButton _bottomColorBtn;
+
+	Slider _overlayGradientAlphaASli;
+	Slider _overlayGradientAlphaBSli;
+	ShinyButton _overlayGradientCol1Btn;
+	ShinyButton _overlayGradientCol2Btn;
+
+	Checkbox _repeatXCb;
+	Checkbox _repeatYCb;
+	Checkbox _lockToScreenCb;
+	Checkbox _lockToYCb;
+	Checkbox _fitScreenCb;
+
+	//settings -> music
+
 
 public:
 	LevelEditor();

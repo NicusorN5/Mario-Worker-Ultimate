@@ -38,6 +38,9 @@ namespace Resources
 
 	extern Texture2D BtnGlint;
 
+	extern Texture2D CbTrue;
+	extern Texture2D CbFalse;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

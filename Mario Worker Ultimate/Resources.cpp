@@ -27,6 +27,9 @@ Sound Resources::ClickSound1;
 
 Texture2D Resources::BtnGlint;
 
+Texture2D Resources::CbTrue;
+Texture2D Resources::CbFalse;
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, numSounds)]);
@@ -145,6 +148,9 @@ void Resources::LoadAll()
 	ClickSound1 = LoadSoundChkF("Data\\Sounds\\ClickOption.mp3");
 
 	BtnGlint = Resources::LoadTextureChkF("Data\\UI\\ButtonGlint.png");
+
+	CbTrue = Resources::LoadTextureChkF("Data\\UI\\CheckboxT.png");
+	CbFalse = Resources::LoadTextureChkF("Data\\UI\\CheckboxF.png");
 }
 
 Sound Resources::LoadSoundChkF(const char* path)

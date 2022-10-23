@@ -11,6 +11,9 @@
 class Level
 {
 public:
+	/// <summary>
+	/// Loads a level from the specifed path.
+	/// </summary>
 	Level(const char* path);
 
 	bool IsValid = false;
@@ -18,8 +21,8 @@ public:
 	float Gravity = 1.0f;
 	float LiquidLevel = -5.0f;
 
-	const char* MusicPath = nullptr;
-	
+	Music LvlMusic;
+
 	unsigned EnemySpeed;
 	unsigned BillBlasterROF;
 	unsigned BillBulletSpeed;
@@ -47,5 +50,7 @@ public:
 		Lava,
 		Poison
 	} Liqiud;
+
+	void Save(const char* path);
 };
 

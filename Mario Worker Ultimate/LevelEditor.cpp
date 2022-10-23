@@ -443,12 +443,14 @@ void LevelEditor::LoadContent()
 	   {
 		  _backgroundSettingId -= 1;
 		  _backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
+		  PlaySound(Resources::ClickSound1);
 	   }
 	);
 	_bckRightBtn = ShinyButton(Resources::RightBtn, Resources::BtnGlint, Game::ScreenRec({ 0.9f,0.9f,0.05f,0.05f }), [this]()
 		{
 			_backgroundSettingId += 1;
 			_backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
+			PlaySound(Resources::ClickSound1);
 		}
 	);
 
@@ -575,6 +577,81 @@ void LevelEditor::LoadContent()
 			};
 		}
 	);
+
+	_repeatXCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat X", false,Vector2(0.3f, 0.25f ), Game::ScreenRec(Vector2(0.03f, 0.03f )), {0.025f,0.025f}, 0.001f);
+	_repeatXCb.OnStateChange = [](bool state)
+	{
+		Game::CurrentLevel.LvlBackground->RepeatX = state;
+	};
+
+	_repeatYCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat Y", false, Vector2(0.3f, 0.30f ), Game::ScreenRec(Vector2( 0.03f, 0.03f )), {0.025f,0.025f}, 0.001f);
+	_repeatYCb.OnStateChange = [](bool state)
+	{
+		Game::CurrentLevel.LvlBackground->RepeatY = state;
+	};
+
+	_lockToScreenCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Lock to screen X and Y", false, Vector2(0.3f, 0.35f), Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
+	_lockToScreenCb.OnStateChange = [](bool state)
+	{
+		Game::CurrentLevel.LvlBackground->LockToScreen = state;
+	};
+
+	_lockToYCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Lock to players Y coord", false, Vector2(0.3f, 0.4f), Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
+	_lockToYCb.OnStateChange = [](bool state)
+	{
+		Game::CurrentLevel.LvlBackground->LockToY = state;
+	};
+
+	_fitScreenCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Fit entire screen", false, Vector2(0.3f, 0.45f), Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
+	_fitScreenCb.OnStateChange = [](bool state)
+	{
+		Game::CurrentLevel.LvlBackground->FitEntireScreen = state;
+	};
+
+	_overlayGradientCol1Btn = ShinyButton(_topColorTxd, Resources::BtnGlint, Game::ScreenRec({ 0.46f,0.56f,0.15f,0.075f }), []()
+		{
+			ColorDialogResult r(
+				Game::CurrentLevel.LvlBackground->OverlayB.r,
+				Game::CurrentLevel.LvlBackground->OverlayB.g,
+				Game::CurrentLevel.LvlBackground->OverlayB.b
+			);
+			if(r.Result == 0)
+				Game::CurrentLevel.LvlBackground->OverlayB = {
+					r.ResultColor.R,
+					r.ResultColor.G,
+					r.ResultColor.B,
+					255
+			};
+		}
+	);
+	_overlayGradientAlphaBSli = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.62f,0.56f,0.3f,0.04f}),0,255,0);
+	_overlayGradientAlphaBSli.OnValueChange = [](double o, double n)
+	{
+		Game::CurrentLevel.LvlBackground->OverlayAlphaB = n;
+	};
+
+	_overlayGradientCol2Btn = ShinyButton(_bottomColorTxd, Resources::BtnGlint, Game::ScreenRec({ 0.46f,0.66f,0.15f,0.075f }), []()
+	{
+		ColorDialogResult r(
+			Game::CurrentLevel.LvlBackground->OverlayA.r,
+			Game::CurrentLevel.LvlBackground->OverlayA.g,
+			Game::CurrentLevel.LvlBackground->OverlayA.b
+		);
+		if(r.Result == 0)
+			Game::CurrentLevel.LvlBackground->OverlayA = {
+				r.ResultColor.R,
+				r.ResultColor.G,
+				r.ResultColor.B,
+				255
+		};
+	});
+
+	_overlayGradientAlphaASli = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.62f,0.66f,0.3f,0.04f }), 0, 255, 0);
+	_overlayGradientAlphaASli.OnValueChange = [](double o, double n)
+	{
+		Game::CurrentLevel.LvlBackground->OverlayAlphaA = n;
+	};
+
  }
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -727,14 +804,37 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 							{
 								_topColorBtn.Update(ms, dt);
 								_bottomColorBtn.Update(ms, dt);
+
+								_overlayGradientAlphaASli.Update(ms, dt);
+								_overlayGradientAlphaBSli.Update(ms, dt);
+								_overlayGradientCol1Btn.Update(ms, dt);
+								_overlayGradientCol2Btn.Update(ms, dt);
 								break;
 							}
 							case 2:
 							{
+								//update values
+								_repeatXCb.Checked = Game::CurrentLevel.LvlBackground->RepeatX;
+								_repeatYCb.Checked = Game::CurrentLevel.LvlBackground->RepeatY;
+								_lockToScreenCb.Checked = Game::CurrentLevel.LvlBackground->LockToScreen;
+								_lockToYCb.Checked = Game::CurrentLevel.LvlBackground->LockToY;
+								_fitScreenCb.Checked = Game::CurrentLevel.LvlBackground->FitEntireScreen;
+
+								//update checkboxes
+								_repeatXCb.Update(ms, dt);
+								_repeatYCb.Update(ms, dt);
+								_lockToScreenCb.Update(ms, dt);
+								_lockToYCb.Update(ms, dt);
+								_fitScreenCb.Update(ms, dt);
 								break;
 							}
 							default: break;
 						}
+						break;
+					}
+					case 3:
+					{
+
 						break;
 					}
 					default:break;
@@ -923,35 +1023,54 @@ void LevelEditor::Draw(float dt)
 							{
 								Resources::LevelHudFont.Draw("Background main gradient", { 0.3f,0.25f }, { 0.025f,0.025f }, 0.001f);
 
-								DrawTexturePro(
-									Resources::GradientA,
-									{ 0,0, (float)Resources::GradientA.width, (float)Resources::GradientA.height },
-									Game::ScreenRec({ 0.3f,0.3f,0.15f,0.15f }),
-									{ 0,0 },
-									0.0f,
-									Game::CurrentLevel.LvlBackground->ColorA
-								);
+								auto _drawGradient = [](Rectangle coords,Color colors[2])
+								{
+									DrawTexturePro(
+										Resources::GradientA,
+										{ 0,0, (float)Resources::GradientA.width, (float)Resources::GradientA.height },
+										Game::ScreenRec(coords),
+										{ 0,0 },
+										0.0f,
+										colors[0]
+									);
 
-								DrawTexturePro(
-									Resources::GradientB,
-									{ 0,0, (float)Resources::GradientB.width, (float)Resources::GradientB.height },
-									Game::ScreenRec({ 0.3f,0.3f,0.15f,0.15f }),
-									{ 0,0 },
-									0.0f,
-									Game::CurrentLevel.LvlBackground->ColorB
-								);
+									DrawTexturePro(
+										Resources::GradientB,
+										{ 0,0, (float)Resources::GradientB.width, (float)Resources::GradientB.height },
+										Game::ScreenRec(coords),
+										{ 0,0 },
+										0.0f,
+										colors[1]
+									);
+								};
+
+								Color g1[2] = { Game::CurrentLevel.LvlBackground->ColorA,Game::CurrentLevel.LvlBackground->ColorB };
+								_drawGradient({ 0.3f,0.3f,0.15f,0.15f },g1);
 
 								_topColorBtn.Draw(dt);
 								_bottomColorBtn.Draw(dt);
+
+								Color g2[2] = {Game::CurrentLevel.LvlBackground->OverlayA,Game::CurrentLevel.LvlBackground->OverlayB};
+								Resources::LevelHudFont.Draw("Overlay gradient", { 0.3f,0.5f }, { 0.025f,0.025f }, 0.001f);
+								_drawGradient({ 0.3f,0.56f,0.15f,0.15f },g2);
+
+								_overlayGradientAlphaASli.Draw(dt);
+								_overlayGradientAlphaBSli.Draw(dt);
+								_overlayGradientCol1Btn.Draw(dt);
+								_overlayGradientCol2Btn.Draw(dt);
 								break;
 							}
 							case 2:
 							{
+								_repeatXCb.Draw(dt);
+								_repeatYCb.Draw(dt);
+								_lockToScreenCb.Draw(dt);
+								_lockToYCb.Draw(dt);
+								_fitScreenCb.Draw(dt);
 								break;
 							}
 							default:
 								break;
-
 						}
 						break;
 					}

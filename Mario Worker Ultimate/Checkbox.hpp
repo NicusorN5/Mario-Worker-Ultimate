@@ -7,20 +7,21 @@ class Checkbox
 	Texture2D _checkedTxd;
 	Texture2D _uncheckedTxd;
 
-	TransparentFont& _font;
+	TransparentFont* _font;
 	std::string _text;
 
 	Vector2 _pos;
-
-	bool _checked;
+	Vector2 _scale;
+	Vector2 _boxS;
+	float _spacing;
 public:
-	Checkbox(Checkbox&) = delete;
-	Checkbox(Texture2D _cTxd, Texture2D _ucTxd, TransparentFont& f, const std::string& text, bool defState, Vector2 txtpos);
+	Checkbox() = default;
+	Checkbox(Texture2D _cTxd, Texture2D _ucTxd, TransparentFont* f, const std::string& text, bool defState, Vector2 txtpos, Vector2 boxScale, Vector2 scale, float spacing);
 
-	bool GetState();
+	bool Checked;
 
 	void Draw(float dt);
 	void Update(MouseState* ms, float dt);
 
-	std::function<bool()> OnStateChange = nullptr;
+	std::function<void(bool)> OnStateChange = nullptr;
 };

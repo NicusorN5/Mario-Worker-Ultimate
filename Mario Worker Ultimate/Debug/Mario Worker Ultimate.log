@@ -1,14 +1,16 @@
 ﻿  LevelEditor.cpp
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(636,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(645,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(654,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(663,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(672,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(805,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(815,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(824,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(833,5): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(842,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(630,53): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(652,53): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(713,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(722,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(731,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(740,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(749,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(905,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(915,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(924,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(933,5): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(942,5): warning C4065: switch statement contains 'default' but no 'case' labels
 D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(30,22): warning C4244: 'return': conversion from '_Ty' to 'N', possible loss of data
           with
           [
@@ -18,7 +20,7 @@ D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\Slider.hpp(30,22): warni
           [
               N=int
           ]
-D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(866): message : see reference to function template instantiation 'N Slider::GetValue<int>(void)' being compiled
+D:\Projects\Mario Worker Ultimate\Mario Worker Ultimate\LevelEditor.cpp(966): message : see reference to function template instantiation 'N Slider::GetValue<int>(void)' being compiled
           with
           [
               N=int

@@ -31,4 +31,13 @@ namespace Game
 			norm.height * Resolution::Y
 		};
 	}
+
+	Vector2 ScreenRec(Vector2 norm)
+	{
+		return
+		{
+			norm.x * Resolution::X,
+			norm.y * Resolution::Y
+		};
+	}
 }

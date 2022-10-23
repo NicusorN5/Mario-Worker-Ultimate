@@ -5,7 +5,10 @@ Background::Background(const char* path, bool repeatX, bool repeatY, Color botto
 	RepeatX(repeatX),
 	RepeatY(repeatY),
 	ColorA(bottom),
-	ColorB(top)
+	ColorB(top),
+	LockToScreen(false),
+	LockToY(false),
+	FitEntireScreen(false)
 {
 
 };
@@ -15,7 +18,10 @@ Background::Background(const char* path, bool repeatX, bool repeatY) :
 	RepeatX(repeatX),
 	RepeatY(repeatY),
 	ColorA(WHITE),
-	ColorB(WHITE)
+	ColorB(WHITE),
+	LockToScreen(false),
+	LockToY(false),
+	FitEntireScreen(false)
 {
 
 };
@@ -25,7 +31,10 @@ Background::Background(Color bottom, Color top) :
 	RepeatX(false),
 	RepeatY(false),
 	ColorA(bottom),
-	ColorB(top)
+	ColorB(top),
+	LockToScreen(false),
+	LockToY(false),
+	FitEntireScreen(false)
 {
 
 };
@@ -60,20 +69,65 @@ void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 		ColorB
 	);
 
+	Rectangle OverlayGradientRect = BackgroundRect;
+
 	//background
 	Rectangle source = { 0,0,(float)_BackgroundTexture.width,(float)_BackgroundTexture.height };
 
-	if(this->RepeatX)
-		source.width *= levelSize.x / 20.0f;
-
-	if(this->RepeatY)
-		source.height *= levelSize.y / 15.0f;
-	else
+	if(!FitEntireScreen)
 	{
- 		BackgroundRect.y = -camCoords.y + ((std::max<float>(0.0f,levelSize.y - 15.0f) * Game::Resolution::FltY()) / 15.0f);
-		BackgroundRect.height = Game::Resolution::FltY();
+		if(LockToScreen)
+		{
+			BackgroundRect.x = 0;
+			BackgroundRect.y = 0;
+			BackgroundRect.width = Game::Resolution::FltX();
+			BackgroundRect.height = Game::Resolution::FltY();
+		}
+		else
+		{
+			if(this->RepeatX)
+				source.width *= levelSize.x / 20.0f;
+
+			if(this->LockToY)
+			{
+				BackgroundRect.y = 0;
+				BackgroundRect.height = Game::Resolution::FltY();
+			}
+			else if(this->RepeatY)
+				source.height *= levelSize.y / 15.0f;
+			else //put the backround at the bottom of the level if it is not repeated along the Y axis
+			{
+				BackgroundRect.y = -camCoords.y + ((std::max<float>(0.0f, levelSize.y - 15.0f) * Game::Resolution::FltY()) / 15.0f);
+				BackgroundRect.height = Game::Resolution::FltY();
+			}
+		}
 	}
 	DrawTexturePro(_BackgroundTexture, source, BackgroundRect, { 0,0 }, 0.0f, WHITE);
+
+	
+	if(OverlayAlphaA > 0)
+	{
+		DrawTexturePro(
+			Resources::GradientA,
+			{ 0,0,(float)Resources::GradientA.width, (float)Resources::GradientA.height },
+			OverlayGradientRect,
+			{ 0,0 },
+			0,
+			{ OverlayA.r,OverlayA.g,OverlayA.b,OverlayAlphaA }
+		);
+	}
+
+	if(OverlayAlphaB > 0)
+	{
+		DrawTexturePro(
+			Resources::GradientB,
+			{ 0,0,(float)Resources::GradientB.width, (float)Resources::GradientB.height },
+			OverlayGradientRect,
+			{ 0,0 },
+			0,
+			{ OverlayB.r,OverlayB.g,OverlayB.b,OverlayAlphaB }
+		);
+	}
 }
 
 Background::~Background()

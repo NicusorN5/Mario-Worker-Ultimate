@@ -6,7 +6,6 @@ Level::Level(const char* path) : LvlBackground(std::make_unique<Background>(WHIT
 	{
 		EnemySpeed = 1;
 		Gravity = 1;
-		MusicPath = nullptr;
 		Time = 360;
 		IsValid = false;
 		Size = { 60, 40 };
@@ -17,7 +16,6 @@ Level::Level(const char* path) : LvlBackground(std::make_unique<Background>(WHIT
 		LvlBackground = std::make_unique<Background>(nullptr, false, false);
 		EnemySpeed = 1;
 		Gravity = 1;
-		MusicPath = nullptr;
 		Time = 360;
 		IsValid = false;
 		return;

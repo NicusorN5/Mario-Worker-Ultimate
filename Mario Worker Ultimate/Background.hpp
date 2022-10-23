@@ -9,9 +9,17 @@ class Background
 public:
 	bool RepeatX;
 	bool RepeatY;
+	bool LockToScreen;
+	bool LockToY;
+	bool FitEntireScreen;
 
 	Color ColorA;
 	Color ColorB;
+
+	Color OverlayA = WHITE;
+	Color OverlayB = WHITE;
+	uint8_t OverlayAlphaA = 0;
+	uint8_t OverlayAlphaB = 0;
 
 	Background(Background&) = delete;
 	Background(const char* path, bool repeatX, bool repeatY, Color bottom, Color top);

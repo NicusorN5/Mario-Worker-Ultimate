@@ -13,5 +13,6 @@ namespace Game
 		float FltY();
 	}
 	Rectangle ScreenRec(Rectangle norm);
+	Vector2 ScreenRec(Vector2 norm);
 }
 

@@ -34,3 +34,17 @@ Level::Level(const char* path) : LvlBackground(std::make_unique<Background>(WHIT
 	}
 	file.close();
 }
+
+Music Level::GetMusic()
+{
+	return Music(LvlMusic); //create a copy of this->LvlMusic.
+}
+void Level::SetMusic(const char* newMusicPath)
+{
+	if(LvlMusic.ctxData != nullptr || LvlMusic.stream.buffer != nullptr)
+	{
+		UnloadMusicStream(LvlMusic);
+	}
+
+	LvlMusic = Resources::LoadMusicChkF(newMusicPath);
+}

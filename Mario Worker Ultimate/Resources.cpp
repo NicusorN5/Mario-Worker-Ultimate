@@ -42,6 +42,7 @@ int Resources::Random(int min, int max)
 
 Texture2D Resources::LoadTextureChkF(const char* path)
 {
+	PrintFullPath(path);
 	Texture2D t = LoadTexture(path);
 	if(t.id == 0) throw GameResourceLoadException(path);
 	return t;
@@ -151,6 +152,8 @@ void Resources::LoadAll()
 
 	CbTrue = Resources::LoadTextureChkF("Data\\UI\\CheckboxT.png");
 	CbFalse = Resources::LoadTextureChkF("Data\\UI\\CheckboxF.png");
+
+	Window = LoadTextureChkF("Data\\UI\\Window_Default.png");
 }
 
 Sound Resources::LoadSoundChkF(const char* path)
@@ -177,4 +180,35 @@ Music Resources::LoadMusicChkF(const char* path)
 	Music m = LoadMusicStream(path);
 	if(m.ctxData == nullptr) throw GameResourceLoadException(path);
 	return m;
+}
+
+void Resources::UnloadAll()
+{
+	UnloadTexture(GradientA);
+	UnloadTexture(GradientB);
+
+	UnloadTexture(Goomba1); //normal goomba
+	UnloadTexture(Goomba2); //gray goomba (immune to fire)
+
+	UnloadTexture(Window);
+	UnloadTexture(TxtboxRectangle);
+
+	for(size_t i = 0; i < 3; i++)
+	{
+		UnloadSound(LakituDrop[i]);
+	}
+
+	UnloadTexture(SliderBar);
+	UnloadTexture(SliderBox);
+	//font
+
+	UnloadTexture(LeftBtn);
+	UnloadTexture(RightBtn);
+
+	UnloadSound(ClickSound1);
+
+	UnloadTexture(BtnGlint);
+
+	UnloadTexture(CbTrue);
+	UnloadTexture(CbFalse);
 }

@@ -8,8 +8,17 @@
 #include "Background.hpp"
 #include "Resolution.hpp"
 
+enum class LiquidType
+{
+	None = 0,
+	Water,
+	Lava,
+	Poison
+};
+
 class Level
 {
+	Music LvlMusic;
 public:
 	/// <summary>
 	/// Loads a level from the specifed path.
@@ -20,8 +29,6 @@ public:
 	int Time = 360;
 	float Gravity = 1.0f;
 	float LiquidLevel = -5.0f;
-
-	Music LvlMusic;
 
 	unsigned EnemySpeed;
 	unsigned BillBlasterROF;
@@ -43,13 +50,10 @@ public:
 	std::vector<Bonus> Bonuses;
 	std::unique_ptr<Background> LvlBackground;
 
-	enum class LiquidType
-	{
-		None = 0,
-		Water,
-		Lava,
-		Poison
-	} Liqiud;
+	LiquidType Liquid;
+
+	Music GetMusic();
+	void SetMusic(const char* newMusicPath);
 
 	void Save(const char* path);
 };

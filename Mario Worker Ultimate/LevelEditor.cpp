@@ -133,74 +133,74 @@ void LevelEditor::LoadContent()
 
 	//blocks categories
 	_blocksBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Terrain.png");
-	_blocksButtons[0] = ShinyButton(_blocksBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
+	_blocksButtons[0] = ShinyButton(_blocksBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_blocksBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Blocks.png");
-	_blocksButtons[1] = ShinyButton(_blocksBtnTextures[1], _tGlint,Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }),ssc1);
+	_blocksButtons[1] = ShinyButton(_blocksBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 	_blocksBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Tank.png");
-	_blocksButtons[2] = ShinyButton(_blocksBtnTextures[2], _tGlint,Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }),ssc2);
+	_blocksButtons[2] = ShinyButton(_blocksBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_blocksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
-	_blocksButtons[3] = ShinyButton(_blocksBtnTextures[3], _tGlint,Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }),ssc3);
+	_blocksButtons[3] = ShinyButton(_blocksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
 	_blocksBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBlocks.png");
-	_blocksButtons[4] = ShinyButton(_blocksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }),ssc4);
+	_blocksButtons[4] = ShinyButton(_blocksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
 	//enemies categories
 	_enemiesBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Enemies.png");
-	_enemiesButtons[0] = ShinyButton(_enemiesBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
+	_enemiesButtons[0] = ShinyButton(_enemiesBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_enemiesBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Hazards.png");
-	_enemiesButtons[1] = ShinyButton(_enemiesBtnTextures[1], _tGlint, Game::ScreenRec({0.095f,0.225f,0.15f,0.075f}), ssc1);
+	_enemiesButtons[1] = ShinyButton(_enemiesBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 	_enemiesBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Clones.png");
-	_enemiesButtons[2] = ShinyButton(_enemiesBtnTextures[2], _tGlint, Game::ScreenRec({0.095f,0.302f,0.15f,0.075f}), ssc2);
+	_enemiesButtons[2] = ShinyButton(_enemiesBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_enemiesBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Bosses.png");
-	_enemiesButtons[3] = ShinyButton(_enemiesBtnTextures[3], _tGlint, Game::ScreenRec({0.095f,0.379f,0.15f,0.075f}), ssc3);
+	_enemiesButtons[3] = ShinyButton(_enemiesBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
 	_enemiesBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomEnemies.png");
-	_enemiesButtons[4] = ShinyButton(_enemiesBtnTextures[4], _tGlint, Game::ScreenRec({0.095f,0.456f,0.15f,0.075f}), ssc4);
+	_enemiesButtons[4] = ShinyButton(_enemiesBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
 	_enemiesBtnTextures[5] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBosses.png");
-	_enemiesButtons[5] = ShinyButton(_enemiesBtnTextures[5], _tGlint, Game::ScreenRec({0.095f,0.533f,0.15f,0.075f}), ssc5);
+	_enemiesButtons[5] = ShinyButton(_enemiesBtnTextures[5], _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
 
 	//bonuses categories
 	_bonusesBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Bonuses.png");
-	_bonusesButtons[0] = ShinyButton(_bonusesBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
+	_bonusesButtons[0] = ShinyButton(_bonusesBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_bonusesBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomBonuses.png");
 	_bonusesButtons[1] = ShinyButton(_bonusesBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 	//marks
 	_marksBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelProgress.png");
-	_marksButtons[0] = ShinyButton(_marksBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
+	_marksButtons[0] = ShinyButton(_marksBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_marksBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Platforms.png");
-	_marksButtons[1] = ShinyButton(_marksBtnTextures[1],_tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
+	_marksButtons[1] = ShinyButton(_marksBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 	_marksBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Marks.png");
-	_marksButtons[2] = ShinyButton(_marksBtnTextures[2],_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+	_marksButtons[2] = ShinyButton(_marksBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_marksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
-	_marksButtons[3] = ShinyButton(_marksBtnTextures[3],_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_marksButtons[3] = ShinyButton(_marksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
 	_marksBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
-	_marksButtons[4] = ShinyButton(_marksBtnTextures[4],_tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+	_marksButtons[4] = ShinyButton(_marksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
 	//scenery
 	_sceneryBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Overworld.png");
-	_sceneryButtons[0] = ShinyButton(_sceneryBtnTextures[0], _tGlint, Game::ScreenRec({0.095f,0.148f,0.15f,0.075f}), ssc0);
+	_sceneryButtons[0] = ShinyButton(_sceneryBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_sceneryBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Underground.png");
 	_sceneryButtons[1] = ShinyButton(_sceneryBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
 	_sceneryBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Starland.png");
-	_sceneryButtons[2] = ShinyButton(_sceneryBtnTextures[2],_tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
+	_sceneryButtons[2] = ShinyButton(_sceneryBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_sceneryBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Snowland.png");
-	_sceneryButtons[3] = ShinyButton(_sceneryBtnTextures[3],_tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_sceneryButtons[3] = ShinyButton(_sceneryBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
 	_sceneryBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Darkland.png");
 	_sceneryButtons[4] = ShinyButton(_sceneryBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
@@ -209,13 +209,13 @@ void LevelEditor::LoadContent()
 	_sceneryButtons[5] = ShinyButton(_sceneryBtnTextures[5], _tGlint, Game::ScreenRec({ 0.095f,0.533f,0.15f,0.075f }), ssc5);
 
 	_sceneryBtnTextures[6] = Resources::LoadTextureChkF("Data\\Editor\\sb_Desert.png");
-	_sceneryButtons[6] = ShinyButton(_sceneryBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }),ssc6);
+	_sceneryButtons[6] = ShinyButton(_sceneryBtnTextures[6], _tGlint, Game::ScreenRec({ 0.095f,0.610f,0.15f,0.075f }), ssc6);
 
 	_sceneryBtnTextures[7] = Resources::LoadTextureChkF("Data\\Editor\\sb_Castle.png");
-	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),ssc7);
+	_sceneryButtons[7] = ShinyButton(_sceneryBtnTextures[7], _tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }), ssc7);
 
 	_sceneryBtnTextures[8] = Resources::LoadTextureChkF("Data\\Editor\\sb_CustomScenery.png");
-	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8],_tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
+	_sceneryButtons[8] = ShinyButton(_sceneryBtnTextures[8], _tGlint, Game::ScreenRec({ 0.095f,0.687f,0.15f,0.075f }),
 		[]() -> void
 		{
 			LevelEditor::GetSingleton()->SetSubCategory(8);
@@ -225,7 +225,7 @@ void LevelEditor::LoadContent()
 	_squareMouse = Resources::LoadTextureChkF("Data\\Editor\\CurrentTileSquare.png");
 
 	_settingsBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_LevelInfo.png");
-	_settingsButtons[0] = ShinyButton(_settingsBtnTextures[0],_tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
+	_settingsButtons[0] = ShinyButton(_settingsBtnTextures[0], _tGlint, Game::ScreenRec({ 0.095f,0.148f,0.15f,0.075f }), ssc0);
 
 	_settingsBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Settings.png");
 	_settingsButtons[1] = ShinyButton(_settingsBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
@@ -250,12 +250,12 @@ void LevelEditor::LoadContent()
 
 	_levelNameTbs[0] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "WORLD", Game::ScreenRec({ 0.6f,0.165f,0.3f,0.04f }), 10, 10);
 	_levelNameTbs[1] = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "1-1", Game::ScreenRec({ 0.6f,0.22f,0.3f,0.04f }), 10, 10);
-	
+
 	_authorTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "YOUR NAME", Game::ScreenRec({ 0.6f,0.3f,0.3f,0.04f }), 10, 10);
 	_emailTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "USERNAME[EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.375f,0.3f,0.04f }), 50, 10);
 	_websiteTb = Textbox(Resources::TxtboxRectangle, &Resources::LevelHudFont, "EXAMPLE.COM", Game::ScreenRec({ 0.6f,0.45f,0.3f,0.04f }), 50, 10);
 
-	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.6f,0.52f,0.3f,0.04f}), 20, 400, 60);
+	_levelWidthSl = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.6f,0.52f,0.3f,0.04f }), 20, 400, 60);
 	_levelWidthSl.OnValueChange = [this](double oldVlaue, double newValue)
 	{
 		Game::CurrentLevel.Size.x = (float)newValue;
@@ -441,9 +441,9 @@ void LevelEditor::LoadContent()
 
 	_bckLeftBtn = ShinyButton(Resources::LeftBtn, Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.9f,0.05f,0.05f }), [this]()
 	   {
-		  _backgroundSettingId -= 1;
-		  _backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
-		  PlaySound(Resources::ClickSound1);
+		   _backgroundSettingId -= 1;
+		   _backgroundSettingId = std::clamp(_backgroundSettingId, 0, 2);
+		   PlaySound(Resources::ClickSound1);
 	   }
 	);
 	_bckRightBtn = ShinyButton(Resources::RightBtn, Resources::BtnGlint, Game::ScreenRec({ 0.9f,0.9f,0.05f,0.05f }), [this]()
@@ -455,23 +455,23 @@ void LevelEditor::LoadContent()
 	);
 
 	_backgroundsTxds[0] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_NoBackground.png");
-	_backgroundsBtns[0] = ShinyButton(_backgroundsTxds[0], Resources::BtnGlint, Game::ScreenRec({0.3f,0.25f,0.2f,0.2f}), []()
+	_backgroundsBtns[0] = ShinyButton(_backgroundsTxds[0], Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.25f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>(WHITE, Color(60,120,160,255 )); //load default Background
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>(WHITE, Color(60, 120, 160, 255)); //load default Background
 		}
 	);
 
 	_backgroundsTxds[1] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Underground.png");
 	_backgroundsBtns[1] = ShinyButton(_backgroundsTxds[1], Resources::BtnGlint, Game::ScreenRec({ 0.51f,0.25f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underground.png",true,true,WHITE,WHITE);
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underground.png", true, true, WHITE, WHITE);
 		}
 	);
 
 	_backgroundsTxds[2] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Rocky.png");
 	_backgroundsBtns[2] = ShinyButton(_backgroundsTxds[2], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.25f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Rocky.png", true, false, WHITE, Color( 60, 120, 160, 255 ));
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Rocky.png", true, false, WHITE, Color(60, 120, 160, 255));
 		}
 	);
 
@@ -485,21 +485,21 @@ void LevelEditor::LoadContent()
 	_backgroundsTxds[4] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Underwater.png");
 	_backgroundsBtns[4] = ShinyButton(_backgroundsTxds[4], Resources::BtnGlint, Game::ScreenRec({ 0.51f,0.46f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underwater.png",true,false,WHITE,Color(60,120,160,255));
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Underwater.png", true, false, WHITE, Color(60, 120, 160, 255));
 		}
 	);
 
 	_backgroundsTxds[5] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Night.png");
 	_backgroundsBtns[5] = ShinyButton(_backgroundsTxds[5], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.46f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Night.png", true, false, Color(60,120,160,255), Color(0, 0, 255, 255));
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\Night.png", true, false, Color(60, 120, 160, 255), Color(0, 0, 255, 255));
 		}
 	);
-	
+
 	_backgroundsTxds[6] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_DarkCave.png");
 	_backgroundsBtns[6] = ShinyButton(_backgroundsTxds[6], Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.67f,0.2f,0.2f }), []()
 		{
-			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\DarkCave.png",true,true,WHITE,WHITE);
+			Game::CurrentLevel.LvlBackground = std::make_unique<Background>("Data\\Backgrounds\\DarkCave.png", true, true, WHITE, WHITE);
 		}
 	);
 
@@ -513,7 +513,7 @@ void LevelEditor::LoadContent()
 	_backgroundsTxds[8] = Resources::LoadTextureChkF("Data\\Editor\\Bkrd_Custom.png");
 	_backgroundsBtns[8] = ShinyButton(_backgroundsTxds[8], Resources::BtnGlint, Game::ScreenRec({ 0.72f,0.67f,0.2f,0.2f }), []()
 		{
-			FileDialogResult *r = ShowOpenFileDialog("Open a background image...");
+			FileDialogResult* r = ShowOpenFileDialog("Open a background image...");
 			if(r->Result == 0)
 			{
 				Texture2D t{};
@@ -522,7 +522,7 @@ void LevelEditor::LoadContent()
 				{
 					t = Resources::LoadTextureChkF(r->File);
 				}
-				catch(GameResourceLoadException &e)
+				catch(GameResourceLoadException& e)
 				{
 					std::stringstream errmsg("The file you selected: \r\n");
 					errmsg << e.what() << "\r\n is not a valid or supported image format!";
@@ -542,7 +542,7 @@ void LevelEditor::LoadContent()
 	);
 
 	_topColorTxd = Resources::LoadTextureChkF("Data\\Editor\\Btn_TopColor.png");
-	_topColorBtn = ShinyButton(_topColorTxd, Resources::BtnGlint, Game::ScreenRec({0.46f,0.3f,0.15f,0.075f}), []()
+	_topColorBtn = ShinyButton(_topColorTxd, Resources::BtnGlint, Game::ScreenRec({ 0.46f,0.3f,0.15f,0.075f }), []()
 		{
 			ColorDialogResult r(
 				Game::CurrentLevel.LvlBackground->ColorB.r,
@@ -578,13 +578,13 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_repeatXCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat X", false,Vector2(0.3f, 0.25f ), Game::ScreenRec(Vector2(0.03f, 0.03f )), {0.025f,0.025f}, 0.001f);
+	_repeatXCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat X", false, Vector2(0.3f, 0.25f), Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
 	_repeatXCb.OnStateChange = [](bool state)
 	{
 		Game::CurrentLevel.LvlBackground->RepeatX = state;
 	};
 
-	_repeatYCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat Y", false, Vector2(0.3f, 0.30f ), Game::ScreenRec(Vector2( 0.03f, 0.03f )), {0.025f,0.025f}, 0.001f);
+	_repeatYCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Repeat Y", false, Vector2(0.3f, 0.30f), Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
 	_repeatYCb.OnStateChange = [](bool state)
 	{
 		Game::CurrentLevel.LvlBackground->RepeatY = state;
@@ -624,7 +624,7 @@ void LevelEditor::LoadContent()
 			};
 		}
 	);
-	_overlayGradientAlphaBSli = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({0.62f,0.56f,0.3f,0.04f}),0,255,0);
+	_overlayGradientAlphaBSli = Slider(Resources::SliderBar, Resources::SliderBox, Game::ScreenRec({ 0.62f,0.56f,0.3f,0.04f }), 0, 255, 0);
 	_overlayGradientAlphaBSli.OnValueChange = [](double o, double n)
 	{
 		Game::CurrentLevel.LvlBackground->OverlayAlphaB = n;
@@ -652,7 +652,121 @@ void LevelEditor::LoadContent()
 		Game::CurrentLevel.LvlBackground->OverlayAlphaA = n;
 	};
 
- }
+	MusicList = std::unique_ptr<Listbox>(new Listbox(
+		Resources::SliderBar, 
+		Resources::SliderBox,
+		Resources::Window,
+		Resources::BtnGlint,
+		&Resources::LevelHudFont,
+		Game::ScreenRec({ 0.3f,0.3f,0.6f,0.6f }),
+		{
+			"Overworld",
+			"Cave",
+			"Rockland",
+			"Lava castle",
+			"Map 1",
+			"Underwater",
+			"Castle 1",
+			"Map 2",
+			"Starland",
+			"Starland Platforms", //Yoshi 3
+			"Castle 2",
+			"Map 3",
+			"Yoshi 1",
+			"Rockland 2",
+			"Fastrun 1",
+			"Fastrun 2",
+			"Yoshi 2",
+			"Apoplexy",
+			"Select Save",
+			"Import music..."
+		},
+		Vector2( 0.025f,0.025f ),
+		0.001f
+	));
+	MusicList->OnItemClick = [this](const std::string& music)
+	{
+		const char* MusicPaths[20] =
+		{
+			"Data\\Music\\Overworld.mp3",
+			"Data\\Music\\Cave.mp3",
+			"Data\\Music\\Rockland.mp3",
+			"Data\\Music\\Castle.mp3",
+			"Data\\Music\\Map1.mp3",
+			"Data\\Music\\Underwater.mp3",
+			"Data\\Music\\Castle2.mp3",
+			"Data\\Music\\Map2.mp3",
+			"Data\\Music\\Starland.mp3",
+			"Data\\Music\\Yoshi3.mp3",
+			"Data\\Music\\GhostHouse.mp3",
+			"Data\\Music\\Map3.mp3",
+			"Data\\Music\\Yoshi1.mp3",
+			"Data\\Music\\Rockland.mp3",
+			"Data\\Music\\Fastrun1.mp3",
+			"Data\\Music\\Fastrun2.mp3",
+			"Data\\Music\\Yoshi2.mp3",
+			"Data\\Music\\Apoplexy.mp3",
+			"Data\\Music\\SelectSave.mp3",
+			"not used",
+		};
+		int index = this->MusicList->Items[music];
+
+		if(index != 19) Game::CurrentLevel.SetMusic(MusicPaths[index]);
+		else
+		{
+			FileDialogResult *r = ShowOpenFileDialog("Open a song file...");
+			if(r->Result == 0)
+			{
+				try
+				{
+					Game::CurrentLevel.SetMusic(r->File);
+				}
+				catch(GameResourceLoadException& e)
+				{
+					std::string errmsg("The file: ");
+					errmsg += r->File;
+					errmsg += " doesn't contain a supported music format!";
+					ShowMessageBoxError(GetWindowHandle(), errmsg.c_str(), "Error!");
+				}
+				ProperlySetWorkingPath();
+			}
+
+			delete r;
+		}
+
+		_music = Game::CurrentLevel.GetMusic();
+	};
+
+	_playMusicTxd = Resources::LoadTextureChkF("Data\\Editor\\MPlayBtn.png");
+	_playMusicBtn = ShinyButton(_playMusicTxd, Resources::BtnGlint, Game::ScreenRec({ 0.3f,0.2f,0.05f,0.05f }), [this]()
+		{
+			_musicState = 1;
+		}
+	);
+
+	_pauseMusicTxd = Resources::LoadTextureChkF("Data\\Editor\\MPauseBtn.png");
+	_pauseMusicBtn = ShinyButton(_pauseMusicTxd, Resources::BtnGlint, Game::ScreenRec({ 0.35f,0.2f,0.05f,0.05f }), [this]()
+		{
+			_musicState = 2;
+		}
+	);
+
+	_stopMusicTxd = Resources::LoadTextureChkF("Data\\Editor\\MStopBtn.png");
+	_stopMusicBtn = ShinyButton(_stopMusicTxd, Resources::BtnGlint, Game::ScreenRec({ 0.4f,0.2f,0.05f,0.05f }), [this]()
+		{
+			_musicState = 0;
+		}
+	);
+
+	_waterCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Water", true, { 0.3f,0.3f }, { 0.03f, 0.03f }, { 0.025f, 0.025f }, 0.001f);
+	_waterCb.OnStateChange = [](bool state)
+	{
+		if(state)
+			Game::CurrentLevel.Liquid = LiquidType::Water;
+		else
+			Game::CurrentLevel.Liquid = LiquidType::None;
+	};
+}
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 {
@@ -834,7 +948,21 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 					}
 					case 3:
 					{
+						_playMusicBtn.Update(ms,dt);
+						_pauseMusicBtn.Update(ms, dt);
+						_stopMusicBtn.Update(ms, dt);
 
+						MusicList->Update(ms, dt);
+
+						if(_musicState == 1)
+						{
+							PlayMusicStream(_music);
+							_musicState = 3;
+						}
+						if(_musicState == 3)
+						{
+							UpdateMusicStream(_music);
+						}
 						break;
 					}
 					default:break;
@@ -1072,6 +1200,15 @@ void LevelEditor::Draw(float dt)
 							default:
 								break;
 						}
+						break;
+					}
+					case 3:
+					{
+						_playMusicBtn.Draw(dt);
+						_pauseMusicBtn.Draw(dt);
+						_stopMusicBtn.Draw(dt);
+
+						MusicList->Draw(dt);
 						break;
 					}
 					default: break;

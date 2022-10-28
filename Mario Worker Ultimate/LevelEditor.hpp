@@ -9,6 +9,7 @@
 #include "Textbox.hpp"
 #include "Slider.hpp"
 #include "Checkbox.hpp"
+#include "Listbox.hpp"
 
 class LevelEditor : public IGamePart
 {
@@ -113,8 +114,31 @@ class LevelEditor : public IGamePart
 	Checkbox _fitScreenCb;
 
 	//settings -> music
+	std::unique_ptr<Listbox> MusicList;
 
+	Texture2D _playMusicTxd;
+	ShinyButton _playMusicBtn;
 
+	Texture2D _pauseMusicTxd;
+	ShinyButton _pauseMusicBtn;
+
+	Texture2D _stopMusicTxd;
+	ShinyButton _stopMusicBtn;
+	
+	Music _music{};
+
+	/// <summary>
+	/// 0 = stopped
+	/// 1 = start playing
+	/// 2 = paused
+	/// 3 = playing
+	/// </summary>
+	int8_t _musicState = 0;
+
+	//settings -> fluids
+	Checkbox _waterCb;
+	Checkbox _lavaCb;
+	Checkbox _poisonCb;
 public:
 	LevelEditor();
 

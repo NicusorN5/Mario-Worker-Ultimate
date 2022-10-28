@@ -32,3 +32,5 @@ struct ColorDialogResult
 	ColorDialogResult(ColorDialogResult&) = delete;
 	ColorDialogResult(unsigned char defR, unsigned char defG, unsigned char defB);
 };
+
+void PrintFullPath(const char* path);

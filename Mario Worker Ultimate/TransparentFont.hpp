@@ -16,16 +16,17 @@ class TransparentFont
 
 	int _getIndexForGlyph(char c);
 
-	int _maxLenght;
+	int _maxLength;
 
 public:
 	TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates);
 	TransparentFont();
 
 	void Draw(const std::string& text,Vector2 position_norm,Vector2 scale,float spacing,size_t startIndex = 0,int maxLen = -1);
-
-	float MeasureLenght(const std::string &text,Vector2 scale,float spacing);
-
+	
+	float MeasureLength(const std::string &text,Vector2 scale,float spacing);
+	float MeasureHeight(const std::string &text,Vector2 scale);
+	
 	bool SupportsChar(char c);
 
 	~TransparentFont();

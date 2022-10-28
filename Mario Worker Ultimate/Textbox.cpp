@@ -1,11 +1,11 @@
 #include "Textbox.hpp"
 
-Textbox::Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLenght, size_t displayedChars, float spacing) :
+Textbox::Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing) :
 	_textboxTexture(texture),
 	_textFont(font),
 	_text(defaultText),
 	_coords(r),
-	_maxLenght(maxLenght),
+	_maxLength(maxLength),
 	_spacing(spacing),
 	_displayedCharacters(displayedChars),
 	_textIndex(defaultText.length())
@@ -44,8 +44,8 @@ void Textbox::Draw(float dt)
 		if(_textIndex > _displayedCharacters)
 			measuredText.erase(measuredText.begin() + _displayedCharacters, measuredText.end());
 
-		float tl = _textFont->MeasureLenght(measuredText,scale,_spacing) * rezx;
-		float il = _textFont->MeasureLenght("I", scale,_spacing) * rezx *  0.25f;
+		float tl = _textFont->MeasureLength(measuredText,scale,_spacing) * rezx;
+		float il = _textFont->MeasureLength("I", scale,_spacing) * rezx *  0.25f;
 		DrawRectangle((int)(_coords.x + tl),(int)_coords.y, (int)il, (int)(_coords.height), {255, 0, 0,128});
 	}
 }
@@ -62,7 +62,7 @@ void Textbox::Update(MouseState* ms, float dt)
 			key = key >= 32 && key <= 126 ? key : 0;
 			if(key && _textFont->SupportsChar((char)key))
 			{
-				if(_text.length() <= (int)_maxLenght)
+				if(_text.length() <= (int)_maxLength)
 				{
 					_text.insert(_text.begin() + _textIndex, (char)key);
 					_textIndex += 1;

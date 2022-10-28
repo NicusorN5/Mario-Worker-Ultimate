@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <PathCch.h>
 #include "resource.h"
+#include <string>
+#include <strstream>
 
 #pragma comment(lib,"Pathcch.lib")
 
@@ -104,4 +106,16 @@ ColorDialogResult::ColorDialogResult(unsigned char defR,unsigned char defG,unsig
 		this->Result = (GetLastError() != 0 ? GetLastError() : -1);
 		this->ResultColor = { defR, defG, defB };
 	}
+}
+
+void PrintFullPath(const char* path)
+{
+	char buff[256]{};
+	GetFullPathNameA(path, 256, buff, nullptr);
+
+	std::string str("");
+	str += buff;
+	str += "\r\n";
+
+	OutputDebugStringA(str.c_str());
 }

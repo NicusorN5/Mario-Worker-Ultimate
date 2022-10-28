@@ -170,6 +170,7 @@
     <ClCompile Include="Intro.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
+    <ClCompile Include="Listbox.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MouseState.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="ShinyButton.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="StringsCollection.cpp" />
     <ClCompile Include="TabButton.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="TransparentFont.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="LevelEditor.hpp" />
     <ClInclude Include="Libs.hpp" />
+    <ClInclude Include="Listbox.hpp" />
     <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="MouseState.hpp" />
     <ClInclude Include="Player.hpp" />
@@ -211,6 +214,7 @@
     <ClInclude Include="ShinyButton.hpp" />
     <ClInclude Include="Particle.hpp" />
     <ClInclude Include="Slider.hpp" />
+    <ClInclude Include="StringsCollection.hpp" />
     <ClInclude Include="TabButton.hpp" />
     <ClInclude Include="Textbox.hpp" />
     <ClInclude Include="TransparentFont.hpp" />

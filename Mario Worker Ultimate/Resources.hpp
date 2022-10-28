@@ -63,4 +63,6 @@ namespace Resources
 	/// <param name="path"></param>
 	/// <returns></returns>
 	Music LoadMusicChkF(const char* path);
+
+	void UnloadAll();
 }

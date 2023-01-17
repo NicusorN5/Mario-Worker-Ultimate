@@ -758,13 +758,40 @@ void LevelEditor::LoadContent()
 		}
 	);
 
-	_waterCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Water", true, { 0.3f,0.3f }, { 0.03f, 0.03f }, { 0.025f, 0.025f }, 0.001f);
-	_waterCb.OnStateChange = [](bool state)
+	_waterCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Water", true, { 0.3f,0.25f }, Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f, 0.025f }, 0.001f);
+	_waterCb.OnStateChange = [this](bool state)
 	{
 		if(state)
 			Game::CurrentLevel.Liquid = LiquidType::Water;
 		else
 			Game::CurrentLevel.Liquid = LiquidType::None;
+
+		_lavaCb.Checked = false;
+		_poisonCb.Checked = false;
+	};
+
+	_lavaCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Lava", false, { 0.3f,0.3f }, Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
+	_lavaCb.OnStateChange = [this](bool state)
+	{
+		if(state)
+			Game::CurrentLevel.Liquid = LiquidType::Lava;
+		else
+			Game::CurrentLevel.Liquid = LiquidType::None;
+
+		_waterCb.Checked = false;
+		_poisonCb.Checked = false;
+	};
+
+	_poisonCb = Checkbox(Resources::CbTrue, Resources::CbFalse, &Resources::LevelHudFont, "Poison", false, { 0.3f,0.35f }, Game::ScreenRec(Vector2(0.03f, 0.03f)), { 0.025f,0.025f }, 0.001f);
+	_poisonCb.OnStateChange = [this](bool state)
+	{
+		if(state)
+			Game::CurrentLevel.Liquid = LiquidType::Poison;
+		else
+			Game::CurrentLevel.Liquid = LiquidType::None;
+
+		_waterCb.Checked = false;
+		_lavaCb.Checked = false;
 	};
 }
 
@@ -965,6 +992,13 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 						}
 						break;
 					}
+					case 4:
+					{
+						_waterCb.Update(ms, dt);
+						_lavaCb.Update(ms, dt);
+						_poisonCb.Update(ms, dt);
+						break;
+					}
 					default:break;
 				}
 			}
@@ -972,6 +1006,15 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 		}
 
 		if(!_previousSpacePress && cs->Space && !usingTxtbox) _showElements = false;
+	}
+
+	if(IsKeyDown(KEY_KP_ADD))
+	{
+		Game::CurrentLevel.LiquidLevel += 10 * dt;
+	}
+	else if(IsKeyDown(KEY_MINUS))
+	{
+		Game::CurrentLevel.LiquidLevel -= 10 * dt;
 	}
 
 	_previousSpacePress = cs->Space;
@@ -1211,6 +1254,18 @@ void LevelEditor::Draw(float dt)
 						MusicList->Draw(dt);
 						break;
 					}
+					case 4:
+					{
+						Resources::LevelHudFont.Draw("Liquid type", { 0.3f,0.2f }, { 0.025f,0.025f }, 0.001f);
+
+						_waterCb.Draw(dt);
+						_lavaCb.Draw(dt);
+						_poisonCb.Draw(dt);
+
+						Resources::LevelHudFont.Draw("Raise the liquid level by", { 0.3f,0.4f }, { 0.025f,0.025f }, 0.001f);
+						Resources::LevelHudFont.Draw("using the  and  buttons", { 0.3f,0.43f }, { 0.025f,0.025f }, 0.001f); // draw + and - buttons separately
+						break;
+					}
 					default: break;
 				}
 				break;
@@ -1220,6 +1275,8 @@ void LevelEditor::Draw(float dt)
 	}
 	else
 	{
+		//draw water
+
 		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateWorldTransformation(Game::ScreenRec(
 			{
 				((_lastMousePos.x + cameraPosition.x) - std::fmod(_lastMousePos.x + cameraPosition.x,Game::Resolution::FltX()/20)) / Game::Resolution::FltX() ,
@@ -1236,13 +1293,13 @@ LevelEditor* LevelEditor::GetSingleton()
 	return _singleton;
 }
 
-void LevelEditor::SetItemCategory(int id)
+void inline LevelEditor::SetItemCategory(int id)
 {
 	categoryId = id;
 	PlaySound(Resources::LakituDrop[2]);
 }
 
-void LevelEditor::SetSubCategory(int id)
+void inline LevelEditor::SetSubCategory(int id)
 {
 	subCategoryId = id;
 	PlaySound(Resources::LakituDrop[2]);

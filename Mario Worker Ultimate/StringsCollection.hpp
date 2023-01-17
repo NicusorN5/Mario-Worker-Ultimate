@@ -2,6 +2,7 @@
 #include <initializer_list>
 #include <memory>
 #include <unordered_map>
+#include <string>
 
 // std::vector<const std::string&> is not allowed, using this as a replacement:
 

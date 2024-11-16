@@ -21,12 +21,12 @@ int main()
 
 	std::array<std::unique_ptr<IScene>, 5> gameSections;
 	gameSections[0].reset(new Intro());
-	
+
 	try
 	{
 		gameSections[0]->LoadContent();
 	}
-	catch (GameResourceLoadException& ex)
+	catch(GameResourceLoadException& ex)
 	{
 		std::stringstream str;
 		str << "The file: " << ex.what() << " is missing.\r\n Reinstalling the game can fix this issue.";
@@ -37,11 +37,24 @@ int main()
 	gameSections[1].reset(new MainMenu());
 	gameSections[2].reset(new LevelEditor());
 
-	//auto loadF = [=]()
-	//{
+	try
+	{
+		Resources::LoadAll();
+	}
+	catch(GameResourceLoadException& ex)
+	{
+		std::stringstream str;
+		str << "The file: " << ex.what() << " is missing.\r\n Reinstalling the game can fix this issue.";
+		ShowMessageBoxError(WindowHandle, str.str().c_str(), "Error loading game content");
+		ExitFileNotFound();
+	}
+
+	for(int i = 1; i < 5; i++)
+	{
+		if(gameSections[i] == nullptr) continue;
 		try
 		{
-			Resources::LoadAll();
+			gameSections[i]->LoadContent();
 		}
 		catch(GameResourceLoadException& ex)
 		{
@@ -50,32 +63,13 @@ int main()
 			ShowMessageBoxError(WindowHandle, str.str().c_str(), "Error loading game content");
 			ExitFileNotFound();
 		}
-
-		for(int i = 1; i < 5; i++)
-		{
-			if(gameSections[i] == nullptr) continue;
-			try
-			{
-				gameSections[i]->LoadContent();
-			}
-			catch(GameResourceLoadException& ex)
-			{
-				std::stringstream str;
-				str << "The file: " << ex.what() << " is missing.\r\n Reinstalling the game can fix this issue.";
-				ShowMessageBoxError(WindowHandle, str.str().c_str(), "Error loading game content");
-				ExitFileNotFound();
-			}
-		}
-	//};
-
-	//std::thread loadRes(loadF);
-	//loadRes.detach();
+	}
 
 	Color clearColor = { 0, 0, 0, 255 };
 
 	SetExitKey(0);
 	SetTargetFPS(60);
-	
+
 	MouseState mouse;
 
 	//game loop
@@ -91,7 +85,7 @@ int main()
 
 		mouse = MouseState::GetMouseState(&mouse);
 		ControllerState controls = GetControllerState();
-		gameSections[Game::CurrentGameSection]->Update(dt,&mouse,&controls);
+		gameSections[Game::CurrentGameSection]->Update(dt, &mouse, &controls);
 	}
 
 	CloseAudioDevice();

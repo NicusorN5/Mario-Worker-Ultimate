@@ -32,7 +32,7 @@ Texture2D Resources::CbFalse;
 
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
-	PlaySound(sounds[Random(0, numSounds)]);
+	PlaySound(sounds[Random(0, static_cast<int>(numSounds))]);
 }
 
 int Resources::Random(int min, int max)
@@ -160,21 +160,21 @@ void Resources::LoadAll()
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
 {
-	auto rawPath = path.string().c_str();
+	auto rawPath = path.string();
 
 	bool isWave = false;
-	size_t pathLen = strlen(rawPath);
-	if(strcmp(rawPath + pathLen - 4, ".wav") == 0)
+	size_t pathLen = strlen(rawPath.c_str());
+	if(strcmp(rawPath.c_str() + pathLen - 4, ".wav") == 0)
 		isWave = true;
 
 	if(isWave)
 	{
-		Wave w = LoadWave(rawPath);
+		Wave w = LoadWave(rawPath.c_str());
 		if(w.data == nullptr) throw GameResourceLoadException(path);
 		return LoadSoundFromWave(w);
 	}
 
-	Sound s = LoadSound(rawPath);
+	Sound s = LoadSound(rawPath.c_str());
 	if(s.stream.buffer == nullptr) throw GameResourceLoadException(path);
 	return s;
 }

@@ -104,7 +104,7 @@ bool Textbox::IsFocused()
 	return _focus;
 }
 
-const std::string& Textbox::GetText()
+const std::string& Textbox::GetText() const noexcept
 {
 	return _text;
 }

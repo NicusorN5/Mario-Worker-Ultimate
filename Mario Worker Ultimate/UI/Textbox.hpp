@@ -35,6 +35,6 @@ public:
 	void DisableFocus();
 	bool IsFocused();
 
-	const std::string& GetText();
+	const std::string& GetText() const noexcept;
 };
 

@@ -37,7 +37,7 @@ public:
 	unsigned PlantSpeed;
 	unsigned PodoboosSpeed;
 	unsigned LakituAttackSpeed;
-	unsigned FallingSpikesSpeed; // 0 = disabled
+	unsigned FallingSpikesSpeed = 0; // 0 = disabled
 	unsigned PlatformSpeed;
 	unsigned FishDensity;
 	unsigned BroHammerAttackRate;

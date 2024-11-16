@@ -25,7 +25,7 @@ MouseState MouseState::GetMouseState(MouseState *ms)
     return nms;
 }
 
-bool MouseState::MouseClickingRectangle(Rectangle r) const
+bool MouseState::MouseClickingRectangle(Rectangle r) const noexcept
 {
     if(this->LeftClick)
     {
@@ -35,7 +35,7 @@ bool MouseState::MouseClickingRectangle(Rectangle r) const
     return false;
 }
 
-bool MouseState::MouseFinishedClickingRectangle(Rectangle r) const
+bool MouseState::MouseFinishedClickingRectangle(Rectangle r) const noexcept
 {
     if(_previousLeftClick && !LeftClick)
     {
@@ -45,13 +45,13 @@ bool MouseState::MouseFinishedClickingRectangle(Rectangle r) const
     return false;
 }
 
-bool MouseState::MouseInsideRectangle(Rectangle r) const
+bool MouseState::MouseInsideRectangle(Rectangle r) const noexcept
 {
     return (this->X >= r.x && this->X <= r.x + r.width &&
     this->Y >= r.y && this->Y <= r.y + r.height);
 }
 
-bool MouseState::MouseFinishedClickingOutsideRectangle(Rectangle r) const
+bool MouseState::MouseFinishedClickingOutsideRectangle(Rectangle r) const noexcept
 {
     if(_previousLeftClick && !LeftClick)
     {
@@ -61,7 +61,7 @@ bool MouseState::MouseFinishedClickingOutsideRectangle(Rectangle r) const
     return false;
 }
 
-bool MouseState::MouseClickingOutsideRectangle(Rectangle r) const
+bool MouseState::MouseClickingOutsideRectangle(Rectangle r) const noexcept
 {
     if(!LeftClick)
     {

@@ -25,7 +25,7 @@ void Checkbox::Update(MouseState* ms, float dt)
 
 	if(ms->MouseFinishedClickingRectangle(box))
 	{
-		Checked = ! Checked;
+		Checked = !Checked;
 		OnStateChange(Checked);
 	}
 }

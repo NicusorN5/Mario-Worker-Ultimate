@@ -846,52 +846,41 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 		switch(categoryId)
 		{
 			case 0:
-			{
 				for(size_t i = 0; i < 5; i++) _blocksButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default:break;
 				}
 				break;
-			}
 			case 1:
-			{
 				for(size_t i = 0; i < 6; i++) _enemiesButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default:break;
 				}
 				break;
-			}
 			case 2:
-			{
 				for(size_t i = 0; i < 2; i++) _bonusesButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
 				}
 				break;
-			}
 			case 3:
-			{
 				for(size_t i = 0; i < 5; i++) _marksButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
 				}
 				break;
-			}
 			case 4:
-			{
 				for(size_t i = 0; i < 9; i++) _sceneryButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
 					default: break;
 				}
 				break;
-			}
 			case 5:
-			{
 				for(size_t i = 0; i < 8; i++) _settingsButtons[i].Update(ms, dt);
 				switch(subCategoryId)
 				{
@@ -1000,7 +989,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 						break;
 					}
 					default:break;
-				}
+				break;
 			}
 			default:break;
 		}

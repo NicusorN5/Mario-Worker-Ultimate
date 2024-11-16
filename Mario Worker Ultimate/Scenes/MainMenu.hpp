@@ -35,9 +35,9 @@ class MainMenu : public IScene
 
 	bool _disableAnimations = false;
 public:
-	void LoadContent() override;
-	void Update(float dt,MouseState *ms, ControllerState* cs) override;
-	void Draw(float dt) override;
+	void LoadContent() final override;
+	void Update(float dt,MouseState *ms, ControllerState* cs) final override;
+	void Draw(float dt) final override;
 
 	~MainMenu();
 };

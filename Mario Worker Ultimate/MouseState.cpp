@@ -58,6 +58,7 @@ bool MouseState::MouseFinishedClickingOutsideRectangle(Rectangle r) const
         return (this->X <= r.x && this->X >= r.x + r.width &&
         this->Y <= r.y && this->Y >= r.y + r.height);
     }
+    return false;
 }
 
 bool MouseState::MouseClickingOutsideRectangle(Rectangle r) const
@@ -67,4 +68,5 @@ bool MouseState::MouseClickingOutsideRectangle(Rectangle r) const
         return (this->X <= r.x && this->X >= r.x + r.width &&
         this->Y <= r.y && this->Y >= r.y + r.height);
     }
+    return false;
 }

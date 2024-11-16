@@ -1,9 +1,8 @@
-#include "MainMenu.hpp"
+#include "Scenes/MainMenu.hpp"
 #include "Game.hpp"
-#include "Dialogs.hpp"
-#include "LevelEditor.hpp"
-#include "Intro.hpp"
-#include <thread>
+#include "UI/Dialogs.hpp"
+#include "Scenes/LevelEditor.hpp"
+#include "Scenes/Intro.hpp"
 
 int main()
 {
@@ -20,8 +19,8 @@ int main()
 	void* WindowHandle = GetWindowHandle();
 	SetGameIcon(WindowHandle);
 
-	IGamePart* gameSections[5]{ nullptr };
-	gameSections[0] = new Intro();
+	std::array<std::unique_ptr<IScene>, 5> gameSections;
+	gameSections[0].reset(new Intro());
 	
 	try
 	{
@@ -35,8 +34,8 @@ int main()
 		ExitFileNotFound();
 	}
 
-	gameSections[1] = new MainMenu();
-	gameSections[2] = new LevelEditor();
+	gameSections[1].reset(new MainMenu());
+	gameSections[2].reset(new LevelEditor());
 
 	//auto loadF = [=]()
 	//{
@@ -99,9 +98,5 @@ int main()
 	CloseWindow();
 	//cleanup
 	Resources::UnloadAll();
-	for(int i = 0; i < 5; i++)
-	{
-		delete gameSections[i];
-	}
 	return 0;
 }

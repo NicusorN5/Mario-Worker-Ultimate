@@ -1,7 +1,7 @@
 #pragma once
 #include "TransparentFont.hpp"
-#include "MouseState.hpp"
-#include "StringsCollection.hpp"
+#include "../MouseState.hpp"
+#include "../StringsCollection.hpp"
 
 class Listbox
 {

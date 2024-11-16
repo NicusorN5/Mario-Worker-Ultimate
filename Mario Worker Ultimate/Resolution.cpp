@@ -9,7 +9,10 @@ namespace Game
 
 		Vector2 Vec()
 		{
-			return Vector2(X, Y);
+			return Vector2(
+				static_cast<float>(X),
+				static_cast<float>(Y)
+			);
 		}
 		float FltX()
 		{

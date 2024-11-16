@@ -22,7 +22,7 @@ class Particle
 	std::function<Vector2(float)> _velocityFunction;
 
 	float _velocityTime;
-	int _lifetime;
+	float _lifetime;
 public:
 	Particle(Vector2 pos, ParticleModeInfo mode, std::function<Vector2(float)> vel,float time);
 

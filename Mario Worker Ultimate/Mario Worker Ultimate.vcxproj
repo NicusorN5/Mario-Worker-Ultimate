@@ -89,7 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,7 +128,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,7 +144,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)/raylib-4.0.0_win32_msvc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,67 +157,67 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
-    <ClCompile Include="Checkbox.cpp" />
+    <ClCompile Include="UI\Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Decoration.cpp" />
-    <ClCompile Include="Dialogs.cpp" />
+    <ClCompile Include="UI\Dialogs.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameResourceLoadException.cpp" />
-    <ClCompile Include="Goomba.cpp" />
-    <ClCompile Include="IButton.cpp" />
-    <ClCompile Include="IEnemy.cpp" />
-    <ClCompile Include="IGamePart.cpp" />
-    <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="Enemies\Goomba.cpp" />
+    <ClCompile Include="UI\IButton.cpp" />
+    <ClCompile Include="Enemies\IEnemy.cpp" />
+    <ClCompile Include="Scenes\IScene.cpp" />
+    <ClCompile Include="Scenes\Intro.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="LevelEditor.cpp" />
-    <ClCompile Include="Listbox.cpp" />
+    <ClCompile Include="Scenes\LevelEditor.cpp" />
+    <ClCompile Include="UI\Listbox.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Scenes\MainMenu.cpp" />
     <ClCompile Include="MouseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Resolution.cpp" />
     <ClCompile Include="Resources.cpp" />
-    <ClCompile Include="ShinyButton.cpp" />
+    <ClCompile Include="UI\ShinyButton.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="UI\Slider.cpp" />
     <ClCompile Include="StringsCollection.cpp" />
-    <ClCompile Include="TabButton.cpp" />
-    <ClCompile Include="Textbox.cpp" />
-    <ClCompile Include="TransparentFont.cpp" />
+    <ClCompile Include="UI\TabButton.cpp" />
+    <ClCompile Include="UI\Textbox.cpp" />
+    <ClCompile Include="UI\TransparentFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
-    <ClInclude Include="Checkbox.hpp" />
+    <ClInclude Include="UI\Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />
     <ClInclude Include="Decoration.hpp" />
-    <ClInclude Include="Dialogs.hpp" />
+    <ClInclude Include="UI\Dialogs.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameResourceLoadException.hpp" />
-    <ClInclude Include="GameSection.hpp" />
-    <ClInclude Include="Goomba.hpp" />
-    <ClInclude Include="IButton.hpp" />
-    <ClInclude Include="IEnemy.hpp" />
-    <ClInclude Include="IGamePart.hpp" />
-    <ClInclude Include="Intro.hpp" />
+    <ClInclude Include="Scenes\GameSection.hpp" />
+    <ClInclude Include="Enemies\Goomba.hpp" />
+    <ClInclude Include="UI\IButton.hpp" />
+    <ClInclude Include="Enemies\IEnemy.hpp" />
+    <ClInclude Include="Scenes\IScene.hpp" />
+    <ClInclude Include="Scenes\Intro.hpp" />
     <ClInclude Include="Level.hpp" />
-    <ClInclude Include="LevelEditor.hpp" />
+    <ClInclude Include="Scenes\LevelEditor.hpp" />
     <ClInclude Include="Libs.hpp" />
-    <ClInclude Include="Listbox.hpp" />
-    <ClInclude Include="MainMenu.hpp" />
+    <ClInclude Include="UI\Listbox.hpp" />
+    <ClInclude Include="Scenes\MainMenu.hpp" />
     <ClInclude Include="MouseState.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Resolution.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.hpp" />
-    <ClInclude Include="ShinyButton.hpp" />
+    <ClInclude Include="UI\ShinyButton.hpp" />
     <ClInclude Include="Particle.hpp" />
-    <ClInclude Include="Slider.hpp" />
+    <ClInclude Include="UI\Slider.hpp" />
     <ClInclude Include="StringsCollection.hpp" />
-    <ClInclude Include="TabButton.hpp" />
-    <ClInclude Include="Textbox.hpp" />
-    <ClInclude Include="TransparentFont.hpp" />
+    <ClInclude Include="UI\TabButton.hpp" />
+    <ClInclude Include="UI\Textbox.hpp" />
+    <ClInclude Include="UI\TransparentFont.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

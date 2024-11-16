@@ -1,5 +1,5 @@
 #pragma once
-#include "Resolution.hpp"
+#include "../Resolution.hpp"
 
 struct FontLetter
 {

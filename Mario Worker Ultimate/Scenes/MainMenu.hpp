@@ -1,10 +1,11 @@
 #pragma once
-#include "IGamePart.hpp"
-#include "Game.hpp"
-#include "Resources.hpp"
-#include "ShinyButton.hpp"
+#include "IScene.hpp"
+#include "../Game.hpp"
+#include "../Resources.hpp"
+#include "../UI/ShinyButton.hpp"
+#include "../ControllerState.hpp"
 
-class MainMenu : public IGamePart
+class MainMenu : public IScene
 {
 	Texture2D _BackgroundImg{};
 	Texture2D _btnEdit{};

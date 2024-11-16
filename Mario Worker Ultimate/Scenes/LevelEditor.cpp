@@ -721,7 +721,7 @@ void LevelEditor::LoadContent()
 				{
 					Game::CurrentLevel.SetMusic(r->File);
 				}
-				catch(GameResourceLoadException& e)
+				catch(const GameResourceLoadException& e)
 				{
 					std::string errmsg("The file: ");
 					errmsg += r->File;

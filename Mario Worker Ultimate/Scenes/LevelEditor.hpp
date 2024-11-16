@@ -1,17 +1,17 @@
 #pragma once
-#include "IGamePart.hpp"
-#include "Game.hpp"
-#include "Libs.hpp"
-#include "Resources.hpp"
-#include "Resolution.hpp"
-#include "TabButton.hpp"
-#include "ShinyButton.hpp"
-#include "Textbox.hpp"
-#include "Slider.hpp"
-#include "Checkbox.hpp"
-#include "Listbox.hpp"
+#include "IScene.hpp"
+#include "../Game.hpp"
+#include "../Libs.hpp"
+#include "../Resources.hpp"
+#include "../Resolution.hpp"
+#include "../UI/TabButton.hpp"
+#include "../UI/ShinyButton.hpp"
+#include "../UI/Textbox.hpp"
+#include "../UI/Slider.hpp"
+#include "../UI/Checkbox.hpp"
+#include "../UI/Listbox.hpp"
 
-class LevelEditor : public IGamePart
+class LevelEditor : public IScene
 {
 	static LevelEditor* _singleton;
 

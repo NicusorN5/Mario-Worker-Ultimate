@@ -40,7 +40,7 @@ void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vecto
 	if(maxLen == -1) maxLen = text_l.length();
 	if(text_l.length() < maxLen) maxLen = text_l.length();
 
-	std::transform(text_l.begin(), text_l.end(), text_l.begin(), std::toupper);
+	std::transform(text_l.begin(), text_l.end(), text_l.begin(), [](char c) { return std::toupper(c); });
 	float x = position_norm.x;
 	for(size_t i = maxIndex, j = 0; i < text_l.length() && j <= maxLen; i++, j++)
 	{
@@ -58,7 +58,7 @@ void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vecto
 float TransparentFont::MeasureLength(const std::string& text,Vector2 scale,float spacing)
 {
 	std::string txtc(text);
-	std::transform(txtc.begin(), txtc.end(), txtc.begin(), std::toupper);
+	std::transform(txtc.begin(), txtc.end(), txtc.begin(), [](char c) { return std::toupper(c); });
 
 	float c = 0;
 
@@ -74,7 +74,7 @@ float TransparentFont::MeasureLength(const std::string& text,Vector2 scale,float
 float TransparentFont::MeasureHeight(const std::string& text, Vector2 scale)
 {
 	std::string txtc(text);
-	std::transform(txtc.begin(), txtc.end(), txtc.begin(), std::toupper);
+	std::transform(txtc.begin(), txtc.end(), txtc.begin(), [](char c) { return std::toupper(c); });
 	
 	float h = std::numeric_limits<float>::min();
 	

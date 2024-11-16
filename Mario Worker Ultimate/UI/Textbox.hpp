@@ -1,5 +1,5 @@
 #pragma once
-#include "MouseState.hpp"
+#include "../MouseState.hpp"
 #include "TransparentFont.hpp"
 
 class Textbox

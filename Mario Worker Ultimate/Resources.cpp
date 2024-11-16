@@ -40,10 +40,12 @@ int Resources::Random(int min, int max)
 	return min + (mt() % (max - min));
 }
 
-Texture2D Resources::LoadTextureChkF(const char* path)
+Texture2D Resources::LoadTextureChkF(const std::filesystem::path& path)
 {
-	PrintFullPath(path);
-	Texture2D t = LoadTexture(path);
+	auto p = path.string();
+
+	PrintFullPath(p.c_str());
+	Texture2D t = LoadTexture(p.c_str());
 	if(t.id == 0) throw GameResourceLoadException(path);
 	return t;
 }
@@ -156,28 +158,30 @@ void Resources::LoadAll()
 	Window = LoadTextureChkF("Data\\UI\\Window_Default.png");
 }
 
-Sound Resources::LoadSoundChkF(const char* path)
+Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
 {
+	auto rawPath = path.string().c_str();
+
 	bool isWave = false;
-	size_t pathLen = strlen(path);
-	if(strcmp(path+pathLen-4,".wav") == 0)
+	size_t pathLen = strlen(rawPath);
+	if(strcmp(rawPath + pathLen - 4, ".wav") == 0)
 		isWave = true;
 
 	if(isWave)
 	{
-		Wave w = LoadWave(path);
+		Wave w = LoadWave(rawPath);
 		if(w.data == nullptr) throw GameResourceLoadException(path);
 		return LoadSoundFromWave(w);
 	}
-	
-	Sound s = LoadSound(path);
+
+	Sound s = LoadSound(rawPath);
 	if(s.stream.buffer == nullptr) throw GameResourceLoadException(path);
 	return s;
 }
 
-Music Resources::LoadMusicChkF(const char* path)
+Music Resources::LoadMusicChkF(const std::filesystem::path& path)
 {
-	Music m = LoadMusicStream(path);
+	Music m = LoadMusicStream(path.string().c_str());
 	if(m.ctxData == nullptr) throw GameResourceLoadException(path);
 	return m;
 }

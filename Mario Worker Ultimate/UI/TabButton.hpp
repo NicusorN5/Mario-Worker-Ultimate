@@ -1,6 +1,6 @@
 #pragma once
 #include "IButton.hpp"
-#include "Resolution.hpp"
+#include "../Resolution.hpp"
 
 class TabButton : public IButton
 {

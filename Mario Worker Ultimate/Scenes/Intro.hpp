@@ -1,9 +1,9 @@
 #pragma once
-#include "IGamePart.hpp"
-#include "Resources.hpp"
-#include "Game.hpp"
+#include "IScene.hpp"
+#include "../Resources.hpp"
+#include "../Game.hpp"
 
-class Intro : public IGamePart
+class Intro : public IScene
 {
 	Texture _introImage{};
 	float _introTimer = 0.0f;

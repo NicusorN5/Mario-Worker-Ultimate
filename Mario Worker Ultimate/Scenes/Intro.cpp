@@ -8,6 +8,8 @@ uint8_t Intro::introImageAlpta(float t)
 	}
 	if(t >= 5.0f) return 255 * (5 - t);
 	if(t >= 1.0f) return 255;
+
+	return 0;
 }
 
 void Intro::LoadContent()

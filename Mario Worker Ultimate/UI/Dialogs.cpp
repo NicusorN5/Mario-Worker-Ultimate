@@ -1,7 +1,7 @@
 #include "Dialogs.hpp"
 #include <Windows.h>
 #include <PathCch.h>
-#include "resource.h"
+#include "../resource.h"
 #include <string>
 #include <strstream>
 

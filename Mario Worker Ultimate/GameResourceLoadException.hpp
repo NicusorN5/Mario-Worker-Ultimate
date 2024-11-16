@@ -1,11 +1,12 @@
 #pragma once
 #include <exception>
+#include <filesystem>
 
 class GameResourceLoadException : std::exception
 {
-	const char* _file;
+	std::string _file;
 public:
-	GameResourceLoadException(const char* file) : _file(file) {};
+	GameResourceLoadException(const std::filesystem::path& file) : _file(file.string()) {};
 	char const* what() const override;
 };
 

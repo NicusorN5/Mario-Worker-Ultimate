@@ -1,7 +1,7 @@
 #pragma once
 #include "IEnemy.hpp"
-#include "Resources.hpp"
-#include "Game.hpp"
+#include "../Resources.hpp"
+#include "../Game.hpp"
 
 enum class GoombaType
 {

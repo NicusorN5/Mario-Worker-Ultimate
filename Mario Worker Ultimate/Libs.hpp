@@ -11,6 +11,8 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
+#include <array>
+#include <filesystem>
 
 template<typename N>
 concept SignedInteger = std::is_signed_v<N>;

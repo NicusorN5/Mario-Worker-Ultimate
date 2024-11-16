@@ -1,17 +1,19 @@
 #include "Level.hpp"
 
-Level::Level(const char* path) : LvlBackground(std::make_unique<Background>(WHITE, Color(60, 120, 160, 255)))
+Level::Level(const std::filesystem::path& path) :
+	LvlBackground(std::make_unique<Background>(WHITE, Color(60, 120, 160, 255))),
+	EnemySpeed(1),
+	Gravity(1),
+	Time(360),
+	IsValid(false),
+	Size{ 60, 40 }
 {	
-	if(path == nullptr)
+	if(path.empty())
 	{
-		EnemySpeed = 1;
-		Gravity = 1;
-		Time = 360;
-		IsValid = false;
-		Size = { 60, 40 };
+		
 		return;
 	}
-	if(strlen(path) == 0)
+	if(path.empty())
 	{
 		LvlBackground = std::make_unique<Background>(nullptr, false, false);
 		EnemySpeed = 1;
@@ -39,7 +41,8 @@ Music Level::GetMusic()
 {
 	return Music(LvlMusic); //create a copy of this->LvlMusic.
 }
-void Level::SetMusic(const char* newMusicPath)
+
+void Level::SetMusic(const std::filesystem::path& newMusicPath)
 {
 	if(LvlMusic.ctxData != nullptr || LvlMusic.stream.buffer != nullptr)
 	{
@@ -47,4 +50,9 @@ void Level::SetMusic(const char* newMusicPath)
 	}
 
 	LvlMusic = Resources::LoadMusicChkF(newMusicPath);
+}
+
+void Level::Save(const std::filesystem::path& path)
+{
+
 }

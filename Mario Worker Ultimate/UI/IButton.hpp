@@ -1,5 +1,5 @@
 #pragma once
-#include "MouseState.hpp"
+#include "../MouseState.hpp"
 
 class IButton
 {

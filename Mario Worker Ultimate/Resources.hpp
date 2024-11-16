@@ -1,9 +1,9 @@
 #pragma once
 #include "Libs.hpp"
-#include "Dialogs.hpp"
+#include "UI/Dialogs.hpp"
 #include "GameResourceLoadException.hpp"
 #include <random>
-#include "TransparentFont.hpp"
+#include "UI/TransparentFont.hpp"
 
 namespace Resources
 {
@@ -46,7 +46,7 @@ namespace Resources
 	/// </summary>
 	/// <param name="path">Path to image</param>
 	/// <returns>raylib Texture2D struct</returns>
-	Texture2D LoadTextureChkF(const char* path);
+	Texture2D LoadTextureChkF(const std::filesystem::path& path);
 	/// <summary>
 	/// Loads all gameplay sprites (enemies, player sprite, maps, etc...)
 	/// </summary>
@@ -56,13 +56,13 @@ namespace Resources
 	/// </summary>
 	/// <param name="path"></param>
 	/// <returns></returns>
-	Sound LoadSoundChkF(const char* path);
+	Sound LoadSoundChkF(const std::filesystem::path& path);
 	/// <summary>
 	/// Loads a music stream then checks if it is successfully loaded..
 	/// </summary>
 	/// <param name="path"></param>
 	/// <returns></returns>
-	Music LoadMusicChkF(const char* path);
+	Music LoadMusicChkF(const std::filesystem::path& path);
 
 	void UnloadAll();
 }

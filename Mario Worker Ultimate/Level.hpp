@@ -2,7 +2,7 @@
 #include "Block.hpp"
 #include "Player.hpp"
 #include "Libs.hpp"
-#include "IEnemy.hpp"
+#include "Enemies/IEnemy.hpp"
 #include "Decoration.hpp"
 #include "Bonus.hpp"
 #include "Background.hpp"
@@ -23,7 +23,7 @@ public:
 	/// <summary>
 	/// Loads a level from the specifed path.
 	/// </summary>
-	Level(const char* path);
+	Level(const std::filesystem::path& path);
 
 	bool IsValid = false;
 	int Time = 360;
@@ -53,8 +53,8 @@ public:
 	LiquidType Liquid;
 
 	Music GetMusic();
-	void SetMusic(const char* newMusicPath);
+	void SetMusic(const std::filesystem::path& newMusicPath);
 
-	void Save(const char* path);
+	void Save(const std::filesystem::path& path);
 };
 

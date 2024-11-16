@@ -1,6 +1,6 @@
 #pragma once
 #include "TransparentFont.hpp"
-#include "MouseState.hpp"
+#include "../MouseState.hpp"
 
 class Slider
 {

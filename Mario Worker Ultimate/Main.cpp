@@ -22,7 +22,18 @@ int main()
 
 	IGamePart* gameSections[5]{ nullptr };
 	gameSections[0] = new Intro();
-	gameSections[0]->LoadContent();
+	
+	try
+	{
+		gameSections[0]->LoadContent();
+	}
+	catch (GameResourceLoadException& ex)
+	{
+		std::stringstream str;
+		str << "The file: " << ex.what() << " is missing.\r\n Reinstalling the game can fix this issue.";
+		ShowMessageBoxError(WindowHandle, str.str().c_str(), "Error loading game content");
+		ExitFileNotFound();
+	}
 
 	gameSections[1] = new MainMenu();
 	gameSections[2] = new LevelEditor();

@@ -1,7 +1,6 @@
 #pragma once
 #include "TransparentFont.hpp"
 #include "../MouseState.hpp"
-#include "../StringsCollection.hpp"
 
 class Listbox
 {
@@ -19,16 +18,16 @@ class Listbox
 	int _numElemBox = 0; //number of elements that can fit into the box
 	int _idElemHov = -1;
 
-	float _glintAnimTimer =0;
+	float _glintAnimTimer = 0;
 public:
 	Listbox() = default;
-	Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd,Texture2D glint, TransparentFont* font, Rectangle coords, StringsCollection initial_items,Vector2 textScaling, float spacing);
+	Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items,Vector2 textScaling, float spacing);
 
-	StringsCollection Items;
+	std::vector<std::string> Items;
 
 	void Update(MouseState* ms, float dt);
 	void Draw(float dt);
 
-	std::function<void(const std::string&)> OnItemClick;
+	std::function<void(const std::string&, int)> OnItemClick;
 };
 

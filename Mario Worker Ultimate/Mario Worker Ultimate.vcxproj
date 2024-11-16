@@ -166,7 +166,6 @@
     <ClCompile Include="Enemies\Goomba.cpp" />
     <ClCompile Include="UI\IButton.cpp" />
     <ClCompile Include="Enemies\IEnemy.cpp" />
-    <ClCompile Include="Scenes\IScene.cpp" />
     <ClCompile Include="Scenes\Intro.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Scenes\LevelEditor.cpp" />
@@ -180,7 +179,6 @@
     <ClCompile Include="UI\ShinyButton.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="UI\Slider.cpp" />
-    <ClCompile Include="StringsCollection.cpp" />
     <ClCompile Include="UI\TabButton.cpp" />
     <ClCompile Include="UI\Textbox.cpp" />
     <ClCompile Include="UI\TransparentFont.cpp" />
@@ -214,7 +212,6 @@
     <ClInclude Include="UI\ShinyButton.hpp" />
     <ClInclude Include="Particle.hpp" />
     <ClInclude Include="UI\Slider.hpp" />
-    <ClInclude Include="StringsCollection.hpp" />
     <ClInclude Include="UI\TabButton.hpp" />
     <ClInclude Include="UI\Textbox.hpp" />
     <ClInclude Include="UI\TransparentFont.hpp" />

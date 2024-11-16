@@ -684,7 +684,7 @@ void LevelEditor::LoadContent()
 		Vector2( 0.025f,0.025f ),
 		0.001f
 	));
-	MusicList->OnItemClick = [this](const std::string& music)
+	MusicList->OnItemClick = [this](const std::string& music, int index)
 	{
 		const char* MusicPaths[20] =
 		{
@@ -709,7 +709,6 @@ void LevelEditor::LoadContent()
 			"Data\\Music\\SelectSave.mp3",
 			"not used",
 		};
-		int index = this->MusicList->Items[music];
 
 		if(index != 19) Game::CurrentLevel.SetMusic(MusicPaths[index]);
 		else

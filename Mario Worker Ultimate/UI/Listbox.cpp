@@ -1,6 +1,6 @@
 #include "Listbox.hpp"
 
-Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, StringsCollection initial_items, Vector2 textScaling, float spacing) :
+Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items, Vector2 textScaling, float spacing) :
 	_sliderBar(sliderBar),
 	_sliderBox(sliderBox),
 	_listboxBody(listBoxTxd),
@@ -13,7 +13,7 @@ Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd,
 	_sliderPos(0)
 {
 	float h = 0.0f;
-	for(int i = 0; i < initial_items.Size(); i++)
+	for(int i = 0; i < initial_items.size(); i++)
 	{
 		h += (_font->MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
 
@@ -47,15 +47,15 @@ void Listbox::Update(MouseState* ms, float dt)
 
 	_sliderPos = std::clamp(_sliderPos, 0.0f, 1.0f);
 
-	int i = (Items.Size() - _numElemBox) * _sliderPos;
-	if(i > Items.Size()) i = 0;
+	int i = (Items.size() - _numElemBox) * _sliderPos;
+	if(i > Items.size()) i = 0;
 
 	float h = 0; //current height
 	Rectangle currentTxtBounds;
 
 	_idElemHov = -1;
 
-	for(int j = 0; i < Items.Size() && j < _numElemBox; i++, j++)
+	for(int j = 0; i < Items.size() && j < _numElemBox; i++, j++)
 	{
 		currentTxtBounds = {
 			_coords.x + Game::Resolution::X * 0.01f,
@@ -71,7 +71,7 @@ void Listbox::Update(MouseState* ms, float dt)
 
 		if(ms->MouseClickingRectangle(currentTxtBounds))
 		{
-			OnItemClick(Items[i]); 
+			OnItemClick(Items[i], i); 
 			break; //Can multiple cursors even exist? If they do, why would anyone use them, especially while playing a game like this one?
 		}
 
@@ -120,12 +120,12 @@ void Listbox::Draw(float dt)
 		WHITE
 	);
 
-	int i = (Items.Size() - _numElemBox) * _sliderPos;
-	if(i > Items.Size()) i = 0;
+	int i = (Items.size() - _numElemBox) * _sliderPos;
+	if(i > Items.size()) i = 0;
 
 	float h = 0;
 
-	for(int j = 0 ; i < Items.Size() && j < _numElemBox; i++, j++)
+	for(int j = 0 ; i < Items.size() && j < _numElemBox; i++, j++)
 	{
 		_font->Draw(
 			Items[i],

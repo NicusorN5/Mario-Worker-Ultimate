@@ -45,9 +45,6 @@
     <ClCompile Include="Enemies\IEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\IScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Scenes\Intro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UI\Listbox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StringsCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -198,9 +192,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI\Listbox.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StringsCollection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

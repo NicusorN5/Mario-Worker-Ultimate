@@ -62,7 +62,7 @@ void Resources::LoadAll()
 	for(size_t i = 0; i < 3; i++)
 	{
 		std::string path = "Data\\Sounds\\Lakitu";
-		path += std::to_string(i+1) + ".ogg";
+		path += std::to_string(i+1) + ".wav";
 		LakituDrop[i] = LoadSoundChkF(path.c_str());
 	}
 

@@ -4,7 +4,7 @@
 enum class DamageByPlayer
 {
 	NoDamage,
-	ByHit,
+	HitAboveHead,
 	ByFire,
 	ByBeet,
 	ByHammer,
@@ -13,20 +13,24 @@ enum class DamageByPlayer
 class IEnemy
 {
 protected:
-	const char* _name;
+	std::string _name;
 	unsigned _variant;
+
+	bool _fellOfMap = false;
 public:
-	IEnemy(const char* Name, int X, int Y, unsigned v) : _name(Name), Position{ static_cast<float>(X),static_cast<float>(Y) }, _variant(v) {};
+	IEnemy(const std::string& Name, int X, int Y, unsigned variant);
 
 	Vector2 Position;
 
-	const char* GetName();
-	unsigned GetVariant();
+	const std::string& GetName() const noexcept;
+	unsigned GetVariant() const noexcept;
+
+	bool FellOfMap() const noexcept;
 
 	virtual bool WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy) = 0;
 	virtual void Update(float dt) = 0;
 	virtual void Draw(float dt) = 0;
 
-	~IEnemy();
+	~IEnemy() = default;
 };
 

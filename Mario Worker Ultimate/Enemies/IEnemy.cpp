@@ -1,15 +1,23 @@
 #include "IEnemy.hpp"
 
-const char* IEnemy::GetName()
+IEnemy::IEnemy(const std::string& Name, int X, int Y, unsigned variant) :
+	_name(Name),
+	Position{ static_cast<float>(X),static_cast<float>(Y) },
+	_variant(variant)
+{
+}
+
+const std::string& IEnemy::GetName() const noexcept
 {
     return this->_name;
 }
 
-unsigned IEnemy::GetVariant()
+unsigned IEnemy::GetVariant() const noexcept
 {
     return this->_variant;
 }
 
-IEnemy::~IEnemy()
+bool IEnemy::FellOfMap() const noexcept
 {
+    return this->_fellOfMap;
 }

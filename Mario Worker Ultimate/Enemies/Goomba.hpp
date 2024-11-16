@@ -18,7 +18,7 @@ class Goomba : public IEnemy
 public:
 	Goomba(int X, int Y,GoombaType t) : IEnemy("Goomba", X, Y, static_cast<int>(t)),_direction(1), _animTimer(0),_spriteAnim(0) {};
 	bool WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy) final;
-	void Update(float dt) final;
-	void Draw(float dt) final;
+	void Update(float dt);
+	void Draw(float dt);
 };
 

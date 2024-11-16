@@ -31,35 +31,35 @@ class LevelEditor : public IScene
 	int subCategoryId = 0;
 
 	Texture2D W_selectItem{};
-	Texture2D _tGlint;
+	Texture2D _tGlint{};
 
 	//main categories
-	TabButton _tabButtons[6];
-	Texture2D _tabTexturesHovered[6];
-	Texture2D _tabTexturesUnhovered[6];
+	TabButton _tabButtons[6]{};
+	Texture2D _tabTexturesHovered[6]{};
+	Texture2D _tabTexturesUnhovered[6]{};
 
 	//blocks types
-	Texture2D _blocksBtnTextures[5];
-	ShinyButton _blocksButtons[5];
+	Texture2D _blocksBtnTextures[5]{};
+	ShinyButton _blocksButtons[5]{};
 
 	//enemies types
-	Texture2D _enemiesBtnTextures[6];
-	ShinyButton _enemiesButtons[6];
+	Texture2D _enemiesBtnTextures[6]{};
+	ShinyButton _enemiesButtons[6]{};
 
 	//bonuses types
-	Texture2D _bonusesBtnTextures[2];
-	ShinyButton _bonusesButtons[2];
+	Texture2D _bonusesBtnTextures[2]{};
+	ShinyButton _bonusesButtons[2]{};
 
 	//mark types
-	Texture2D _marksBtnTextures[5];
+	Texture2D _marksBtnTextures[5]{};
 	ShinyButton _marksButtons[5];
 
 	//decoration types
-	Texture2D _sceneryBtnTextures[9];
+	Texture2D _sceneryBtnTextures[9]{};
 	ShinyButton _sceneryButtons[9];
 
 	//level settings buttons
-	Texture2D _settingsBtnTextures[8];
+	Texture2D _settingsBtnTextures[8]{};
 	ShinyButton _settingsButtons[8];
 
 	//level editor stuff

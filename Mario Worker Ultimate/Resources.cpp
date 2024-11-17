@@ -148,7 +148,7 @@ void Resources::LoadAll()
 	LeftBtn = LoadTextureChkF("Data\\UI\\LeftBtn.png");
 	RightBtn = LoadTextureChkF("Data\\UI\\RightBtn.png");
 
-	ClickSound1 = LoadSoundChkF("Data\\Sounds\\ClickOption.mp3");
+	ClickSound1 = LoadSoundChkF("Data\\Sounds\\ClickOption.wav");
 
 	BtnGlint = Resources::LoadTextureChkF("Data\\UI\\ButtonGlint.png");
 
@@ -162,10 +162,7 @@ Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
 {
 	auto rawPath = path.string();
 
-	bool isWave = false;
-	size_t pathLen = strlen(rawPath.c_str());
-	if(strcmp(rawPath.c_str() + pathLen - 4, ".wav") == 0)
-		isWave = true;
+	bool isWave = path.extension() == "wav";
 
 	if(isWave)
 	{

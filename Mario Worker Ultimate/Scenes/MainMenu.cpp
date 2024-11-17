@@ -11,10 +11,10 @@ void MainMenu::LoadContent()
 	_btnQuit = Resources::LoadTextureChkF("Data\\UI\\ButtonQuit.png");
 
 	//welcome screen animation things
-	_welcomeMarioWorker = Resources::LoadSoundChkF("Data\\Sounds\\marioworker.ogg");
+	_welcomeMarioWorker = Resources::LoadSoundChkF("Data\\Sounds\\MarioWorker.wav");
 	_mainMenuMusic = Resources::LoadMusicChkF("Data\\Music\\GameSelect.wav");
 	_mainMenuMario = Resources::LoadTextureChkF("Data\\UI\\MarioTitleScreen.png");
-	_applause = Resources::LoadSoundChkF("Data\\Sounds\\applause.ogg");
+	_applause = Resources::LoadSoundChkF("Data\\Sounds\\Applause.mp3");
 
 	_editButton = ShinyButton(_btnEdit, _glint, Game::ScreenRec({ 0.25f,0.3f,0.2f,0.2f }), 
 		[this]() -> void

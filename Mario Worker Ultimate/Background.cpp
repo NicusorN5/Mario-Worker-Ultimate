@@ -1,7 +1,7 @@
 #include "Background.hpp"
 
 Background::Background(const char* path, bool repeatX, bool repeatY, Color bottom, Color top) :
-	_BackgroundTexture(Texture2DW(path)),
+	_BackgroundTexture(Resources::LoadTextureChkF(path)),
 	RepeatX(repeatX),
 	RepeatY(repeatY),
 	ColorA(bottom),
@@ -14,7 +14,7 @@ Background::Background(const char* path, bool repeatX, bool repeatY, Color botto
 };
 
 Background::Background(const char* path, bool repeatX, bool repeatY) :
-	_BackgroundTexture(Texture2DW(path)),
+	_BackgroundTexture(Resources::LoadTextureChkF(path)),
 	RepeatX(repeatX),
 	RepeatY(repeatY),
 	ColorA(WHITE),
@@ -53,16 +53,16 @@ void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 
 	//gradient
 	DrawTexturePro(
-		static_cast<Texture2D>(Resources::GradientA),
-		{ 0,0,(float)Resources::GradientA.Width(), (float)Resources::GradientA.Height()},
+		Resources::GradientA,
+		{ 0,0,(float)Resources::GradientA.width, (float)Resources::GradientA.height },
 		BackgroundRect,
 		{ 0,0 },
 		0,
 		ColorA
 	);
 	DrawTexturePro(
-		static_cast<Texture2D>(Resources::GradientB),
-		{ 0,0,(float)Resources::GradientB.Width(), (float)Resources::GradientB.Height()},
+		Resources::GradientB,
+		{ 0,0,(float)Resources::GradientB.width, (float)Resources::GradientB.height },
 		BackgroundRect,
 		{ 0,0 },
 		0,
@@ -108,8 +108,8 @@ void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 	if(OverlayAlphaA > 0)
 	{
 		DrawTexturePro(
-			static_cast<Texture2D>(Resources::GradientA),
-			{ 0,0,(float)Resources::GradientA.Width(), (float)Resources::GradientA.Height()},
+			Resources::GradientA,
+			{ 0,0,(float)Resources::GradientA.width, (float)Resources::GradientA.height },
 			OverlayGradientRect,
 			{ 0,0 },
 			0,
@@ -120,12 +120,17 @@ void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 	if(OverlayAlphaB > 0)
 	{
 		DrawTexturePro(
-			static_cast<Texture2D>(Resources::GradientB),
-			{ 0,0,(float)Resources::GradientB.Width(), (float)Resources::GradientB.Height()},
+			Resources::GradientB,
+			{ 0,0,(float)Resources::GradientB.width, (float)Resources::GradientB.height },
 			OverlayGradientRect,
 			{ 0,0 },
 			0,
 			{ OverlayB.r,OverlayB.g,OverlayB.b,OverlayAlphaB }
 		);
 	}
+}
+
+Background::~Background()
+{
+	UnloadTexture(_BackgroundTexture);
 }

@@ -9,8 +9,8 @@ class Textbox
 	bool _focus = false;
 	float _keyTimer = 0;
 
-	Texture2D _textboxTexture{};
-	TransparentFont &_textFont;
+	Texture2D _textboxTexture;
+	TransparentFont *_textFont;
 	int _textIndex = 0;
 	size_t _maxLength;
 	float _spacing;
@@ -18,27 +18,22 @@ class Textbox
 
 	float _delTimer = 0;
 public:
-	Textbox(
-		const Texture2D &texture,
-		TransparentFont &font,
-		const std::string& defaultText,
-		const Rectangle &r,
-		size_t maxLength, 
-		size_t displayedChars,
-		float spacing = 0.001f
-	);
-
-	//Textbox(const Textbox&) = delete;
-	Textbox(Textbox&&) noexcept = default;
-
-	//Textbox& operator=(const Textbox&) = delete;
-	Textbox& operator=(Textbox&&) noexcept = default;
+	Textbox() :
+		_textboxTexture{},
+		_textFont{},
+		_text(""),
+		_coords{},
+		_maxLength(0),
+		_spacing(0),
+		_displayedCharacters(0)
+	{};
+	Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing = 0.001f);
 
 	void Draw(float dt);
 	void Update(MouseState* ms,float dt);
 
 	void DisableFocus();
-	bool IsFocused() const noexcept;
+	bool IsFocused();
 
 	const std::string& GetText() const noexcept;
 };

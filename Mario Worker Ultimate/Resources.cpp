@@ -1,54 +1,69 @@
 #include "Resources.hpp"
 
-Texture2DW Resources::GradientA;
-Texture2DW Resources::GradientB;
+Texture2D Resources::GradientA{};
+Texture2D Resources::GradientB{};
 
-Texture2DW Resources::Goomba1;
-Texture2DW Resources::Goomba2;
+Texture2D Resources::Goomba1{};
+Texture2D Resources::Goomba2{};
 
-Texture2DW Resources::Window;
+Texture2D Resources::Window{};
 
-Texture2DW Resources::SliderBar;
-Texture2DW Resources::SliderBox;
+Texture2D Resources::SliderBar{};
+Texture2D Resources::SliderBox{};
 
-std::array<SoundW,3> Resources::LakituDrop;
+Sound Resources::LakituDrop[3]{};
 
 std::random_device Resources::rd;
 std::mt19937 Resources::mt;
 
 TransparentFont Resources::LevelHudFont;
 TransparentFont Resources::NumericLevelHudFont;
-Texture2DW Resources::TxtboxRectangle;
+Texture2D Resources::TxtboxRectangle;
 
-Texture2DW Resources::LeftBtn;
-Texture2DW Resources::RightBtn;
+Texture2D Resources::LeftBtn;
+Texture2D Resources::RightBtn;
 
-SoundW Resources::ClickSound1;
+Sound Resources::ClickSound1;
 
-Texture2DW Resources::BtnGlint;
+Texture2D Resources::BtnGlint;
 
-Texture2DW Resources::CbTrue;
-Texture2DW Resources::CbFalse;
+Texture2D Resources::CbTrue;
+Texture2D Resources::CbFalse;
+
+void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
+{
+	PlaySound(sounds[Random(0, static_cast<int>(numSounds))]);
+}
 
 int Resources::Random(int min, int max)
 {
 	return min + (mt() % (max - min));
 }
 
+Texture2D Resources::LoadTextureChkF(const std::filesystem::path& path)
+{
+	auto p = path.string();
+
+	PrintFullPath(p.c_str());
+	Texture2D t = LoadTexture(p.c_str());
+	if(t.id == 0) throw GameResourceLoadException(path);
+	return t;
+}
+
 void Resources::LoadAll()
 {
 	mt = std::mt19937(rd());
 
-	GradientA = Texture2DW("Data\\Backgrounds\\GradientA.png");
-	GradientB = Texture2DW("Data\\Backgrounds\\GradientB.png");
+	GradientA = LoadTextureChkF("Data\\Backgrounds\\GradientA.png");
+	GradientB = LoadTextureChkF("Data\\Backgrounds\\GradientB.png");
 
-	Goomba1 = Texture2DW("Data\\Enemies\\BrownGoomba.png");
+	Goomba1 = LoadTextureChkF("Data\\Enemies\\BrownGoomba.png");
 
 	for(size_t i = 0; i < 3; i++)
 	{
 		std::string path = "Data\\Sounds\\Lakitu";
 		path += std::to_string(i+1) + ".wav";
-		LakituDrop[i] = SoundW(path);
+		LakituDrop[i] = LoadSoundChkF(path.c_str());
 	}
 
 	Rectangle coords[] =
@@ -111,34 +126,93 @@ void Resources::LoadAll()
 		{131,0,15,16}
 	};
 
-	Texture2DW hudFont = Texture2DW("Data\\UI\\Level_Font.png");
+	Texture2D hudFont = LoadTextureChkF("Data\\UI\\Level_Font.png");
 	
 	new (&LevelHudFont) TransparentFont(
-		static_cast<Texture2D>(hudFont),
+		hudFont,
 		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[]",
 		coords
 	);
 
 	new (&NumericLevelHudFont) TransparentFont(
-		static_cast<Texture2D>(hudFont),
+		hudFont,
 		"1234567890",
 		coords2
 	);
 	
-	TxtboxRectangle = Texture2DW("Data\\UI\\Textbox_Rectangle.png");
+	TxtboxRectangle = LoadTextureChkF("Data\\UI\\Textbox_Rectangle.png");
 
-	SliderBar = Texture2DW("Data\\UI\\SliderBar.png");
-	SliderBox = Texture2DW("Data\\UI\\SliderBox.png");
+	SliderBar = LoadTextureChkF("Data\\UI\\SliderBar.png");
+	SliderBox = LoadTextureChkF("Data\\UI\\SliderBox.png");
 
-	LeftBtn = Texture2DW("Data\\UI\\LeftBtn.png");
-	RightBtn = Texture2DW("Data\\UI\\RightBtn.png");
+	LeftBtn = LoadTextureChkF("Data\\UI\\LeftBtn.png");
+	RightBtn = LoadTextureChkF("Data\\UI\\RightBtn.png");
 
-	ClickSound1 = SoundW("Data\\Sounds\\ClickOption.wav");
+	ClickSound1 = LoadSoundChkF("Data\\Sounds\\ClickOption.mp3");
 
-	BtnGlint = Texture2DW("Data\\UI\\ButtonGlint.png");
+	BtnGlint = Resources::LoadTextureChkF("Data\\UI\\ButtonGlint.png");
 
-	CbTrue = Texture2DW("Data\\UI\\CheckboxT.png");
-	CbFalse = Texture2DW("Data\\UI\\CheckboxF.png");
+	CbTrue = Resources::LoadTextureChkF("Data\\UI\\CheckboxT.png");
+	CbFalse = Resources::LoadTextureChkF("Data\\UI\\CheckboxF.png");
 
-	Window = Texture2DW("Data\\UI\\Window_Default.png");
+	Window = LoadTextureChkF("Data\\UI\\Window_Default.png");
+}
+
+Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
+{
+	auto rawPath = path.string();
+
+	bool isWave = false;
+	size_t pathLen = strlen(rawPath.c_str());
+	if(strcmp(rawPath.c_str() + pathLen - 4, ".wav") == 0)
+		isWave = true;
+
+	if(isWave)
+	{
+		Wave w = LoadWave(rawPath.c_str());
+		if(w.data == nullptr) throw GameResourceLoadException(path);
+		return LoadSoundFromWave(w);
+	}
+
+	Sound s = LoadSound(rawPath.c_str());
+	if(s.stream.buffer == nullptr) throw GameResourceLoadException(path);
+	return s;
+}
+
+Music Resources::LoadMusicChkF(const std::filesystem::path& path)
+{
+	Music m = LoadMusicStream(path.string().c_str());
+	if(m.ctxData == nullptr) throw GameResourceLoadException(path);
+	return m;
+}
+
+void Resources::UnloadAll()
+{
+	UnloadTexture(GradientA);
+	UnloadTexture(GradientB);
+
+	UnloadTexture(Goomba1); //normal goomba
+	UnloadTexture(Goomba2); //gray goomba (immune to fire)
+
+	UnloadTexture(Window);
+	UnloadTexture(TxtboxRectangle);
+
+	for(size_t i = 0; i < 3; i++)
+	{
+		UnloadSound(LakituDrop[i]);
+	}
+
+	UnloadTexture(SliderBar);
+	UnloadTexture(SliderBox);
+	//font
+
+	UnloadTexture(LeftBtn);
+	UnloadTexture(RightBtn);
+
+	UnloadSound(ClickSound1);
+
+	UnloadTexture(BtnGlint);
+
+	UnloadTexture(CbTrue);
+	UnloadTexture(CbFalse);
 }

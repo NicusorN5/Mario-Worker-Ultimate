@@ -157,9 +157,6 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
-    <ClCompile Include="Raylib\MusicW.cpp" />
-    <ClCompile Include="Raylib\Texture2DW.cpp" />
-    <ClCompile Include="Raylib\SoundW.cpp" />
     <ClCompile Include="UI\Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Decoration.cpp" />
@@ -190,9 +187,6 @@
     <ClInclude Include="Background.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
-    <ClInclude Include="Raylib\MusicW.hpp" />
-    <ClInclude Include="Raylib\Texture2DW.hpp" />
-    <ClInclude Include="Raylib\SoundW.hpp" />
     <ClInclude Include="UI\Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />
     <ClInclude Include="Decoration.hpp" />

@@ -4,27 +4,13 @@
 #include "Scenes/LevelEditor.hpp"
 #include "Scenes/Intro.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
-	bool enableFullscreen = false;
-
-	for(int i = 1; i < argc; ++i)
-	{
-		if(strcmp(argv[i], "-fullscreen") == 0)
-		{
-			enableFullscreen = true;
-		}
-	}
-
 	//initialization
 	ProperlySetWorkingPath();
 	InitWindow(800, 600, "Mario Worker Ultimate");
 	InitAudioDevice();
-	
-	if(enableFullscreen)
-	{
-		ToggleFullscreen();
-	}
+	//ToggleFullscreen();
 
 	Game::Resolution::X = 800;
 	Game::Resolution::Y = 600;
@@ -104,5 +90,7 @@ int main(int argc, char **argv)
 
 	CloseAudioDevice();
 	CloseWindow();
+	//cleanup
+	Resources::UnloadAll();
 	return 0;
 }

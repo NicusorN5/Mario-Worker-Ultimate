@@ -16,7 +16,8 @@ class ShinyButton : public IButton
 	uint8_t _calculateGlintAlpha(int animTimer);
 public: 
 	ShinyButton() = default;
-	ShinyButton(Texture2D button, Texture2D shine, Rectangle coords, std::function<void()> whenClick);
+	ShinyButton(Texture2D button, Texture2D shine, Rectangle coords,std::function<void()> whenClick) : 
+		_button(button), _shine(shine), _coords(coords), _eClick(whenClick) { };
 
 	void Update(MouseState *ms,float dt) override final;
 	void Draw(float dt) override final;

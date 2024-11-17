@@ -2,23 +2,21 @@
 
 void MainMenu::LoadContent()
 {
-	_BackgroundImg = Texture2DW("Data\\UI\\MainMenuBackground.png");
-	_logo = Texture2DW("Data\\UI\\MarioWorkerUltimate.png");
+	_BackgroundImg = Resources::LoadTextureChkF("Data\\UI\\MainMenuBackground.png");
+	_logo = Resources::LoadTextureChkF("Data\\UI\\MarioWorkerUltimate.png");
 	//buttons
-	_btnEdit = Texture2DW("Data\\UI\\ButtonEdit.png");
-	_btnPlay = Texture2DW("Data\\UI\\ButtonPlay.png");
-	_glint = static_cast<Texture2D>(Resources::BtnGlint);
-	_btnQuit = Texture2DW("Data\\UI\\ButtonQuit.png");
+	_btnEdit = Resources::LoadTextureChkF("Data\\UI\\ButtonEdit.png");
+	_btnPlay = Resources::LoadTextureChkF("Data\\UI\\ButtonPlay.png");
+	_glint = Resources::BtnGlint;
+	_btnQuit = Resources::LoadTextureChkF("Data\\UI\\ButtonQuit.png");
 
 	//welcome screen animation things
-	_welcomeMarioWorker = SoundW("Data\\Sounds\\MarioWorker.wav");
-	_mainMenuMusic = MusicW("Data\\Music\\GameSelect.wav");
-	_mainMenuMario = Texture2DW("Data\\UI\\MarioTitleScreen.png");
-	_applause = SoundW("Data\\Sounds\\Applause.mp3");
+	_welcomeMarioWorker = Resources::LoadSoundChkF("Data\\Sounds\\marioworker.ogg");
+	_mainMenuMusic = Resources::LoadMusicChkF("Data\\Music\\GameSelect.wav");
+	_mainMenuMario = Resources::LoadTextureChkF("Data\\UI\\MarioTitleScreen.png");
+	_applause = Resources::LoadSoundChkF("Data\\Sounds\\applause.ogg");
 
-	_editButton = ShinyButton(
-		static_cast<Texture2D>(_btnEdit),
-		_glint, Game::ScreenRec({ 0.25f,0.3f,0.2f,0.2f }),
+	_editButton = ShinyButton(_btnEdit, _glint, Game::ScreenRec({ 0.25f,0.3f,0.2f,0.2f }), 
 		[this]() -> void
 		{
 			Game::CurrentGameSection = 2;
@@ -26,10 +24,7 @@ void MainMenu::LoadContent()
 		}
 	);
 
-	_playButton = ShinyButton(
-		static_cast<Texture2D>(_btnPlay),
-		_glint,
-		Game::ScreenRec({ 0.25f,0.55f,0.2f,0.2f }),
+	_playButton = ShinyButton(_btnPlay, _glint, Game::ScreenRec({ 0.25f,0.55f,0.2f,0.2f }),
 		[this]() -> void
 		{
 			FileDialogResult *r = ShowOpenFileDialog("Open a level...");
@@ -47,10 +42,7 @@ void MainMenu::LoadContent()
 		}
 	);
 
-	_quitButton = ShinyButton(
-		static_cast<Texture2D>(_btnQuit),
-		_glint,
-		Game::ScreenRec({ 0.75f, 0.55f,0.2f,0.2f }),
+	_quitButton = ShinyButton(_btnQuit, _glint, Game::ScreenRec({ 0.75f, 0.55f,0.2f,0.2f }),
 		[]() -> void
 		{
 			Game::GameRunning = false;
@@ -71,21 +63,21 @@ void MainMenu::Update(float dt,MouseState *ms,ControllerState *cs)
 	{
 		if(marioAnimTimer == 0.0f)
 		{
-			PlaySound(static_cast<Sound>(_welcomeMarioWorker));
+			PlaySound(_welcomeMarioWorker);
 		}
 		if(marioAnimTimer >= 3.0f && !_playedApplause)
 		{
 			_playedApplause = true;
-			PlaySound(static_cast<Sound>(_applause));
+			PlaySound(_applause);
 		}
 		if(marioAnimTimer >= 4.0f)
 		{
 			if(!playingMusic)
 			{
 				playingMusic = true;
-				PlayMusicStream(static_cast<Music>(_mainMenuMusic));
+				PlayMusicStream(_mainMenuMusic);
 			}
-			UpdateMusicStream(static_cast<Music>(_mainMenuMusic));
+			UpdateMusicStream(_mainMenuMusic);
 		}
 		marioAnimTimer += dt;
 	}
@@ -93,22 +85,8 @@ void MainMenu::Update(float dt,MouseState *ms,ControllerState *cs)
 
 void MainMenu::Draw(float dt)
 {
-	DrawTexturePro(
-		static_cast<Texture2D>(_BackgroundImg),
-		Rectangle(0,0,1024,1024),
-		Game::ScreenRec({ 0,0,1,1 }),
-		Vector2( 0,0 ),
-		0.0f,
-		WHITE
-	);
-	DrawTexturePro(
-		static_cast<Texture2D>(_logo),
-		Rectangle{ 0,0,603,161 },
-		Game::ScreenRec({0.1f,0.05f,0.7f,0.2f}),
-		Vector2{ 0,0 },
-		0.0f,
-		WHITE
-	);
+	DrawTexturePro(_BackgroundImg, {0,0,1024,1024}, Game::ScreenRec({ 0,0,1,1 }), { 0,0 }, 0.0f, WHITE);
+	DrawTexturePro(_logo, { 0,0,603,161 }, Game::ScreenRec({0.1f,0.05f,0.7f,0.2f}), { 0,0 }, 0.0f, WHITE);
 
 	_editButton.Draw(dt);
 	_playButton.Draw(dt);
@@ -117,12 +95,27 @@ void MainMenu::Draw(float dt)
 	if(!_disableAnimations)
 	{
 		DrawTexturePro(
-			static_cast<Texture2D>(_mainMenuMario),
-			{ 0,0,(float)_mainMenuMario.Width(),(float)_mainMenuMario.Height()},
+			_mainMenuMario,
+			{ 0,0,(float)_mainMenuMario.width,(float)_mainMenuMario.height },
 			Game::ScreenRec({ 0.01f,1.0f - (std::clamp(marioAnimTimer,0.0f,3.0f) / 5) ,0.2f,0.6f }),
 			{ 0,0 },
 			0.0f,
 			WHITE
 		);
 	}
+}
+
+MainMenu::~MainMenu()
+{
+	UnloadTexture(_BackgroundImg);
+	UnloadTexture(_logo);
+	UnloadTexture(_glint);
+
+	UnloadTexture(_btnPlay);
+	UnloadTexture(_btnEdit);
+	UnloadTexture(_btnQuit);
+
+	UnloadSound(_welcomeMarioWorker);
+	UnloadMusicStream(_mainMenuMusic);
+	UnloadTexture(_mainMenuMario);
 }

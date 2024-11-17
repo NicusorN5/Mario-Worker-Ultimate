@@ -9,16 +9,12 @@ int TransparentFont::_getIndexForGlyph(char c)
 	return -1;
 }
 
-TransparentFont::TransparentFont(
-	const Texture2D &texture,
-	const std::string &avalableLetters,
-	std::span<Rectangle> glyphsImageCoordinates
-):
+TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates):
 	_fontTexture(texture),
 	_letters(nullptr),
 	_maxLength(std::numeric_limits<int>::min())
 {
-	_numLetters = avalableLetters.length();
+	_numLetters = strlen(avalableLetters);
 
 	_letters = std::unique_ptr<FontLetter[]>(new FontLetter[_numLetters]);
 
@@ -34,7 +30,7 @@ TransparentFont::TransparentFont(
 TransparentFont::TransparentFont() :
 	_fontTexture{},
 	_numLetters(0),
-	_maxLength(0)
+	_maxLength(std::numeric_limits<int>::min())
 {
 };
 
@@ -94,4 +90,9 @@ float TransparentFont::MeasureHeight(const std::string& text, Vector2 scale)
 bool TransparentFont::SupportsChar(char c)
 {
 	return _getIndexForGlyph(c) != -1;
+}
+
+TransparentFont::~TransparentFont()
+{
+	UnloadTexture(_fontTexture);
 }

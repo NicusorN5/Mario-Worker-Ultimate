@@ -10,3 +10,6 @@ bevy = "0.14.2"
 
 [workspace]
 resolver = "2" # Important! wgpu/Bevy needs this!
+
+[profile.dev] 
+opt-level = 1

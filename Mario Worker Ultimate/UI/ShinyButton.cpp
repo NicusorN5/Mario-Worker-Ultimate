@@ -1,5 +1,14 @@
 #include "ShinyButton.hpp"
 
+ShinyButton::ShinyButton(Texture2D button, Texture2D shine, Rectangle coords, std::function<void()> whenClick) :
+	_button(button),
+	_shine(shine),
+	_coords(coords),
+	_eClick(whenClick)
+{
+
+}
+
 void ShinyButton::Update(MouseState* ms, float dt)
 {
 	_isHovered = ms->MouseInsideRectangle(_coords);

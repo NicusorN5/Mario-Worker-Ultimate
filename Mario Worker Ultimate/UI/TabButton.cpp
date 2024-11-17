@@ -1,5 +1,21 @@
 #include "TabButton.hpp"
 
+TabButton::TabButton(
+	const Texture2D& btn, 
+	const Texture2D& btnHovered,
+	const Rectangle& r, 
+	const Rectangle& rHovered,
+	std::function<void()> click
+) :
+	_tUnhovered(btn),
+	_tHovered(btnHovered), 
+	_rUnhovered(r),
+	_rHovered(rHovered),
+	_onClick(click),
+	_rAnim{0,0,_rHovered.width,0}
+{
+}
+
 void TabButton::Draw(float dt)
 {
 	if(movingAnim == 0)

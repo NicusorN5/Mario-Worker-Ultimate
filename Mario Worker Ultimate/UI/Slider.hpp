@@ -17,7 +17,15 @@ class Slider
 	Rectangle _coordsLim();
 public:
 	Slider();
-	Slider(Texture2D& bar, Texture2D& slider,const Rectangle &coords, int min, int max, int defaultValue,std::function<void(double,double)> valchange = nullptr);
+	Slider(
+		const Texture2D& bar,
+		const Texture2D& slider,
+		const Rectangle &coords,
+		int min,
+		int max,
+		int defaultValue,
+		std::function<void(double,double)> valchange = nullptr
+	);
 
 	void Draw(float dt);
 	void Update(const MouseState* ms, float dt);

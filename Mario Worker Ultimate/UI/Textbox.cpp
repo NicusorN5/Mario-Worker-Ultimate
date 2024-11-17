@@ -1,6 +1,14 @@
 #include "Textbox.hpp"
 
-Textbox::Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing) :
+Textbox::Textbox(
+	const Texture2D &texture,
+	TransparentFont &font,
+	const std::string& defaultText,
+	const Rectangle &r,
+	size_t maxLength,
+	size_t displayedChars,
+	float spacing
+) :
 	_textboxTexture(texture),
 	_textFont(font),
 	_text(defaultText),
@@ -34,7 +42,7 @@ void Textbox::Draw(float dt)
 	if(_textIndex > _displayedCharacters)
 		startLen = std::max(_textIndex - (int)_displayedCharacters, 0);
 
-	_textFont->Draw(_text, txtpos,scale,_spacing, startLen, _displayedCharacters);
+	_textFont.Draw(_text, txtpos,scale,_spacing, startLen, _displayedCharacters);
 
 	if(_focus)
 	{
@@ -44,8 +52,8 @@ void Textbox::Draw(float dt)
 		if(_textIndex > _displayedCharacters)
 			measuredText.erase(measuredText.begin() + _displayedCharacters, measuredText.end());
 
-		float tl = _textFont->MeasureLength(measuredText,scale,_spacing) * rezx;
-		float il = _textFont->MeasureLength("I", scale,_spacing) * rezx *  0.25f;
+		float tl = _textFont.MeasureLength(measuredText,scale,_spacing) * rezx;
+		float il = _textFont.MeasureLength("I", scale,_spacing) * rezx *  0.25f;
 		DrawRectangle((int)(_coords.x + tl),(int)_coords.y, (int)il, (int)(_coords.height), {255, 0, 0,128});
 	}
 }
@@ -60,7 +68,7 @@ void Textbox::Update(MouseState* ms, float dt)
 		for(int key = GetKeyPressed(); key > 0; key = GetKeyPressed())
 		{
 			key = key >= 32 && key <= 126 ? key : 0;
-			if(key && _textFont->SupportsChar((char)key))
+			if(key && _textFont.SupportsChar((char)key))
 			{
 				if(_text.length() <= (int)_maxLength)
 				{
@@ -99,7 +107,7 @@ void Textbox::DisableFocus()
 	_focus = false;
 }
 
-bool Textbox::IsFocused()
+bool Textbox::IsFocused() const noexcept
 {
 	return _focus;
 }

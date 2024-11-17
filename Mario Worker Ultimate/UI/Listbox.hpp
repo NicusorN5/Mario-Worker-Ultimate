@@ -8,7 +8,7 @@ class Listbox
 	Texture2D _sliderBox;
 	Texture2D _listboxBody;
 	Texture2D _glint;
-	TransparentFont* _font;
+	TransparentFont &_font;
 
 	Rectangle _coords;
 	Vector2 _scaling;
@@ -21,7 +21,17 @@ class Listbox
 	float _glintAnimTimer = 0;
 public:
 	Listbox() = default;
-	Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items,Vector2 textScaling, float spacing);
+	Listbox(
+		const Texture2D &sliderBar,
+		const Texture2D &sliderBox,
+		const Texture2D &listBoxTxd,
+		const Texture2D &glint,
+		TransparentFont &font,
+		const Rectangle &coords,
+		const std::vector<std::string> &initial_items,
+		const Vector2 &textScaling,
+		float spacing
+	);
 
 	std::vector<std::string> Items;
 

@@ -18,7 +18,7 @@ void Goomba::Update(float dt)
 
 void Goomba::Draw(float dt)
 {
-    Texture2D* goombaTexture = nullptr;
+    const Texture2D* goombaTexture = nullptr;
     switch(this->_variant)
     {
         case 0:

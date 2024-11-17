@@ -18,7 +18,7 @@ enum class LiquidType
 
 class Level
 {
-	Music LvlMusic;
+	MusicW LvlMusic;
 public:
 	/// <summary>
 	/// Loads a level from the specifed path.

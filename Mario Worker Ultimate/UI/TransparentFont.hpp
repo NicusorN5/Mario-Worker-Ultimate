@@ -1,5 +1,6 @@
 #pragma once
 #include "../Resolution.hpp"
+#include "../Raylib/Texture2DW.hpp"
 
 struct FontLetter
 {
@@ -19,7 +20,11 @@ class TransparentFont
 	int _maxLength;
 
 public:
-	TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates);
+	TransparentFont(
+		const Texture2D &texture,
+		const std::string &avalableLetters,
+		std::span<Rectangle> glyphsImageCoordinates
+	);
 	TransparentFont();
 
 	void Draw(const std::string& text,Vector2 position_norm,Vector2 scale,float spacing,size_t startIndex = 0,int maxLen = -1);
@@ -28,6 +33,4 @@ public:
 	float MeasureHeight(const std::string &text,Vector2 scale);
 	
 	bool SupportsChar(char c);
-
-	~TransparentFont();
 };

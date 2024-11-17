@@ -13,6 +13,7 @@
 #include <limits>
 #include <array>
 #include <filesystem>
+#include <span>
 
 template<typename N>
 concept SignedInteger = std::is_signed_v<N>;

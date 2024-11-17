@@ -1,6 +1,16 @@
 #include "Checkbox.hpp"
 
-Checkbox::Checkbox(Texture2D _cTxd, Texture2D _ucTxd,TransparentFont* f ,const std::string& text, bool defState, Vector2 txtpos,Vector2 boxScale,Vector2 scale,float spacing):
+Checkbox::Checkbox(
+	const Texture2D &_cTxd,
+	const Texture2D &_ucTxd, 
+	TransparentFont &f,
+	const std::string& text,
+	bool defState, 
+	const Vector2 &txtpos, 
+	const Vector2 &boxScale,
+	const Vector2 &scale,
+	float spacing
+):
 	_checkedTxd(_cTxd),
 	_uncheckedTxd(_ucTxd),
 	_font(f),
@@ -32,7 +42,7 @@ void Checkbox::Update(MouseState* ms, float dt)
 
 void Checkbox::Draw(float dt)
 {
-	_font->Draw(_text, _pos, _scale, _spacing);
+	_font.Draw(_text, _pos, _scale, _spacing);
 
 	Texture2D cTxd = Checked ? _checkedTxd : _uncheckedTxd;
 	DrawTexturePro(

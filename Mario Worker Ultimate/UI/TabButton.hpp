@@ -18,8 +18,14 @@ class TabButton : public IButton
 	float xOffset = 0;
 public:
 	TabButton() = default;
-	TabButton(Texture2D btn, Texture2D btnHovered, Rectangle r, Rectangle rHovered, std::function<void()> click) :
-		_tUnhovered(btn), _tHovered(btnHovered), _rUnhovered(r), _rHovered(rHovered), _onClick(click), _rAnim{0,0,_rHovered.width,0}{ };
+
+	TabButton(
+		const Texture2D& btn,
+		const Texture2D& btnHovered,
+		const Rectangle& r,
+		const Rectangle& rHovered,
+		std::function<void()> click
+	);
 
 	void Draw(float dt) override final;
 	void Update(MouseState* ms, float dt) override final;

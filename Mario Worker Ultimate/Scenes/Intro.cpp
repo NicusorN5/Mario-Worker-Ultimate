@@ -14,7 +14,7 @@ uint8_t Intro::introImageAlpta(float t)
 
 void Intro::LoadContent()
 {
-	_introImage = Resources::LoadTextureChkF("Data\\UI\\IntroImage.png");
+	_introImage = Texture2DW("Data\\UI\\IntroImage.png");
 }
 
 void Intro::Update(float dt, MouseState* ms, ControllerState* cs)
@@ -26,10 +26,12 @@ void Intro::Update(float dt, MouseState* ms, ControllerState* cs)
 
 void Intro::Draw(float dt)
 {
-	DrawTexturePro(_introImage, { 0,0,796,597 }, Game::ScreenRec({ 0,0,1,1 }), { 0,0 }, 0, { 255,255,255,introImageAlpta(_introTimer) });
-}
-
-Intro::~Intro()
-{
-	UnloadTexture(_introImage);
+	DrawTexturePro(
+		static_cast<Texture2D>(_introImage),
+		Rectangle{ 0,0,796,597 },
+		Game::ScreenRec({ 0,0,1,1 }),
+		Vector2{ 0,0 },
+		0,
+		Color{ 255,255,255,introImageAlpta(_introTimer) }
+	);
 }

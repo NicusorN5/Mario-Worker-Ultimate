@@ -7,7 +7,7 @@ class Checkbox
 	Texture2D _checkedTxd;
 	Texture2D _uncheckedTxd;
 
-	TransparentFont* _font;
+	TransparentFont &_font;
 	std::string _text;
 
 	Vector2 _pos;
@@ -16,7 +16,21 @@ class Checkbox
 	float _spacing;
 public:
 	Checkbox() = default;
-	Checkbox(Texture2D _cTxd, Texture2D _ucTxd, TransparentFont* f, const std::string& text, bool defState, Vector2 txtpos, Vector2 boxScale, Vector2 scale, float spacing);
+	Checkbox(Checkbox&&) noexcept = default;
+
+	Checkbox(
+		const Texture2D &_cTxd,
+		const Texture2D &_ucTxd,
+		TransparentFont &f,
+		const std::string& text,
+		bool defState,
+		const Vector2 &txtpos, 
+		const Vector2 &boxScale,
+		const Vector2 &scale,
+		float spacing
+	);
+
+	Checkbox& operator=(Checkbox&&) noexcept = default;
 
 	bool Checked;
 

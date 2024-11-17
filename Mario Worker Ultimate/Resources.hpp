@@ -4,24 +4,31 @@
 #include "GameResourceLoadException.hpp"
 #include <random>
 #include "UI/TransparentFont.hpp"
+#include "Raylib/Texture2DW.hpp"
+#include "Raylib\SoundW.hpp"
+#include "Raylib\MusicW.hpp"
 
 namespace Resources
 {
-	extern Texture2D GradientA;
-	extern Texture2D GradientB;
+	extern Texture2DW GradientA;
+	extern Texture2DW GradientB;
 
-	extern Texture2D Goomba1; //normal goomba
-	extern Texture2D Goomba2; //gray goomba (immune to fire)
+	extern Texture2DW Goomba1; //normal goomba
+	extern Texture2DW Goomba2; //gray goomba (immune to fire)
 
-	extern Texture2D Window;
-	extern Texture2D TxtboxRectangle;
+	extern Texture2DW Window;
+	extern Texture2DW TxtboxRectangle;
 
-	extern Sound LakituDrop[3];
+	extern std::array<SoundW,3> LakituDrop;
 
-	extern Texture2D SliderBar;
-	extern Texture2D SliderBox;
+	extern Texture2DW SliderBar;
+	extern Texture2DW SliderBox;
 	
-	void PlayRandomSound(Sound* sounds, size_t numSounds);
+	template<size_t N>
+	void PlayRandomSound(std::array<SoundW, N> sounds)
+	{
+		PlaySound(static_cast<Sound>(sounds[Random(0, N)]));
+	}
 
 	extern std::random_device rd;
 	extern std::mt19937 mt;
@@ -31,38 +38,15 @@ namespace Resources
 	extern TransparentFont LevelHudFont;
 	extern TransparentFont NumericLevelHudFont;
 
-	extern Texture2D LeftBtn;
-	extern Texture2D RightBtn;
+	extern Texture2DW LeftBtn;
+	extern Texture2DW RightBtn;
 
-	extern Sound ClickSound1;
+	extern SoundW ClickSound1;
 
-	extern Texture2D BtnGlint;
+	extern Texture2DW BtnGlint;
 
-	extern Texture2D CbTrue;
-	extern Texture2D CbFalse;
+	extern Texture2DW CbTrue;
+	extern Texture2DW CbFalse;
 
-	/// <summary>
-	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
-	/// </summary>
-	/// <param name="path">Path to image</param>
-	/// <returns>raylib Texture2D struct</returns>
-	Texture2D LoadTextureChkF(const std::filesystem::path& path);
-	/// <summary>
-	/// Loads all gameplay sprites (enemies, player sprite, maps, etc...)
-	/// </summary>
 	void LoadAll();
-	/// <summary>
-	/// Loads a sound and checks if it correctly loaded.
-	/// </summary>
-	/// <param name="path"></param>
-	/// <returns></returns>
-	Sound LoadSoundChkF(const std::filesystem::path& path);
-	/// <summary>
-	/// Loads a music stream then checks if it is successfully loaded..
-	/// </summary>
-	/// <param name="path"></param>
-	/// <returns></returns>
-	Music LoadMusicChkF(const std::filesystem::path& path);
-
-	void UnloadAll();
 }

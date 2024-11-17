@@ -39,17 +39,12 @@ Level::Level(const std::filesystem::path& path) :
 
 Music Level::GetMusic()
 {
-	return Music(LvlMusic); //create a copy of this->LvlMusic.
+	return static_cast<Music>(LvlMusic); //create a copy of this->LvlMusic.
 }
 
 void Level::SetMusic(const std::filesystem::path& newMusicPath)
 {
-	if(LvlMusic.ctxData != nullptr || LvlMusic.stream.buffer != nullptr)
-	{
-		UnloadMusicStream(LvlMusic);
-	}
-
-	LvlMusic = Resources::LoadMusicChkF(newMusicPath);
+	LvlMusic = MusicW(newMusicPath);
 }
 
 void Level::Save(const std::filesystem::path& path)

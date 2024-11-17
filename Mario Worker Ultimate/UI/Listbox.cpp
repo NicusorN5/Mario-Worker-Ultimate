@@ -1,6 +1,16 @@
 #include "Listbox.hpp"
 
-Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items, Vector2 textScaling, float spacing) :
+Listbox::Listbox(
+	const Texture2D &sliderBar,
+	const Texture2D &sliderBox,
+	const Texture2D &listBoxTxd,
+	const Texture2D &glint,
+	TransparentFont &font,
+	const Rectangle &coords,
+	const std::vector<std::string> &initial_items,
+	const Vector2 &textScaling,
+	float spacing
+) :
 	_sliderBar(sliderBar),
 	_sliderBox(sliderBox),
 	_listboxBody(listBoxTxd),
@@ -15,7 +25,7 @@ Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd,
 	float h = 0.0f;
 	for(int i = 0; i < initial_items.size(); i++)
 	{
-		h += (_font->MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
+		h += (_font.MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
 
 		if(h <= coords.height) _numElemBox += 1;
 		else break;
@@ -60,8 +70,8 @@ void Listbox::Update(MouseState* ms, float dt)
 		currentTxtBounds = {
 			_coords.x + Game::Resolution::X * 0.01f,
 			_coords.y + Game::Resolution::Y * 0.01f + h,
-			_font->MeasureLength(Items[i],_scaling,_spacing) * Game::Resolution::X,
-			_font->MeasureHeight(Items[i],_scaling) * Game::Resolution::Y
+			_font.MeasureLength(Items[i],_scaling,_spacing) * Game::Resolution::X,
+			_font.MeasureHeight(Items[i],_scaling) * Game::Resolution::Y
 		};
 
 		if(ms->MouseInsideRectangle(currentTxtBounds))
@@ -75,7 +85,7 @@ void Listbox::Update(MouseState* ms, float dt)
 			break; //Can multiple cursors even exist? If they do, why would anyone use them, especially while playing a game like this one?
 		}
 
-		h += (_font->MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
+		h += (_font.MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
 	}
 }
 
@@ -127,7 +137,7 @@ void Listbox::Draw(float dt)
 
 	for(int j = 0 ; i < Items.size() && j < _numElemBox; i++, j++)
 	{
-		_font->Draw(
+		_font.Draw(
 			Items[i],
 			{
 				(_coords.x) / Game::Resolution::X + 0.01f,
@@ -145,8 +155,8 @@ void Listbox::Draw(float dt)
 				{
 					_coords.x + Game::Resolution::X * 0.01f,
 					_coords.y + Game::Resolution::Y * 0.01f + h,
-					_font->MeasureLength(Items[i],_scaling,_spacing) * Game::Resolution::X,
-					_font->MeasureHeight(Items[i],_scaling) * Game::Resolution::Y
+					_font.MeasureLength(Items[i],_scaling,_spacing) * Game::Resolution::X,
+					_font.MeasureHeight(Items[i],_scaling) * Game::Resolution::Y
 				},
 				{ 0.0f,0.0f },
 				0.0f,
@@ -154,7 +164,7 @@ void Listbox::Draw(float dt)
 			);
 		}
 
-		h += (_font->MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
+		h += (_font.MeasureHeight(Items[i], _scaling) + 0.01f) * Game::Resolution::Y;
 	}
 
 	if(_idElemHov != -1) _glintAnimTimer += 200 * dt;

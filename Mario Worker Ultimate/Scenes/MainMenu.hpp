@@ -7,38 +7,43 @@
 
 class MainMenu : public IScene
 {
-	Texture2D _BackgroundImg{};
-	Texture2D _btnEdit{};
-	Texture2D _logo{};
-	Texture2D _btnPlay{};
-	Texture2D _btnQuit{};
+	Texture2DW _BackgroundImg;
+	Texture2DW _btnEdit;
+	Texture2DW _logo;
+	Texture2DW _btnPlay;
+	Texture2DW _btnQuit;
 
-	ShinyButton _editButton{};
-	ShinyButton _createMapButton{};
-	ShinyButton _settingsButton{};
+	ShinyButton _editButton;
+	ShinyButton _createMapButton;
+	ShinyButton _settingsButton;
 
-	ShinyButton _playButton{};
-	ShinyButton _playMapButton{};
-	ShinyButton _quitButton{};
+	ShinyButton _playButton;
+	ShinyButton _playMapButton;
+	ShinyButton _quitButton;
 
-	Texture2D _glint{};
+	Texture2D _glint;
 
 	float marioAnimTimer = 0.0f;
-	Sound _welcomeMarioWorker{};
-	Texture _mainMenuMario{};
+	SoundW _welcomeMarioWorker;
+	Texture2DW _mainMenuMario;
 
 	bool _playedApplause = false;
-	Sound _applause{};
+	SoundW _applause;
 
 	bool playingMusic = false;
-	Music _mainMenuMusic{};
+	MusicW _mainMenuMusic;
 
 	bool _disableAnimations = false;
 public:
+	MainMenu() = default;
+	MainMenu(const MainMenu&) = delete;
+	MainMenu(MainMenu&&) noexcept = default;
+
+	MainMenu& operator=(const MainMenu&) = delete;
+	MainMenu& operator=(MainMenu&&) = delete;
+
 	void LoadContent() final override;
 	void Update(float dt,MouseState *ms, ControllerState* cs) final override;
 	void Draw(float dt) final override;
-
-	~MainMenu();
 };
 

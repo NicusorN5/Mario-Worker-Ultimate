@@ -20,7 +20,15 @@ Slider::Slider():
 {
 }
 
-Slider::Slider(Texture2D& bar, Texture2D& slider,const Rectangle& coords, int min, int max, int defaultValue, std::function<void(double,double)> valchange) :
+Slider::Slider(
+	const Texture2D& bar,
+	const Texture2D& slider,
+	const Rectangle& coords, 
+	int min,
+	int max, 
+	int defaultValue,
+	std::function<void(double,double)> valchange)
+:
 	_min(min),
 	_max(max),
 	_value(defaultValue),

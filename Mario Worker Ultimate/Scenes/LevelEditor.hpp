@@ -13,10 +13,8 @@
 
 class LevelEditor : public IScene
 {
-	static LevelEditor* _singleton;
-
 	Vector2 cameraPosition = { 0,0 };
-	Texture2D _square{};
+	Texture2DW _square;
 
 	float levelPx = 0;
 	float levelPy = 0;
@@ -30,62 +28,62 @@ class LevelEditor : public IScene
 	int categoryId = 0;
 	int subCategoryId = 0;
 
-	Texture2D W_selectItem{};
-	Texture2D _tGlint{};
+	Texture2DW W_selectItem;
+	Texture2D _tGlint;
 
 	//main categories
-	TabButton _tabButtons[6]{};
-	Texture2D _tabTexturesHovered[6]{};
-	Texture2D _tabTexturesUnhovered[6]{};
+	std::array<TabButton, 6> _tabButtons;
+	std::array<Texture2DW, 6> _tabTexturesHovered;
+	std::array<Texture2DW, 6> _tabTexturesUnhovered;
 
 	//blocks types
-	Texture2D _blocksBtnTextures[5]{};
-	ShinyButton _blocksButtons[5]{};
+	std::array<Texture2DW, 5> _blocksBtnTextures;
+	std::array<ShinyButton, 5> _blocksButtons;
 
 	//enemies types
-	Texture2D _enemiesBtnTextures[6]{};
-	ShinyButton _enemiesButtons[6]{};
+	std::array<Texture2DW, 6> _enemiesBtnTextures;
+	std::array<ShinyButton, 6> _enemiesButtons;
 
 	//bonuses types
-	Texture2D _bonusesBtnTextures[2]{};
-	ShinyButton _bonusesButtons[2]{};
+	std::array<Texture2DW, 2> _bonusesBtnTextures;
+	std::array<ShinyButton, 2> _bonusesButtons;
 
 	//mark types
-	Texture2D _marksBtnTextures[5]{};
-	ShinyButton _marksButtons[5];
+	std::array<Texture2DW, 5> _marksBtnTextures;
+	std::array<ShinyButton, 5> _marksButtons;
 
 	//decoration types
-	Texture2D _sceneryBtnTextures[9]{};
-	ShinyButton _sceneryButtons[9];
+	std::array<Texture2DW, 9> _sceneryBtnTextures;
+	std::array<ShinyButton, 9> _sceneryButtons;
 
 	//level settings buttons
-	Texture2D _settingsBtnTextures[8]{};
-	ShinyButton _settingsButtons[8];
+	std::array<Texture2DW, 8> _settingsBtnTextures;
+	std::array<ShinyButton, 8> _settingsButtons;
 
 	//level editor stuff
-	Texture2D _squareMouse;
+	Texture2DW _squareMouse;
 	Vector2 _lastMousePos;
 
 	bool _progressSaved = true;
 	bool _showNotifNotSaved = false;
 
 	//settings -> level info
-	Textbox _levelNameTbs[2];
-	Textbox _authorTb;
-	Textbox _emailTb;
-	Textbox _websiteTb;
+	std::array<std::unique_ptr<Textbox>, 2> _levelNameTbs;
+	std::unique_ptr<Textbox> _authorTb;
+	std::unique_ptr<Textbox> _emailTb;
+	std::unique_ptr<Textbox> _websiteTb;
 
 	Slider _levelWidthSl;
 	Slider _levelHeightSl;
 
-	Textbox _levelTime;
+	std::unique_ptr<Textbox> _levelTime;
 
 	//settings -> settings
-	Texture2D _levelSettingsTxs[12];
-	ShinyButton _levelSettingsBtns[12];
+	std::array<Texture2DW, 12> _levelSettingsTxs;
+	std::array<ShinyButton, 12> _levelSettingsBtns;
 
 	int _currentSettingId = 0;
-	Slider _levelSettingsSliders[12];
+	std::array<Slider, 12> _levelSettingsSliders;
 
 	//settings -> backrounds
 	int _backgroundSettingId = 0;
@@ -93,13 +91,13 @@ class LevelEditor : public IScene
 	ShinyButton _bckLeftBtn;
 	ShinyButton _bckRightBtn;
 
-	Texture2D _backgroundsTxds[9];
-	ShinyButton _backgroundsBtns[9];
+	std::array<Texture2DW, 9> _backgroundsTxds;
+	std::array<ShinyButton, 9> _backgroundsBtns;
 
-	Texture2D _topColorTxd;
+	Texture2DW _topColorTxd;
 	ShinyButton _topColorBtn;
 
-	Texture2D _bottomColorTxd;
+	Texture2DW _bottomColorTxd;
 	ShinyButton _bottomColorBtn;
 
 	Slider _overlayGradientAlphaASli;
@@ -107,22 +105,22 @@ class LevelEditor : public IScene
 	ShinyButton _overlayGradientCol1Btn;
 	ShinyButton _overlayGradientCol2Btn;
 
-	Checkbox _repeatXCb;
-	Checkbox _repeatYCb;
-	Checkbox _lockToScreenCb;
-	Checkbox _lockToYCb;
-	Checkbox _fitScreenCb;
+	std::unique_ptr<Checkbox> _repeatXCb;
+	std::unique_ptr<Checkbox> _repeatYCb;
+	std::unique_ptr<Checkbox> _lockToScreenCb;
+	std::unique_ptr<Checkbox> _lockToYCb;
+	std::unique_ptr<Checkbox> _fitScreenCb;
 
 	//settings -> music
 	std::unique_ptr<Listbox> MusicList;
 
-	Texture2D _playMusicTxd;
+	Texture2DW _playMusicTxd;
 	ShinyButton _playMusicBtn;
 
-	Texture2D _pauseMusicTxd;
+	Texture2DW _pauseMusicTxd;
 	ShinyButton _pauseMusicBtn;
 
-	Texture2D _stopMusicTxd;
+	Texture2DW _stopMusicTxd;
 	ShinyButton _stopMusicBtn;
 	
 	Music _music{};
@@ -136,20 +134,22 @@ class LevelEditor : public IScene
 	int8_t _musicState = 0;
 
 	//settings -> fluids
-	Checkbox _waterCb;
-	Checkbox _lavaCb;
-	Checkbox _poisonCb;
+	std::unique_ptr<Checkbox> _waterCb;
+	std::unique_ptr<Checkbox> _lavaCb;
+	std::unique_ptr<Checkbox> _poisonCb;
 public:
-	LevelEditor();
+	LevelEditor() = default;
+
+	LevelEditor(const LevelEditor&) = delete;
+	LevelEditor(LevelEditor&&) noexcept = default;
+
+	LevelEditor& operator=(const LevelEditor&) = delete;
+	LevelEditor& operator=(LevelEditor&&) noexcept = default;
 
 	void LoadContent() final override;
 	void Update(float dt, MouseState* ms, ControllerState* cs) final override;
 	void Draw(float dt) final override;
 
-	static LevelEditor* GetSingleton();
-
 	void SetItemCategory(int id);
 	void SetSubCategory(int id);
-
-	~LevelEditor();
 };

@@ -1,9 +1,5 @@
 #pragma once
-#include "IScene.hpp"
-#include "../Game.hpp"
-#include "../Libs.hpp"
-#include "../Resources.hpp"
-#include "../Resolution.hpp"
+#include "GameBase.hpp"
 #include "../UI/TabButton.hpp"
 #include "../UI/ShinyButton.hpp"
 #include "../UI/Textbox.hpp"
@@ -11,18 +7,14 @@
 #include "../UI/Checkbox.hpp"
 #include "../UI/Listbox.hpp"
 
-class LevelEditor : public IScene
+class LevelEditor : public GameBase
 {
 	static LevelEditor* _singleton;
 
-	Vector2 cameraPosition = { 0,0 };
 	Texture2D _square{};
 
 	float levelPx = 0;
 	float levelPy = 0;
-
-	Rectangle calculateWorldTransformation(Rectangle normScreen);
-	Rectangle calculateTileTransformation(Rectangle normScreen);
 
 	bool _showElements = false;
 	bool _previousSpacePress = false;

@@ -2,20 +2,6 @@
 
 LevelEditor* LevelEditor::_singleton;
 
-Rectangle LevelEditor::calculateWorldTransformation(Rectangle normScreen)
-{
-	return { normScreen.x - cameraPosition.x,
-		normScreen.y - cameraPosition.y,
-		normScreen.width, normScreen.height };
-}
-
-Rectangle LevelEditor::calculateTileTransformation(Rectangle normScreen)
-{
-	return { normScreen.x - ((int)cameraPosition.x % (Game::Resolution::X)),
-		normScreen.y - ((int)cameraPosition.y % (Game::Resolution::Y)),
-		normScreen.width + normScreen.x / 20 , normScreen.height + normScreen.x / 15 };
-}
-
 LevelEditor::LevelEditor()
 {
 	LevelEditor::_singleton = this;
@@ -797,6 +783,8 @@ void LevelEditor::LoadContent()
 
 void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 {
+	GameBase::Update(dt, ms, cs);
+
 	if(IsKeyReleased(KEY_ESCAPE))
 	{
 		if(_progressSaved) Game::CurrentGameSection = 1;
@@ -999,11 +987,11 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 	if(IsKeyDown(KEY_KP_ADD))
 	{
-		Game::CurrentLevel.LiquidLevel += 10 * dt;
+		Game::CurrentLevel.LiquidLevel -= 50 * dt;
 	}
-	else if(IsKeyDown(KEY_MINUS))
+	else if(IsKeyDown(KEY_KP_SUBTRACT))
 	{
-		Game::CurrentLevel.LiquidLevel -= 10 * dt;
+		Game::CurrentLevel.LiquidLevel += 50 * dt;
 	}
 
 	_previousSpacePress = cs->Space;
@@ -1012,7 +1000,7 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 void LevelEditor::Draw(float dt)
 {
-	Game::CurrentLevel.LvlBackground->Draw(cameraPosition, Game::CurrentLevel.Size);
+	GameBase::Draw(dt);
 	
 	DrawTexturePro(
 		_square,
@@ -1035,15 +1023,9 @@ void LevelEditor::Draw(float dt)
 		WHITE
 	);
 	//debug goomba
-	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateWorldTransformation(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
+	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateViewTransform(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
 
 	//TODO: draw level stuff
-	Resources::LevelHudFont.Draw(
-		"CamPos " + std::to_string(cameraPosition.x) + " " + std::to_string(cameraPosition.y),
-		{ 0.01f,0.97f }, 
-		{ 0.025f,0.025f },
-		0.001f
-	);
 
 	if(_showElements)
 	{
@@ -1264,9 +1246,12 @@ void LevelEditor::Draw(float dt)
 	}
 	else
 	{
-		//draw water
+		GameBase::DrawWater();
 
-		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateWorldTransformation(Game::ScreenRec(
+		Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.4f}, {0.025f,0.025f}, 0.001f);
+
+		//draw mouse selected block
+		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateViewTransform(Game::ScreenRec(
 			{
 				((_lastMousePos.x + cameraPosition.x) - std::fmod(_lastMousePos.x + cameraPosition.x,Game::Resolution::FltX()/20)) / Game::Resolution::FltX() ,
 				((_lastMousePos.y + cameraPosition.y) - std::fmod(_lastMousePos.y + cameraPosition.y,Game::Resolution::FltY()/15)) / Game::Resolution::FltY() ,
@@ -1274,6 +1259,13 @@ void LevelEditor::Draw(float dt)
 				1 / 15.0f 
 			}
 		)), { 0.0f,0.0f }, 0.0f, WHITE);
+
+		Resources::LevelHudFont.Draw(
+			"CamPos " + std::to_string(cameraPosition.x) + " " + std::to_string(cameraPosition.y),
+			{ 0.01f,0.97f },
+			{ 0.025f,0.025f },
+			0.001f
+		);
 	}
 }
 

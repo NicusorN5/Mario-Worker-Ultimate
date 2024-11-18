@@ -41,6 +41,9 @@ namespace Resources
 	extern Texture2D CbTrue;
 	extern Texture2D CbFalse;
 
+	extern Texture2D Water;
+	extern Color WaterColor;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

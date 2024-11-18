@@ -103,7 +103,6 @@ void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 		}
 	}
 	DrawTexturePro(_BackgroundTexture, source, BackgroundRect, { 0,0 }, 0.0f, WHITE);
-
 	
 	if(OverlayAlphaA > 0)
 	{

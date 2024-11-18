@@ -30,6 +30,9 @@ Texture2D Resources::BtnGlint;
 Texture2D Resources::CbTrue;
 Texture2D Resources::CbFalse;
 
+Texture2D Resources::Water;
+Color Resources::WaterColor(90, 140, 231, 128);
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, static_cast<int>(numSounds))]);
@@ -156,6 +159,8 @@ void Resources::LoadAll()
 	CbFalse = Resources::LoadTextureChkF("Data\\UI\\CheckboxF.png");
 
 	Window = LoadTextureChkF("Data\\UI\\Window_Default.png");
+
+	Water = LoadTextureChkF("Data\\World\\Water.png");
 }
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
@@ -212,4 +217,6 @@ void Resources::UnloadAll()
 
 	UnloadTexture(CbTrue);
 	UnloadTexture(CbFalse);
+
+	UnloadTexture(Water);
 }

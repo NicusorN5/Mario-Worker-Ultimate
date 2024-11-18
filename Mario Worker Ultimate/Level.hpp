@@ -28,7 +28,7 @@ public:
 	bool IsValid = false;
 	int Time = 360;
 	float Gravity = 1.0f;
-	float LiquidLevel = -5.0f;
+	float LiquidLevel = 200.0f;
 
 	unsigned EnemySpeed;
 	unsigned BillBlasterROF;
@@ -50,7 +50,7 @@ public:
 	std::vector<Bonus> Bonuses;
 	std::unique_ptr<Background> LvlBackground;
 
-	LiquidType Liquid;
+	LiquidType Liquid = LiquidType::Water;
 
 	Music GetMusic();
 	void SetMusic(const std::filesystem::path& newMusicPath);

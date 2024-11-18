@@ -51,7 +51,7 @@ class LevelEditor : public IScene
 	ShinyButton _bonusesButtons[2]{};
 
 	//mark types
-	Texture2D _marksBtnTextures[5]{};
+	Texture2D _marksBtnTextures[4]{}; // !! - We're using a previous sub-category Button sprite! Namely sb_Pipes.
 	ShinyButton _marksButtons[5];
 
 	//decoration types

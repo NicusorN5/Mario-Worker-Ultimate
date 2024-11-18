@@ -183,10 +183,9 @@ void LevelEditor::LoadContent()
 	_marksBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Marks.png");
 	_marksButtons[2] = ShinyButton(_marksBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
-	_marksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Pipes.png");
-	_marksButtons[3] = ShinyButton(_marksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
+	_marksButtons[3] = ShinyButton(_blocksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
-	_marksBtnTextures[4] = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
+	_marksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
 	_marksButtons[4] = ShinyButton(_marksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
 	//scenery
@@ -230,7 +229,7 @@ void LevelEditor::LoadContent()
 	_settingsBtnTextures[1] = Resources::LoadTextureChkF("Data\\Editor\\sb_Settings.png");
 	_settingsButtons[1] = ShinyButton(_settingsBtnTextures[1], _tGlint, Game::ScreenRec({ 0.095f,0.225f,0.15f,0.075f }), ssc1);
 
-	_settingsBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Backgrounds.png");
+	_settingsBtnTextures[2] = Resources::LoadTextureChkF("Data\\Editor\\sb_Background.png");
 	_settingsButtons[2] = ShinyButton(_settingsBtnTextures[2], _tGlint, Game::ScreenRec({ 0.095f,0.302f,0.15f,0.075f }), ssc2);
 
 	_settingsBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Music.png");
@@ -662,6 +661,7 @@ void LevelEditor::LoadContent()
 		{
 			"Overworld",
 			"Cave",
+			"Cave 2",
 			"Rockland",
 			"Lava castle",
 			"Map 1",
@@ -673,7 +673,7 @@ void LevelEditor::LoadContent()
 			"Castle 2",
 			"Map 3",
 			"Yoshi 1",
-			"Rockland 2",
+			"Yky",
 			"Fastrun 1",
 			"Fastrun 2",
 			"Yoshi 2",
@@ -686,31 +686,32 @@ void LevelEditor::LoadContent()
 	));
 	MusicList->OnItemClick = [this](const std::string& music, int index)
 	{
-		const char* MusicPaths[20] =
+		const char* MusicPaths[21] =
 		{
-			"Data\\Music\\Overworld.mp3",
-			"Data\\Music\\Cave.mp3",
-			"Data\\Music\\Rockland.mp3",
-			"Data\\Music\\Castle.mp3",
-			"Data\\Music\\Map1.mp3",
-			"Data\\Music\\Underwater.mp3",
-			"Data\\Music\\Castle2.mp3",
-			"Data\\Music\\Map2.mp3",
-			"Data\\Music\\Starland.mp3",
-			"Data\\Music\\Yoshi3.mp3",
-			"Data\\Music\\GhostHouse.mp3",
-			"Data\\Music\\Map3.mp3",
-			"Data\\Music\\Yoshi1.mp3",
-			"Data\\Music\\Rockland.mp3",
-			"Data\\Music\\Fastrun1.mp3",
-			"Data\\Music\\Fastrun2.mp3",
-			"Data\\Music\\Yoshi2.mp3",
-			"Data\\Music\\Apoplexy.mp3",
-			"Data\\Music\\SelectSave.mp3",
+			"Data\\Music\\Overworld.ogg",
+			"Data\\Music\\Cave.ogg",
+			"Data\\Music\\Cave2.ogg",
+			"Data\\Music\\Rockland.ogg",
+			"Data\\Music\\Castle.ogg",
+			"Data\\Music\\Map1.ogg",
+			"Data\\Music\\Underwater.ogg",
+			"Data\\Music\\Castle2.ogg",
+			"Data\\Music\\Map2.ogg",
+			"Data\\Music\\Starland.ogg",
+			"Data\\Music\\Yoshi3.ogg",
+			"Data\\Music\\GhostHouse.ogg",
+			"Data\\Music\\Map3.ogg",
+			"Data\\Music\\Yoshi1.ogg",
+			"Data\\Music\\Yky.ogg",
+			"Data\\Music\\Fastrun1.ogg",
+			"Data\\Music\\Fastrun2.ogg",
+			"Data\\Music\\Yoshi2.ogg",
+			"Data\\Music\\Apoplexy.ogg",
+			"Data\\Music\\SelectSave.ogg",
 			"not used",
 		};
 
-		if(index != 19) Game::CurrentLevel.SetMusic(MusicPaths[index]);
+		if(index != 20) Game::CurrentLevel.SetMusic(MusicPaths[index]);
 		else
 		{
 			FileDialogResult *r = ShowOpenFileDialog("Open a song file...");
@@ -1301,7 +1302,7 @@ LevelEditor::~LevelEditor()
 	for(size_t i = 0; i < 5; i++) UnloadTexture(_blocksBtnTextures[i]);
 	for(size_t i = 0; i < 6; i++) UnloadTexture(_enemiesBtnTextures[i]);
 	for(size_t i = 0; i < 2; i++) UnloadTexture(_bonusesBtnTextures[i]);
-	for(size_t i = 0; i < 5; i++) UnloadTexture(_marksBtnTextures[i]);
+	for(size_t i = 0; i < 4; i++) UnloadTexture(_marksBtnTextures[i]);
 	for(size_t i = 0; i < 9; i++) UnloadTexture(_sceneryBtnTextures[i]);
 	for(size_t i = 0; i < 8; i++) UnloadTexture(_settingsBtnTextures[i]);
 

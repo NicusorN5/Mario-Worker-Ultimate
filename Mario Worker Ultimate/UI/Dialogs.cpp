@@ -95,6 +95,7 @@ COLORREF customColors[16];
 
 ColorDialogResult::ColorDialogResult(unsigned char defR,unsigned char defG,unsigned char defB)
 {
+#ifdef _WIN32
 	CHOOSECOLORA ccd{};
 	ccd.lStructSize = sizeof(CHOOSECOLORA);
 	ccd.rgbResult = RGB(defR, defG, defB);
@@ -114,16 +115,5 @@ ColorDialogResult::ColorDialogResult(unsigned char defR,unsigned char defG,unsig
 		this->Result = (GetLastError() != 0 ? GetLastError() : -1);
 		this->ResultColor = { defR, defG, defB };
 	}
-}
-
-void PrintFullPath(const char* path)
-{
-	char buff[256]{};
-	GetFullPathNameA(path, 256, buff, nullptr);
-
-	std::string str("");
-	str += buff;
-	str += "\r\n";
-
-	OutputDebugStringA(str.c_str());
+#endif
 }

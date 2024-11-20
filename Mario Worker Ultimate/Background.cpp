@@ -41,7 +41,7 @@ Background::Background(Color bottom, Color top) :
 
 void Background::Draw(Vector2 camCoords, Vector2 levelSize)
 {
- 	Rectangle screenRect = Game::ScreenRec({ 0,0,1,1 });
+  	Rectangle screenRect = Game::ScreenRec({ 0,0,1,1 });
 
 	Rectangle BackgroundRect = screenRect;
 

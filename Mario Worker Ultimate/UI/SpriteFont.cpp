@@ -1,6 +1,6 @@
-#include "TransparentFont.hpp"
+#include "SpriteFont.hpp"
 
-int TransparentFont::_getIndexForGlyph(char c)
+int SpriteFont::_getIndexForGlyph(char c) const noexcept
 {
 	for(size_t i = 0; i < _numLetters; i++)
 	{
@@ -9,7 +9,7 @@ int TransparentFont::_getIndexForGlyph(char c)
 	return -1;
 }
 
-TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates):
+SpriteFont::SpriteFont(Texture2D texture, const char* avalableLetters, Rectangle* glyphsImageCoordinates):
 	_fontTexture(texture),
 	_letters(nullptr),
 	_maxLength(std::numeric_limits<int>::min())
@@ -27,14 +27,14 @@ TransparentFont::TransparentFont(Texture2D texture, const char* avalableLetters,
 	}
 }
 
-TransparentFont::TransparentFont() :
+SpriteFont::SpriteFont() :
 	_fontTexture{},
 	_numLetters(0),
 	_maxLength(std::numeric_limits<int>::min())
 {
 };
 
-void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vector2 scale,float spacing,size_t maxIndex, int maxLen)
+void SpriteFont::Draw(const std::string& text, Vector2 position_norm, Vector2 scale,float spacing,size_t maxIndex, int maxLen)
 {
 	std::string text_l(text);
 	if(maxLen == -1) maxLen = text_l.length();
@@ -55,7 +55,7 @@ void TransparentFont::Draw(const std::string& text, Vector2 position_norm, Vecto
 	}
 }
 
-float TransparentFont::MeasureLength(const std::string& text,Vector2 scale,float spacing)
+float SpriteFont::MeasureLength(const std::string& text,Vector2 scale,float spacing)
 {
 	std::string txtc(text);
 	std::transform(txtc.begin(), txtc.end(), txtc.begin(), [](char c) { return std::toupper(c); });
@@ -71,7 +71,7 @@ float TransparentFont::MeasureLength(const std::string& text,Vector2 scale,float
 	return c;
 }
 
-float TransparentFont::MeasureHeight(const std::string& text, Vector2 scale)
+float SpriteFont::MeasureHeight(const std::string& text, Vector2 scale)
 {
 	std::string txtc(text);
 	std::transform(txtc.begin(), txtc.end(), txtc.begin(), [](char c) { return std::toupper(c); });
@@ -87,12 +87,12 @@ float TransparentFont::MeasureHeight(const std::string& text, Vector2 scale)
 	return h;
 }
 
-bool TransparentFont::SupportsChar(char c)
+bool SpriteFont::SupportsChar(char c) const noexcept
 {
 	return _getIndexForGlyph(c) != -1;
 }
 
-TransparentFont::~TransparentFont()
+SpriteFont::~SpriteFont()
 {
 	UnloadTexture(_fontTexture);
 }

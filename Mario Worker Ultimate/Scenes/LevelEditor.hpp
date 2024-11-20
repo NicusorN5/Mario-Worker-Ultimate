@@ -11,8 +11,6 @@ constexpr float LiquidEditorRaiseSpeed = 10.0f;
 
 class LevelEditor : public GameBase
 {
-	static LevelEditor* _singleton;
-
 	Texture2D _square{};
 
 	float levelPx = 0;
@@ -22,7 +20,6 @@ class LevelEditor : public GameBase
 	bool _previousSpacePress = false;
 
 	int categoryId = 0;
-	int subCategoryId = 0;
 
 	Texture2D W_selectItem{};
 	Texture2D _tGlint{};
@@ -35,26 +32,32 @@ class LevelEditor : public GameBase
 	//blocks types
 	Texture2D _blocksBtnTextures[5]{};
 	ShinyButton _blocksButtons[5]{};
+	int _blocksPageId = 0;
 
 	//enemies types
 	Texture2D _enemiesBtnTextures[6]{};
 	ShinyButton _enemiesButtons[6]{};
+	int _enemiesPageId = 0;
 
 	//bonuses types
 	Texture2D _bonusesBtnTextures[2]{};
 	ShinyButton _bonusesButtons[2]{};
+	int _bonusesPageId = 0;
 
 	//mark types
 	Texture2D _marksBtnTextures[4]{}; // !! - We're using a previous sub-category Button sprite! Namely sb_Pipes.
 	ShinyButton _marksButtons[5];
+	int _marksPageId = 0;
 
 	//decoration types
 	Texture2D _sceneryBtnTextures[9]{};
 	ShinyButton _sceneryButtons[9];
+	int _sceneryPageId = 0;
 
 	//level settings buttons
 	Texture2D _settingsBtnTextures[8]{};
 	ShinyButton _settingsButtons[8];
+	int _settingsPageId = 0;
 
 	//level editor stuff
 	Texture2D _squareMouse;
@@ -75,11 +78,17 @@ class LevelEditor : public GameBase
 	Textbox _levelTime;
 
 	//settings -> settings
-	Texture2D _levelSettingsTxs[12];
-	ShinyButton _levelSettingsBtns[12];
+	std::array<Texture2D, 13> _levelSettingsTxs;
+	std::array<ShinyButton, 13> _levelSettingsBtns;
 
 	int _currentSettingId = 0;
-	Slider _levelSettingsSliders[12];
+	int _settingsSubPageId = 0;
+	std::array<Slider, 13> _levelSettingsSliders;
+
+	ShinyButton _settingsLeftBtn;
+	ShinyButton _settingsRightBtn;
+
+	std::array<Checkbox,2> _levelToggles;
 
 	//settings -> backrounds
 	int _backgroundSettingId = 0;
@@ -133,17 +142,14 @@ class LevelEditor : public GameBase
 	Checkbox _waterCb;
 	Checkbox _lavaCb;
 	Checkbox _poisonCb;
+
+	void _setItemCategory(int id);
 public:
-	LevelEditor();
+	LevelEditor() = default;
 
 	void LoadContent() final override;
 	void Update(float dt, MouseState* ms, ControllerState* cs) final override;
 	void Draw(float dt) final override;
-
-	static LevelEditor* GetSingleton();
-
-	void SetItemCategory(int id);
-	void SetSubCategory(int id);
 
 	~LevelEditor();
 };

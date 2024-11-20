@@ -16,8 +16,8 @@ Sound Resources::LakituDrop[3]{};
 std::random_device Resources::rd;
 std::mt19937 Resources::mt;
 
-TransparentFont Resources::LevelHudFont;
-TransparentFont Resources::NumericLevelHudFont;
+SpriteFont Resources::LevelHudFont;
+SpriteFont Resources::NumericLevelHudFont;
 Texture2D Resources::TxtboxRectangle;
 
 Texture2D Resources::LeftBtn;
@@ -31,13 +31,15 @@ Texture2D Resources::CbTrue;
 Texture2D Resources::CbFalse;
 
 Texture2D Resources::Water;
-Color Resources::WaterColor(90, 140, 231, 255);
+Color Resources::WaterColor(90, 140, 231, 128);
 
 Texture2D Resources::Lava;
 Color Resources::LavaColor(123, 0, 0, 255);
 
 Texture2D Resources::Poison;
-Color Resources::PoisonColor(123, 0, 0, 255);
+Color Resources::PoisonColor(154, 0, 230, 128);
+
+Font Resources::KeystrokesMT;
 
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
@@ -52,8 +54,6 @@ int Resources::Random(int min, int max)
 Texture2D Resources::LoadTextureChkF(const std::filesystem::path& path)
 {
 	auto p = path.string();
-
-	PrintFullPath(p.c_str());
 	Texture2D t = LoadTexture(p.c_str());
 	if(t.id == 0) throw GameResourceLoadException(path);
 	return t;
@@ -137,13 +137,13 @@ void Resources::LoadAll()
 
 	Texture2D hudFont = LoadTextureChkF("Data\\UI\\Level_Font.png");
 	
-	new (&LevelHudFont) TransparentFont(
+	new (&LevelHudFont) SpriteFont(
 		hudFont,
 		" 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.-&[]",
 		coords
 	);
 
-	new (&NumericLevelHudFont) TransparentFont(
+	new (&NumericLevelHudFont) SpriteFont(
 		hudFont,
 		"1234567890",
 		coords2
@@ -168,6 +168,10 @@ void Resources::LoadAll()
 
 	Water = LoadTextureChkF("Data\\World\\Water.png");
 	Lava = LoadTextureChkF("Data\\\Enemies\\Lava.png");
+	Poison = LoadTextureChkF("Data\\World\\Poison.png");
+
+	KeystrokesMT = LoadFont("Data\\Fonts\\KeystrokesMTa.ttf");
+	if(KeystrokesMT.texture.id == 0) throw new GameResourceLoadException("Data\\Fonts\\KeystrokesMT.ttf");
 }
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
@@ -228,4 +232,6 @@ void Resources::UnloadAll()
 	UnloadTexture(Water);
 	UnloadTexture(Lava);
 	UnloadTexture(Poison);
+
+	UnloadFont(KeystrokesMT);
 }

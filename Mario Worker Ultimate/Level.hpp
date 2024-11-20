@@ -42,6 +42,7 @@ public:
 	unsigned PlatformSpeed;
 	unsigned FishDensity;
 	unsigned BroHammerAttackRate;
+	unsigned AutoscrollSpeed = 0;
 
 	Vector2 Size = { 60,40 };
 

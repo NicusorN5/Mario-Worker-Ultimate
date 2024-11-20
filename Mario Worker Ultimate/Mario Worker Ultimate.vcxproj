@@ -31,6 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,12 +39,14 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +54,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -157,6 +161,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="Enemies\IBoss.cpp" />
     <ClCompile Include="Scenes\GameBase.cpp" />
     <ClCompile Include="UI\Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
@@ -182,12 +187,13 @@
     <ClCompile Include="UI\Slider.cpp" />
     <ClCompile Include="UI\TabButton.cpp" />
     <ClCompile Include="UI\Textbox.cpp" />
-    <ClCompile Include="UI\TransparentFont.cpp" />
+    <ClCompile Include="UI\SpriteFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
+    <ClInclude Include="Enemies\IBoss.hpp" />
     <ClInclude Include="Scenes\GameBase.hpp" />
     <ClInclude Include="UI\Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />
@@ -216,7 +222,7 @@
     <ClInclude Include="UI\Slider.hpp" />
     <ClInclude Include="UI\TabButton.hpp" />
     <ClInclude Include="UI\Textbox.hpp" />
-    <ClInclude Include="UI\TransparentFont.hpp" />
+    <ClInclude Include="UI\SpriteFont.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

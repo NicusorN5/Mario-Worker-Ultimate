@@ -3,7 +3,7 @@
 #include "UI/Dialogs.hpp"
 #include "GameResourceLoadException.hpp"
 #include <random>
-#include "UI/TransparentFont.hpp"
+#include "UI/SpriteFont.hpp"
 
 namespace Resources
 {
@@ -28,8 +28,8 @@ namespace Resources
 
 	int Random(int min, int max);
 
-	extern TransparentFont LevelHudFont;
-	extern TransparentFont NumericLevelHudFont;
+	extern SpriteFont LevelHudFont;
+	extern SpriteFont NumericLevelHudFont;
 
 	extern Texture2D LeftBtn;
 	extern Texture2D RightBtn;
@@ -48,7 +48,9 @@ namespace Resources
 	extern Color LavaColor;
 
 	extern Texture2D Poison;
-	extern Color PoisionColor;
+	extern Color PoisonColor;
+
+	extern Font KeystrokesMT;
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

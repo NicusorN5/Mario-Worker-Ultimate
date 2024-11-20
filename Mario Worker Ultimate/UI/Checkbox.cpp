@@ -1,6 +1,6 @@
 #include "Checkbox.hpp"
 
-Checkbox::Checkbox(Texture2D _cTxd, Texture2D _ucTxd,TransparentFont* f ,const std::string& text, bool defState, Vector2 txtpos,Vector2 boxScale,Vector2 scale,float spacing):
+Checkbox::Checkbox(Texture2D _cTxd, Texture2D _ucTxd,SpriteFont* f ,const std::string& text, bool defState, Vector2 txtpos,Vector2 boxScale,Vector2 scale,float spacing):
 	_checkedTxd(_cTxd),
 	_uncheckedTxd(_ucTxd),
 	_font(f),

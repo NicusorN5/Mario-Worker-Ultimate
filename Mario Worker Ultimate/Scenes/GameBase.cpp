@@ -30,6 +30,7 @@ void GameBase::DrawLiquid()
 	Rectangle currentWaterWorldTile;
 	Rectangle liquidAnimRectangle;
 	Color liquidColor;
+	float alpha = 255;
 
 	switch(Game::CurrentLevel.Liquid)
 	{
@@ -42,6 +43,7 @@ void GameBase::DrawLiquid()
 				16
 			};
 			liquidColor = Resources::WaterColor;
+			alpha = 128;
 			break;
 		case LiquidType::Lava:
 			liquid = Resources::Lava;
@@ -62,6 +64,7 @@ void GameBase::DrawLiquid()
 			};
 			liquid = Resources::Poison;
 			liquidColor = Resources::PoisonColor;
+			alpha = 128;
 			break;
 		default:
 			return;
@@ -80,8 +83,6 @@ void GameBase::DrawLiquid()
 		0.0f,
 		Color(255,255,255, 255)
 	);
-
-
 
 	DrawRectangle(
 		0,

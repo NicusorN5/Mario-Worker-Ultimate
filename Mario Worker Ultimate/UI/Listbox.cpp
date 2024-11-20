@@ -1,6 +1,6 @@
 #include "Listbox.hpp"
 
-Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items, Vector2 textScaling, float spacing) :
+Listbox::Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, SpriteFont* font, Rectangle coords, const std::vector<std::string> &initial_items, Vector2 textScaling, float spacing) :
 	_sliderBar(sliderBar),
 	_sliderBox(sliderBox),
 	_listboxBody(listBoxTxd),

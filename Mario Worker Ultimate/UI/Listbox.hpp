@@ -1,5 +1,5 @@
 #pragma once
-#include "TransparentFont.hpp"
+#include "SpriteFont.hpp"
 #include "../MouseState.hpp"
 
 class Listbox
@@ -8,7 +8,7 @@ class Listbox
 	Texture2D _sliderBox;
 	Texture2D _listboxBody;
 	Texture2D _glint;
-	TransparentFont* _font;
+	SpriteFont* _font;
 
 	Rectangle _coords;
 	Vector2 _scaling;
@@ -21,7 +21,7 @@ class Listbox
 	float _glintAnimTimer = 0;
 public:
 	Listbox() = default;
-	Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, TransparentFont* font, Rectangle coords, const std::vector<std::string> &initial_items,Vector2 textScaling, float spacing);
+	Listbox(Texture2D sliderBar, Texture2D sliderBox, Texture2D listBoxTxd, Texture2D glint, SpriteFont* font, Rectangle coords, const std::vector<std::string> &initial_items,Vector2 textScaling, float spacing);
 
 	std::vector<std::string> Items;
 

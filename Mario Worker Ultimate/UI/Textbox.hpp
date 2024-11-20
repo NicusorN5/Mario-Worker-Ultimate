@@ -1,6 +1,6 @@
 #pragma once
 #include "../MouseState.hpp"
-#include "TransparentFont.hpp"
+#include "SpriteFont.hpp"
 
 class Textbox
 {
@@ -10,7 +10,7 @@ class Textbox
 	float _keyTimer = 0;
 
 	Texture2D _textboxTexture;
-	TransparentFont *_textFont;
+	SpriteFont *_textFont;
 	int _textIndex = 0;
 	size_t _maxLength;
 	float _spacing;
@@ -29,7 +29,7 @@ public:
 		_spacing(0),
 		_displayedCharacters(0)
 	{};
-	Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing = 0.001f);
+	Textbox(Texture2D texture, SpriteFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing = 0.001f);
 
 	void Draw(float dt);
 	void Update(MouseState* ms,float dt);

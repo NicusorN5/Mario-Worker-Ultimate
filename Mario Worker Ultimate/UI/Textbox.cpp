@@ -1,6 +1,6 @@
 #include "Textbox.hpp"
 
-Textbox::Textbox(Texture2D texture, TransparentFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing) :
+Textbox::Textbox(Texture2D texture, SpriteFont* font, const std::string& defaultText, Rectangle r, size_t maxLength, size_t displayedChars, float spacing) :
 	_textboxTexture(texture),
 	_textFont(font),
 	_text(defaultText),

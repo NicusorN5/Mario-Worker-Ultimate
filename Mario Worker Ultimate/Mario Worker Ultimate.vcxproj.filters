@@ -84,7 +84,7 @@
     <ClCompile Include="UI\Textbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UI\TransparentFont.cpp">
+    <ClCompile Include="UI\SpriteFont.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
@@ -100,6 +100,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\GameBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\IBoss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -182,7 +185,7 @@
     <ClInclude Include="UI\Textbox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UI\TransparentFont.hpp">
+    <ClInclude Include="UI\SpriteFont.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Particle.hpp">
@@ -198,6 +201,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\GameBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\IBoss.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

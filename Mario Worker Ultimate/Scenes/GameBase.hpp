@@ -6,7 +6,7 @@
 #include "../Resources.hpp"
 #include "../Resolution.hpp"
 
-constexpr float WaterAnimationSpeed = 10.0f;
+constexpr float WaterAnimationSpeed = 5.0f;
 
 class GameBase: public IScene
 {

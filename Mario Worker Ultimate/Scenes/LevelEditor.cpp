@@ -172,7 +172,7 @@ void LevelEditor::LoadContent()
 	_marksButtons[3] = ShinyButton(_blocksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.379f,0.15f,0.075f }), ssc3);
 
 	_marksBtnTextures[3] = Resources::LoadTextureChkF("Data\\Editor\\sb_Scripts.png");
-	_marksButtons[4] = ShinyButton(_marksBtnTextures[4], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
+	_marksButtons[4] = ShinyButton(_marksBtnTextures[3], _tGlint, Game::ScreenRec({ 0.095f,0.456f,0.15f,0.075f }), ssc4);
 
 	//scenery
 	_sceneryBtnTextures[0] = Resources::LoadTextureChkF("Data\\Editor\\sb_Overworld.png");
@@ -1248,7 +1248,7 @@ void LevelEditor::Draw(float dt)
 	{
 		GameBase::DrawWater();
 
-		Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.4f}, {0.025f,0.025f}, 0.001f);
+		Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.3f}, {0.025f,0.025f}, 0.001f);
 
 		//draw mouse selected block
 		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateViewTransform(Game::ScreenRec(

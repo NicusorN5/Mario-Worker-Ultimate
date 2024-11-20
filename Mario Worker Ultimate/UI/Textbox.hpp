@@ -17,6 +17,8 @@ class Textbox
 	size_t _displayedCharacters;
 
 	float _delTimer = 0;
+
+	int _getTextStartLen();
 public:
 	Textbox() :
 		_textboxTexture{},

@@ -48,7 +48,12 @@ void GameBase::DrawWater()
 
 	for(int i = 0; i < 20; i++)
 	{
-		auto waterAnimRectangle = Rectangle{ 0, static_cast<float>(((static_cast<int>(_waterAnimTimer) * 16) * (i+1)) % 80), 64,16 };
+		auto waterAnimRectangle = Rectangle{
+			0,
+			static_cast<float>((static_cast<int>(_waterAnimTimer) % 5) * 16),
+			64,
+			16
+		};
 		currentWaterWorldTile = calculateViewTransform(Game::ScreenRec({0, height, 0.05f, 1 / 30.0f }));
 		currentWaterWorldTile.x = Game::Resolution::X * 0.05F * i;
 
@@ -58,7 +63,7 @@ void GameBase::DrawWater()
 			currentWaterWorldTile,
 			{ 0,0 },
 			0.0f,
-			Color(255,255,255, 200)
+			Color(255,255,255, 220)
 		);
 	}
 

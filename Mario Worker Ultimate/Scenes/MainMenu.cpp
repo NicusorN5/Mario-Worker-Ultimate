@@ -30,7 +30,7 @@ void MainMenu::LoadContent()
 			FileDialogResult *r = ShowOpenFileDialog("Open a level...");
 			if(r->Result == 0)
 			{
-				Game::CurrentLevel = Level(r->File);
+				Game::CurrentLevel = Level(r->File.get());
 				if(Game::CurrentLevel.IsValid)
 				{
 					Game::CurrentGameSection = 3;

@@ -1,12 +1,12 @@
 #pragma once
+#include <memory>
 
 struct FileDialogResult
 {
-	char* File;
+	std::unique_ptr<char[]> File;
 	int Result;
 
 	FileDialogResult();
-	~FileDialogResult();
 };
 
 void ProperlySetWorkingPath();

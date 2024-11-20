@@ -36,6 +36,9 @@ Color Resources::WaterColor(90, 140, 231, 255);
 Texture2D Resources::Lava;
 Color Resources::LavaColor(123, 0, 0, 255);
 
+Texture2D Resources::Poison;
+Color Resources::PoisonColor(123, 0, 0, 255);
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, static_cast<int>(numSounds))]);
@@ -224,4 +227,5 @@ void Resources::UnloadAll()
 
 	UnloadTexture(Water);
 	UnloadTexture(Lava);
+	UnloadTexture(Poison);
 }

@@ -9,54 +9,65 @@
 
 void ProperlySetWorkingPath()
 {
+#ifdef _WIN32
 	wchar_t path[_MAX_PATH];
 	GetModuleFileNameW(nullptr, path, _MAX_PATH);
 	PathCchRemoveFileSpec(path, _MAX_PATH);
 	SetCurrentDirectoryW(path);
+#endif
 }
 
 int ShowMessageBox(void* owner, const char* content, const char* title, unsigned flags)
 {
+#ifdef _WIN32
 	return MessageBoxA(static_cast<HWND>(owner), content, title, flags);
+#endif
 }
 
 int ShowMessageBoxError(void* window, const char* content, const char* title)
 {
+#ifdef _WIN32
 	return MessageBoxA(static_cast<HWND>(window), content, title, MB_OK | MB_ICONERROR);
+#endif
 }
 
 void PauseGame(void* window)
 {
+#ifdef _WIN32
 	MessageBoxA(static_cast<HWND>(window), "Press \"OK\" to continue.", "Game paused", MB_OK | MB_ICONINFORMATION);
+#endif
 }
 
 FileDialogResult* ShowOpenFileDialog(const char* title)
 {
+#ifdef _WIN32
 	FileDialogResult* result = new FileDialogResult();
 
 	OPENFILENAMEA ofn{};
 	ofn.lStructSize = sizeof(OPENFILENAMEA);
-	ofn.lpstrFile = result->File;
+	ofn.lpstrFile = result->File.get();
 	ofn.lpstrTitle = title;
 	ofn.nMaxFile = _MAX_PATH;
 
 	if(GetOpenFileNameA(&ofn) == true) result->Result = 0;
 	else result->Result = (GetLastError() != 0 ? GetLastError() : -1);
 	return result;
+#endif
 }
 
 FileDialogResult *ShowSaveFileDialog(const char* title)
 {
 	FileDialogResult* result = new FileDialogResult();
-
+#ifdef _WIN32
 	OPENFILENAMEA ofn{};
 	ofn.lStructSize = sizeof(OPENFILENAMEA);
-	ofn.lpstrFile = result->File;
+	ofn.lpstrFile = result->File.get();
 	ofn.lpstrTitle = title;
 	ofn.nMaxFile = _MAX_PATH;
 
 	if(GetSaveFileNameA(&ofn)) result->Result = 0;
 	else result->Result = (GetLastError() != 0 ? GetLastError() : -1);
+#endif
 	return result;
 }
 
@@ -67,20 +78,17 @@ void ExitFileNotFound()
 
 void SetGameIcon(void* window)
 {
+#ifdef _WIN32
 	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
 	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
+#endif
 }
 
-FileDialogResult::FileDialogResult()
+FileDialogResult::FileDialogResult():
+	Result(-1),
+	File(std::make_unique<char[]>(255))	
 {
-	this->Result = -1;
-	this->File = new char[_MAX_PATH];
-	memset(this->File, 0, _MAX_PATH);
-}
 
-FileDialogResult::~FileDialogResult()
-{
-	delete[] File;
 }
 
 COLORREF customColors[16];

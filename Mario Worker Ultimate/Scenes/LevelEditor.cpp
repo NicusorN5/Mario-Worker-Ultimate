@@ -505,7 +505,7 @@ void LevelEditor::LoadContent()
 				bool s = true;
 				try
 				{
-					t = Resources::LoadTextureChkF(r->File);
+					t = Resources::LoadTextureChkF(r->File.get());
 				}
 				catch(GameResourceLoadException& e)
 				{
@@ -517,7 +517,13 @@ void LevelEditor::LoadContent()
 				if(s)
 				{
 					UnloadTexture(t);
-					Game::CurrentLevel.LvlBackground = std::make_unique<Background>(r->File, true, true, WHITE, Color(60, 120, 160, 255));
+					Game::CurrentLevel.LvlBackground = std::make_unique<Background>(
+						r->File.get(),
+						true, //repeat x
+						true, //repeat y
+						WHITE, //bottom
+						Color(60, 120, 160, 255) //top
+					);
 					ProperlySetWorkingPath();
 				}
 			}
@@ -705,12 +711,12 @@ void LevelEditor::LoadContent()
 			{
 				try
 				{
-					Game::CurrentLevel.SetMusic(r->File);
+					Game::CurrentLevel.SetMusic(r->File.get());
 				}
 				catch(const GameResourceLoadException& e)
 				{
 					std::string errmsg("The file: ");
-					errmsg += r->File;
+					errmsg += r->File.get();
 					errmsg += " doesn't contain a supported music format!";
 					ShowMessageBoxError(GetWindowHandle(), errmsg.c_str(), "Error!");
 				}

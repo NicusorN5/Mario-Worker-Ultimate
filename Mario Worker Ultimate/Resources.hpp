@@ -47,6 +47,9 @@ namespace Resources
 	extern Texture2D Lava;
 	extern Color LavaColor;
 
+	extern Texture2D Poison;
+	extern Color PoisionColor;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

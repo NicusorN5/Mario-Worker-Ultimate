@@ -38,7 +38,7 @@ void GameBase::DrawLiquid()
 			liquidAnimRectangle = Rectangle{
 				0,
 				static_cast<float>((static_cast<int>(_liquidAnimTimer) % 5) * 16),
-				64 * ScreenTilesX / 2,
+				32 * ScreenTilesX,
 				16
 			};
 			liquidColor = Resources::WaterColor;
@@ -48,20 +48,20 @@ void GameBase::DrawLiquid()
 			liquidAnimRectangle = Rectangle{
 				0,
 				static_cast<float>((static_cast<int>(_liquidAnimTimer) % 7) * 34),
-				64 * ScreenTilesX / 2,
+				32 * ScreenTilesX,
 				34
 			};
 			liquidColor = Resources::LavaColor;
 			break;
 		case LiquidType::Poison:
 			liquidAnimRectangle = Rectangle{
-				ScreenTilesX * Resources::Water.width,
+				ScreenTilesX * Resources::Poison.width,
 				static_cast<float>((static_cast<int>(_liquidAnimTimer) % 5) * 16),
-				64 * ScreenTilesX,
+				32 * ScreenTilesX,
 				16
 			};
-			liquid = Resources::Water;
-			liquidColor = Resources::WaterColor;
+			liquid = Resources::Poison;
+			liquidColor = Resources::PoisonColor;
 			break;
 		default:
 			return;

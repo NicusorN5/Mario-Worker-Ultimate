@@ -162,7 +162,9 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="Enemies\IBoss.cpp" />
+    <ClCompile Include="Enemies\LUAEnemy.cpp" />
     <ClCompile Include="Scenes\GameBase.cpp" />
+    <ClCompile Include="Scripting\Lua.cpp" />
     <ClCompile Include="UI\Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Decoration.cpp" />
@@ -194,7 +196,9 @@
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
     <ClInclude Include="Enemies\IBoss.hpp" />
+    <ClInclude Include="Enemies\LUAEnemy.hpp" />
     <ClInclude Include="Scenes\GameBase.hpp" />
+    <ClInclude Include="Scripting\Lua.hpp" />
     <ClInclude Include="UI\Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />
     <ClInclude Include="Decoration.hpp" />

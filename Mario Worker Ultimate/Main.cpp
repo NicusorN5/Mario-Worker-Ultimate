@@ -4,17 +4,39 @@
 #include "Scenes/LevelEditor.hpp"
 #include "Scenes/Intro.hpp"
 
-int main()
+int main(int argv, char **argc)
 {
+	bool isFullscreen = false;
+	//parse arguments
+	for(int i = 1; i < argv; ++i)
+	{
+		//-fullscreen command line argument
+		if(strcmp(argc[i], "-fullscreen") == 0)
+		{
+			isFullscreen = true;
+		}
+
+		//-res X Y command line argument, sets the size of the window and backbuffer.
+		if(strcmp(argc[i], "-res") == 0 && argv > i+2)
+		{
+			Game::Resolution::X = std::stoi(argc[i + 1]);
+			Game::Resolution::Y = std::stoi(argc[i + 2]);
+		}
+	}
+	//640x480
+	Game::Resolution::X = 640;
+	Game::Resolution::Y = 480;
+	Game::CurrentGameSection = 0;
+
 	//initialization
 	ProperlySetWorkingPath();
-	InitWindow(800, 600, "Mario Worker Ultimate");
+	InitWindow(Game::Resolution::X, Game::Resolution::Y, "Mario Worker Ultimate");
 	InitAudioDevice();
-	//ToggleFullscreen();
 
-	Game::Resolution::X = 800;
-	Game::Resolution::Y = 600;
-	Game::CurrentGameSection = 0;
+	if(isFullscreen)
+	{
+		ToggleFullscreen();
+	}
 
 	void* WindowHandle = GetWindowHandle();
 	SetGameIcon(WindowHandle);

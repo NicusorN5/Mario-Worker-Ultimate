@@ -31,7 +31,10 @@ Texture2D Resources::CbTrue;
 Texture2D Resources::CbFalse;
 
 Texture2D Resources::Water;
-Color Resources::WaterColor(90, 140, 231, 128);
+Color Resources::WaterColor(90, 140, 231, 255);
+
+Texture2D Resources::Lava;
+Color Resources::LavaColor(123, 0, 0, 255);
 
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
@@ -161,6 +164,7 @@ void Resources::LoadAll()
 	Window = LoadTextureChkF("Data\\UI\\Window_Default.png");
 
 	Water = LoadTextureChkF("Data\\World\\Water.png");
+	Lava = LoadTextureChkF("Data\\\Enemies\\Lava.png");
 }
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
@@ -219,4 +223,5 @@ void Resources::UnloadAll()
 	UnloadTexture(CbFalse);
 
 	UnloadTexture(Water);
+	UnloadTexture(Lava);
 }

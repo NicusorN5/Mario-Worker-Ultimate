@@ -44,6 +44,9 @@ namespace Resources
 	extern Texture2D Water;
 	extern Color WaterColor;
 
+	extern Texture2D Lava;
+	extern Color LavaColor;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

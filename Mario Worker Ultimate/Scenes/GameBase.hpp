@@ -6,7 +6,10 @@
 #include "../Resources.hpp"
 #include "../Resolution.hpp"
 
-constexpr float WaterAnimationSpeed = 5.0f;
+constexpr float WaterAnimationSpeed = 7.0f;
+
+constexpr float ScreenTilesX = 20.0f;
+constexpr float ScreenTilesY = 15.0f;
 
 class GameBase: public IScene
 {
@@ -16,12 +19,12 @@ protected:
 	Rectangle calculateViewTransform(Rectangle normScreen);
 	Rectangle calculateTileTransformation(Rectangle normScreen);
 
-	float _waterAnimTimer = 0;
+	float _liquidAnimTimer = 0;
 public:
 	void LoadContent() override;
 	void Update(float dt, MouseState* ms, ControllerState* cs) override;
 
-	void DrawWater();
+	void DrawLiquid();
 	void DrawSpikedFloor();
 
 	void Draw(float dt) override;

@@ -7,6 +7,8 @@
 #include "../UI/Checkbox.hpp"
 #include "../UI/Listbox.hpp"
 
+constexpr float LiquidEditorRaiseSpeed = 10.0f;
+
 class LevelEditor : public GameBase
 {
 	static LevelEditor* _singleton;

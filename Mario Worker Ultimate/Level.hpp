@@ -13,7 +13,8 @@ enum class LiquidType
 	None = 0,
 	Water,
 	Lava,
-	Poison
+	Poison,
+	CustomDefined,
 };
 
 class Level
@@ -28,7 +29,7 @@ public:
 	bool IsValid = false;
 	int Time = 360;
 	float Gravity = 1.0f;
-	float LiquidLevel = 200.0f;
+	float LiquidLevel = 21.0f;
 
 	unsigned EnemySpeed;
 	unsigned BillBlasterROF;

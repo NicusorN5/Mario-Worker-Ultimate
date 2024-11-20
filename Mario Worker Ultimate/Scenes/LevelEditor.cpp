@@ -806,7 +806,10 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 	//allowing the player to select a block
 
 	if(!_previousSpacePress && !_showElements && cs->Space)
+	{
 		_showElements = true;
+		PlaySound(Resources::ClickSound1);
+	}
 	else if(_showElements)
 	{
 		//FIXME: buttons overlapping when hovering multiple buttons in a horizontal mouse movement
@@ -987,11 +990,11 @@ void LevelEditor::Update(float dt, MouseState* ms, ControllerState* cs)
 
 	if(IsKeyDown(KEY_KP_ADD))
 	{
-		Game::CurrentLevel.LiquidLevel -= 50 * dt;
+		Game::CurrentLevel.LiquidLevel -= LiquidEditorRaiseSpeed * dt;
 	}
 	else if(IsKeyDown(KEY_KP_SUBTRACT))
 	{
-		Game::CurrentLevel.LiquidLevel += 50 * dt;
+		Game::CurrentLevel.LiquidLevel += LiquidEditorRaiseSpeed * dt;
 	}
 
 	_previousSpacePress = cs->Space;
@@ -1246,9 +1249,9 @@ void LevelEditor::Draw(float dt)
 	}
 	else
 	{
-		GameBase::DrawWater();
+		GameBase::DrawLiquid();
 
-		Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.3f}, {0.025f,0.025f}, 0.001f);
+		//Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.3f}, {0.025f,0.025f}, 0.001f);
 
 		//draw mouse selected block
 		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateViewTransform(Game::ScreenRec(

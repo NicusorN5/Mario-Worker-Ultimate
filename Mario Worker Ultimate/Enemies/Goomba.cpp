@@ -1,5 +1,10 @@
 #include "Goomba.hpp"
 
+Goomba::Goomba(int X, int Y, GoombaType t):
+    IAnimatedEnemy("Goomba", X, Y, static_cast<int>(t)),_direction(1), _animTimer(0),_spriteAnim(0)
+{
+};
+
 bool Goomba::WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy)
 {
     if(this->_variant == 1 && damage == DamageByPlayer::ByFire) return false; //gray goombas are invulnerable to fire
@@ -8,11 +13,7 @@ bool Goomba::WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy)
 
 void Goomba::Update(float dt)
 {
-    _animTimer += dt;
-    if(_animTimer >= 0.5f)
-    {
-        _animTimer = 0;
-    }
+    IAnimatedEnemy::Update(dt);
     this->Position.x += _direction * 5 * Game::CurrentLevel.EnemySpeed * dt;
 }
 
@@ -28,8 +29,16 @@ void Goomba::Draw(float dt)
             goombaTexture = &Resources::Goomba2;
             break;
         default:
-            throw std::runtime_error("Unknown goomba type");
+            throw std::logic_error("Unknown goomba type");
             break;
     }
-    DrawTexturePro(*goombaTexture, { 0,0,31,32 }, { Position.x,Position.y,Position.x + 32,Position.y + 31 }, { 0,0 }, 0.0f, WHITE);
+
+    DrawTexturePro(
+        *goombaTexture,
+        GetFrame({0,0,32,32}), 
+        {Position.x,Position.y,Position.x + 32,Position.y + 31}, 
+        {0,0},
+        0.0f,
+        WHITE
+    );
 }

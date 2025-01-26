@@ -227,6 +227,7 @@
     <ClInclude Include="UI\TabButton.hpp" />
     <ClInclude Include="UI\Textbox.hpp" />
     <ClInclude Include="UI\SpriteFont.hpp" />
+    <ClInclude Include="World\Tileset.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

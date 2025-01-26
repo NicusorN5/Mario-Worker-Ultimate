@@ -218,6 +218,9 @@
     <ClInclude Include="Scripting\Lua.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="World\Tileset.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">

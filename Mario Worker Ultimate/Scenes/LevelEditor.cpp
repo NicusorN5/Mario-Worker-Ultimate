@@ -743,7 +743,7 @@ void LevelEditor::LoadContent()
 		Resources::CbTrue,
 		Resources::CbFalse,
 		&Resources::LevelHudFont,
-		"Enable",
+		"",
 		true,
 		Vector2(0.3f, 0.25f),
 		Game::ScreenRec(Vector2(0.03f, 0.03f)),

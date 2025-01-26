@@ -20,6 +20,6 @@ The newer versions of MWR have performance issues at handling 4K+ entities. The 
 
 ## Credits to
 
-- TheMarioVariable : tips with drawing the UI, assets)
+- TheMarioVariable : tips with drawing the UI, assets, Feather Engine used as source code reference)
 - Rubiestice: assets from MCM
 - Buziol Games, Softendo - original games and assets.

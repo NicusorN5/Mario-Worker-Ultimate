@@ -15,5 +15,5 @@ public:
 	LuaInterface& operator=(const LuaInterface&) = delete;
 	LuaInterface& operator=(LuaInterface&&) = delete;
 	
-	sol::state& State;
+	sol::state State;
 };

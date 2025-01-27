@@ -13,8 +13,6 @@ enum class GoombaType
 class Goomba : public IAnimatedEnemy
 {
 	int8_t _direction; // 1 = forward, -1 = backwards.
-	float _animTimer;
-	int8_t _spriteAnim;
 public:
 	Goomba(int X, int Y, GoombaType t);
 	bool WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy);

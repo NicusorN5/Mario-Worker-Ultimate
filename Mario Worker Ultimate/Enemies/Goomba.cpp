@@ -1,7 +1,15 @@
 #include "Goomba.hpp"
+#include "..\Scenes\GameBase.hpp"
 
 Goomba::Goomba(int X, int Y, GoombaType t):
-    IAnimatedEnemy("Goomba", X, Y, static_cast<int>(t)),_direction(1), _animTimer(0),_spriteAnim(0)
+    IAnimatedEnemy(
+        "Goomba",
+        X, 
+        Y,
+        static_cast<int>(t),
+        0.11,
+        2), 
+    _direction(1)
 {
 };
 
@@ -36,7 +44,7 @@ void Goomba::Draw(float dt)
     DrawTexturePro(
         *goombaTexture,
         GetFrame({0,0,32,32}), 
-        {Position.x,Position.y,Position.x + 32,Position.y + 31}, 
+        GameBase::calculateViewTransform(Game::ScreenRec({ 0,0,0.05f,1/15.0f })),
         {0,0},
         0.0f,
         WHITE

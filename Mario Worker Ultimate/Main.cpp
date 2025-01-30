@@ -34,7 +34,7 @@ int main(int argv, char **argc)
 	Game::CurrentGameSection = 0;
 
 	//initialization
-	ProperlySetWorkingPath();
+	ResetWorkingPath();
 	InitWindow(Game::Resolution::X, Game::Resolution::Y, "Mario Worker Ultimate");
 	InitAudioDevice();
 

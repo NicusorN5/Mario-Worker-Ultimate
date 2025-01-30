@@ -1,6 +1,6 @@
 #pragma once
 
-void ProperlySetWorkingPath();
+void ResetWorkingPath();
 void ExitFileNotFound();
 void SetGameIcon(void* window);
 void PauseGame(void* window);

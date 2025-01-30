@@ -24,7 +24,7 @@ typedef struct tagTHREADNAME_INFO
 
 #endif
 
-void ProperlySetWorkingPath()
+void ResetWorkingPath()
 {
 #ifdef _WIN32
 	wchar_t path[_MAX_PATH];

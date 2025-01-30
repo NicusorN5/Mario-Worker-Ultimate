@@ -852,7 +852,7 @@ void LevelEditor::LoadContent()
 						WHITE, //bottom
 						Color(60, 120, 160, 255) //top
 					);
-					ProperlySetWorkingPath();
+					ResetWorkingPath();
 				}
 			}
 
@@ -1050,7 +1050,7 @@ void LevelEditor::LoadContent()
 					errmsg += " doesn't contain a supported music format!";
 					ShowMessageBoxError(GetWindowHandle(), errmsg.c_str(), "Error!");
 				}
-				ProperlySetWorkingPath();
+				ResetWorkingPath();
 			}
 
 			delete r;

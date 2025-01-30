@@ -1,4 +1,5 @@
 #include "MainMenu.hpp"
+#include "..\Native.hpp"
 
 void MainMenu::LoadContent()
 {
@@ -38,6 +39,7 @@ void MainMenu::LoadContent()
 			}
 			delete r;
 
+			ResetWorkingPath(); //reset working path
 			_disableAnimations = true;
 		}
 	);

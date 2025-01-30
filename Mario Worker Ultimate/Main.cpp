@@ -1,6 +1,7 @@
 #include "Scenes/MainMenu.hpp"
 #include "Game.hpp"
 #include "UI/Dialogs.hpp"
+#include "Native.hpp"
 #include "Scenes/LevelEditor.hpp"
 #include "Scenes/Intro.hpp"
 #include "Scenes/LevelPlayer.hpp"
@@ -84,22 +85,26 @@ int main(int argv, char **argc)
 
 	MouseState mouse;
 
+	/*
 	std::jthread update_thread = std::jthread([&]()
 	{
-		float dt = 0;
+		float udt = 0;
 		while(!WindowShouldClose() && Game::GameRunning)
 		{
 			auto t1 = std::chrono::high_resolution_clock::now();
 			mouse = MouseState::GetMouseState(&mouse);
 			ControllerState controls = GetControllerState();
-			gameSections[Game::CurrentGameSection]->Update(dt, &mouse, &controls);
+			gameSections[Game::CurrentGameSection]->Update(udt, &mouse, &controls);
 
 			auto t2 = std::chrono::high_resolution_clock::now();
-			dt = std::chrono::duration<float>(t2 - t1).count();
+			udt = std::chrono::duration<float>(t2 - t1).count();
 		}
-	});
+	}
+	);
 	update_thread.detach();
+	*/
 
+	float udt = 0;
 	//game loop
 	while(!WindowShouldClose() && Game::GameRunning)
 	{
@@ -110,6 +115,14 @@ int main(int argv, char **argc)
 		gameSections[Game::CurrentGameSection]->Draw(dt);
 		EndBlendMode();
 		EndDrawing();
+
+		auto t1 = std::chrono::high_resolution_clock::now();
+		mouse = MouseState::GetMouseState(&mouse);
+		ControllerState controls = GetControllerState();
+		gameSections[Game::CurrentGameSection]->Update(dt, &mouse, &controls);
+
+		auto t2 = std::chrono::high_resolution_clock::now();
+		udt = std::chrono::duration<float>(t2 - t1).count();
 	}
 
 	CloseAudioDevice();

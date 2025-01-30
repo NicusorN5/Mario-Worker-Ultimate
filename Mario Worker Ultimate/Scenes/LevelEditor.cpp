@@ -1,4 +1,5 @@
 #include "LevelEditor.hpp"
+#include "../Native.hpp"
 
 void LevelEditor::LoadContent()
 {

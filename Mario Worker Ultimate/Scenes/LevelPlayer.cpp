@@ -8,7 +8,7 @@ LevelPlayer::LevelPlayer() :
 
 void LevelPlayer::LoadContent()
 {
-	testGoomba.InEditor = false;
+	testGoomba.InEditor = true;
 	testGoomba.SetScene(this);
 }
 

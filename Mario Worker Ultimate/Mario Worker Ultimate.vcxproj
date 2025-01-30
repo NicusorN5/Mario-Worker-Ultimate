@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -168,6 +168,7 @@
     <ClCompile Include="Scenes\BlankScene.cpp" />
     <ClCompile Include="Scenes\GameBase.cpp" />
     <ClCompile Include="Scenes\LevelPlayer.cpp" />
+    <ClCompile Include="Native.cpp" />
     <ClCompile Include="Scripting\Lua.cpp" />
     <ClCompile Include="UI\Checkbox.cpp" />
     <ClCompile Include="ControllerState.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="Scenes\BlankScene.hpp" />
     <ClInclude Include="Scenes\GameBase.hpp" />
     <ClInclude Include="Scenes\LevelPlayer.hpp" />
+    <ClInclude Include="Native.hpp" />
     <ClInclude Include="Scripting\Lua.hpp" />
     <ClInclude Include="UI\Checkbox.hpp" />
     <ClInclude Include="ControllerState.hpp" />

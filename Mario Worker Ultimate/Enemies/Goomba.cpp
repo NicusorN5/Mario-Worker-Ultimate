@@ -7,7 +7,7 @@ Goomba::Goomba(int X, int Y, GoombaType t):
         X, 
         Y,
         static_cast<int>(t),
-        0.11,
+        11, //anim speed - as found in Feather engine
         2), 
     _direction(1)
 {
@@ -48,7 +48,7 @@ void Goomba::Draw(float dt)
 	_scene->DrawEnt(
 		Rectangle{ this->Position.x, this->Position.y, 0.05f, 1/15.0f },
 		goombaTexture,
-		GetFrame({0,0,32,32}),
+		GetFrame({0,0,31,32}),
 		WHITE
 	);
 }

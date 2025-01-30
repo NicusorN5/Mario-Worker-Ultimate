@@ -100,10 +100,16 @@ void GameBase::DrawSpikedFloor()
 
 void GameBase::DrawEnt(Rectangle normScreen, Texture2D* texture, Rectangle sourceRec, Color tint)
 {
+	auto r = calculateViewTransform(normScreen);
+	r.x *= Game::Resolution::FltX();
+	r.y *= Game::Resolution::FltY();
+	r.width *= Game::Resolution::FltX();
+	r.height *= Game::Resolution::FltY();
+
 	DrawTexturePro(
 		*texture,
 		sourceRec,
-		calculateViewTransform(normScreen),
+		r,
 		{ 0,0 },
 		0.0f,
 		tint

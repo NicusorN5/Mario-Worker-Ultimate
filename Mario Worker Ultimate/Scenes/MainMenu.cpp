@@ -31,10 +31,10 @@ void MainMenu::LoadContent()
 			if(r->Result == 0)
 			{
 				Game::CurrentLevel = Level(r->File.get());
-				if(Game::CurrentLevel.IsValid)
-				{
+				//if(Game::CurrentLevel.IsValid)
+				//{
 					Game::CurrentGameSection = 3;
-				}
+				//}
 			}
 			delete r;
 

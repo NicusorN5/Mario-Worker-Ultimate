@@ -21,3 +21,8 @@ bool IEnemy::FellOfMap() const noexcept
 {
     return this->_fellOfMap;
 }
+
+void IEnemy::SetScene(GameBase* scene) noexcept
+{
+	this->_scene = scene;
+}

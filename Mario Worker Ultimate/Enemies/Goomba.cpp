@@ -22,6 +22,10 @@ bool Goomba::WhenHit(DamageByPlayer damage, IEnemy* replaceInitialEnemy)
 void Goomba::Update(float dt)
 {
     IAnimatedEnemy::Update(dt);
+
+    if(InEditor) return;
+
+    //physics
     this->Position.x += _direction * 5 * Game::CurrentLevel.EnemySpeed * dt;
 }
 
@@ -41,12 +45,10 @@ void Goomba::Draw(float dt)
             break;
     }
 
-    DrawTexturePro(
-        *goombaTexture,
-        GetFrame({0,0,32,32}), 
-        GameBase::calculateViewTransform(Game::ScreenRec({ 0,0,0.05f,1/15.0f })),
-        {0,0},
-        0.0f,
-        WHITE
-    );
+	_scene->DrawEnt(
+		Rectangle{ this->Position.x, this->Position.y, 0.05f, 1/15.0f },
+		goombaTexture,
+		GetFrame({0,0,32,32}),
+		WHITE
+	);
 }

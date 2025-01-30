@@ -3,6 +3,10 @@
 #include "UI/Dialogs.hpp"
 #include "Scenes/LevelEditor.hpp"
 #include "Scenes/Intro.hpp"
+#include "Scenes/LevelPlayer.hpp"
+#include "Scenes/BlankScene.hpp"
+#include <thread>
+#include <chrono>
 
 int main(int argv, char **argc)
 {
@@ -43,21 +47,9 @@ int main(int argv, char **argc)
 
 	std::array<std::unique_ptr<IScene>, 5> gameSections;
 	gameSections[0].reset(new Intro());
-
-	try
-	{
-		gameSections[0]->LoadContent();
-	}
-	catch(GameResourceLoadException& ex)
-	{
-		std::stringstream str;
-		str << "The file: " << ex.what() << " is missing.\r\n Reinstalling the game can fix this issue.";
-		ShowMessageBoxError(WindowHandle, str.str().c_str(), "Error loading game content");
-		ExitFileNotFound();
-	}
-
 	gameSections[1].reset(new MainMenu());
 	gameSections[2].reset(new LevelEditor());
+	gameSections[3].reset(new LevelPlayer());
 
 	try
 	{
@@ -71,7 +63,7 @@ int main(int argv, char **argc)
 		ExitFileNotFound();
 	}
 
-	for(int i = 1; i < 5; i++)
+	for(int i = 0; i < 5; i++)
 	{
 		if(gameSections[i] == nullptr) continue;
 		try
@@ -87,12 +79,26 @@ int main(int argv, char **argc)
 		}
 	}
 
-	Color clearColor = { 0, 0, 0, 255 };
-
 	SetExitKey(0);
 	SetTargetFPS(60);
 
 	MouseState mouse;
+
+	std::jthread update_thread = std::jthread([&]()
+	{
+		float dt = 0;
+		while(!WindowShouldClose() && Game::GameRunning)
+		{
+			auto t1 = std::chrono::high_resolution_clock::now();
+			mouse = MouseState::GetMouseState(&mouse);
+			ControllerState controls = GetControllerState();
+			gameSections[Game::CurrentGameSection]->Update(dt, &mouse, &controls);
+
+			auto t2 = std::chrono::high_resolution_clock::now();
+			dt = std::chrono::duration<float>(t2 - t1).count();
+		}
+	});
+	update_thread.detach();
 
 	//game loop
 	while(!WindowShouldClose() && Game::GameRunning)
@@ -100,14 +106,10 @@ int main(int argv, char **argc)
 		BeginDrawing();
 		BeginBlendMode(BLEND_ALPHA);
 		float dt = GetFrameTime();
-		ClearBackground(clearColor);
+		ClearBackground(BLACK);
 		gameSections[Game::CurrentGameSection]->Draw(dt);
 		EndBlendMode();
 		EndDrawing();
-
-		mouse = MouseState::GetMouseState(&mouse);
-		ControllerState controls = GetControllerState();
-		gameSections[Game::CurrentGameSection]->Update(dt, &mouse, &controls);
 	}
 
 	CloseAudioDevice();

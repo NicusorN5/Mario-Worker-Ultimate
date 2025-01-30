@@ -98,6 +98,18 @@ void GameBase::DrawSpikedFloor()
 
 }
 
+void GameBase::DrawEnt(Rectangle normScreen, Texture2D* texture, Rectangle sourceRec, Color tint)
+{
+	DrawTexturePro(
+		*texture,
+		sourceRec,
+		calculateViewTransform(normScreen),
+		{ 0,0 },
+		0.0f,
+		tint
+	);
+}
+
 void GameBase::Draw(float dt)
 {
 	//draw background

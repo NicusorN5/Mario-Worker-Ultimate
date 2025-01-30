@@ -1362,8 +1362,6 @@ void LevelEditor::Draw(float dt)
 		0.0f,
 		WHITE
 	);
-	//debug goomba
-	DrawTexturePro(Resources::Goomba1, { 0,0,31,32 }, calculateViewTransform(Game::ScreenRec({ 0,0,0.05f,1/15.0f })), { 0,0 }, 0.0f, WHITE); // <-- test goomba
 
 	//TODO: draw level stuff
 
@@ -1600,8 +1598,6 @@ void LevelEditor::Draw(float dt)
 	else
 	{
 		GameBase::DrawLiquid();
-
-		//Resources::LevelHudFont.Draw("water level " + std::to_string(Game::CurrentLevel.LiquidLevel), {0.3f,0.3f}, {0.025f,0.025f}, 0.001f);
 
 		//draw mouse selected block
 		DrawTexturePro(_squareMouse, { 0,0,64,64 }, calculateViewTransform(Game::ScreenRec(

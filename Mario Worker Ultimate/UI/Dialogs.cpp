@@ -1,21 +1,10 @@
 #include "Dialogs.hpp"
-#include <Windows.h>
-#include <PathCch.h>
-#include "../resource.h"
 #include <string>
 #include <strstream>
 
-#pragma comment(lib,"Pathcch.lib")
-
-void ProperlySetWorkingPath()
-{
 #ifdef _WIN32
-	wchar_t path[_MAX_PATH];
-	GetModuleFileNameW(nullptr, path, _MAX_PATH);
-	PathCchRemoveFileSpec(path, _MAX_PATH);
-	SetCurrentDirectoryW(path);
+#include <Windows.h>
 #endif
-}
 
 int ShowMessageBox(void* owner, const char* content, const char* title, unsigned flags)
 {
@@ -28,13 +17,6 @@ int ShowMessageBoxError(void* window, const char* content, const char* title)
 {
 #ifdef _WIN32
 	return MessageBoxA(static_cast<HWND>(window), content, title, MB_OK | MB_ICONERROR);
-#endif
-}
-
-void PauseGame(void* window)
-{
-#ifdef _WIN32
-	MessageBoxA(static_cast<HWND>(window), "Press \"OK\" to continue.", "Game paused", MB_OK | MB_ICONINFORMATION);
 #endif
 }
 
@@ -71,19 +53,6 @@ FileDialogResult *ShowSaveFileDialog(const char* title)
 	return result;
 }
 
-void ExitFileNotFound()
-{
-	exit(0x80070002); // 0x80070002 = E_FILE_NOT_FOUND
-}
-
-void SetGameIcon(void* window)
-{
-#ifdef _WIN32
-	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
-	SendMessageA(static_cast<HWND>(window), WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(LoadIconA(GetModuleHandle(nullptr), MAKEINTRESOURCEA(IDI_ICON1))));
-#endif
-}
-
 FileDialogResult::FileDialogResult():
 	Result(-1),
 	File(std::make_unique<char[]>(255))	
@@ -91,7 +60,9 @@ FileDialogResult::FileDialogResult():
 
 }
 
-COLORREF customColors[16];
+#ifdef _WIN32
+	COLORREF customColors[16];
+#endif
 
 ColorDialogResult::ColorDialogResult(unsigned char defR,unsigned char defG,unsigned char defB)
 {

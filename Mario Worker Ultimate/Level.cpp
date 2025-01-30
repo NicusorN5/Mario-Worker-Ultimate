@@ -6,25 +6,16 @@ Level::Level(const std::filesystem::path& path) :
 	Gravity(1),
 	Time(360),
 	IsValid(false),
-	Size{ 60, 40 }
+	Size{ 60, 40 },
+	LvlMusic{}
 {	
 	if(path.empty())
-	{
-		
-		return;
-	}
-	if(path.empty())
-	{
-		LvlBackground = std::make_unique<Background>(nullptr, false, false);
-		EnemySpeed = 1;
-		Gravity = 1;
-		Time = 360;
-		IsValid = false;
+	{	
 		return;
 	}
 
-	IsValid = true;
-	LvlBackground = std::make_unique<Background>("",false,false);
+	//IsValid = true;
+	//LvlBackground = std::make_unique<Background>(nullptr,false,false);
 
 	std::ifstream file(path);
 	if(file.bad() || file.fail())

@@ -27,5 +27,7 @@ public:
 	void DrawLiquid();
 	void DrawSpikedFloor();
 
+	void DrawEnt(Rectangle normScreen, Texture2D* texture, Rectangle sourceRec, Color tint = WHITE);
+
 	void Draw(float dt) override;
 };

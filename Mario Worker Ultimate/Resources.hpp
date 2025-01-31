@@ -52,6 +52,11 @@ namespace Resources
 
 	extern Font KeystrokesMT;
 
+	extern Texture2D TerrainTileset;
+	extern Texture2D BlocksTileset;
+	extern Texture2D TankTileset;
+	extern Texture2D PipesTileset;
+
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.
 	/// </summary>

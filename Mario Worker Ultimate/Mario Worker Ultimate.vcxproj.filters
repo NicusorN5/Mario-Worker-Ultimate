@@ -18,9 +18,6 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bonus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -123,12 +120,18 @@
     <ClCompile Include="Scenes\BlankScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Native.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Tileset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Block.hpp">
+    <ClInclude Include="World\Block.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bonus.hpp">
@@ -246,6 +249,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\BlankScene.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Native.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

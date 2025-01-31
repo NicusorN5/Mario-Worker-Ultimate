@@ -159,7 +159,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="Enemies\IAnimatedEnemy.cpp" />
     <ClCompile Include="Enemies\IBoss.cpp" />
@@ -195,16 +194,18 @@
     <ClCompile Include="UI\TabButton.cpp" />
     <ClCompile Include="UI\Textbox.cpp" />
     <ClCompile Include="UI\SpriteFont.cpp" />
+    <ClCompile Include="World\Tileset.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.hpp" />
-    <ClInclude Include="Block.hpp" />
+    <ClInclude Include="World\Block.hpp" />
     <ClInclude Include="Bonus.hpp" />
     <ClInclude Include="Enemies\IAnimatedEnemy.hpp" />
     <ClInclude Include="Animable.hpp" />
     <ClInclude Include="Enemies\IBoss.hpp" />
     <ClInclude Include="Enemies\IMovingEnemy.hpp" />
     <ClInclude Include="Enemies\LUAEnemy.hpp" />
+    <ClInclude Include="Point.hpp" />
     <ClInclude Include="Scenes\BlankScene.hpp" />
     <ClInclude Include="Scenes\GameBase.hpp" />
     <ClInclude Include="Scenes\LevelPlayer.hpp" />

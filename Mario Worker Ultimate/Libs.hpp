@@ -13,6 +13,9 @@
 #include <limits>
 #include <array>
 #include <filesystem>
+#include <span>
+
+#include "Point.hpp"
 
 template<typename N>
 concept SignedInteger = std::is_signed_v<N>;

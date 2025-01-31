@@ -41,6 +41,8 @@ Color Resources::PoisonColor(154, 0, 230, 128);
 
 Font Resources::KeystrokesMT;
 
+Texture2D Resources::TerrainTileset;
+
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
 	PlaySound(sounds[Random(0, static_cast<int>(numSounds))]);
@@ -172,6 +174,12 @@ void Resources::LoadAll()
 
 	KeystrokesMT = LoadFont("Data\\Fonts\\KeystrokesMTa.ttf");
 	if(KeystrokesMT.texture.id == 0) throw new GameResourceLoadException("Data\\Fonts\\KeystrokesMT.ttf");
+
+	TerrainTileset = LoadTextureChkF("Data\\World\\Tileset_Blocks.png");
+	BlocksTileset = LoadTextureChkF("Data\\World\\Tileset_Blocks.png");
+	TankTileset = LoadTextureChkF("Data\\World\\Tileset_Tank.png");
+	PipesTileset = LoadTextureChkF("Data\\World\\Tileset_Pipes.png");
+
 }
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
@@ -234,4 +242,9 @@ void Resources::UnloadAll()
 	UnloadTexture(Poison);
 
 	UnloadFont(KeystrokesMT);
+
+	UnloadTexture(TerrainTileset);
+	UnloadTexture(BlocksTileset);
+	UnloadTexture(TankTileset);
+	UnloadTexture(PipesTileset);
 }

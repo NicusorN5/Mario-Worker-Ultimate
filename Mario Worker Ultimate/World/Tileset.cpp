@@ -1,7 +1,7 @@
 #include "Tileset.hpp"
 #include "../Scenes/GameBase.hpp"
 
-Tileset::Tileset(Texture2D* tileset, Point block_size) :
+Tileset::Tileset(Texture2D* tileset, Point_i32 block_size) :
 	_tileset(tileset),
 	_bsize(block_size),
 	_numBlocks( tileset->width / block_size.X, tileset->height / block_size.Y),
@@ -42,7 +42,7 @@ void Tileset::DrawTiles(const std::span<Block>& blocks)
 	}
 }
 
-void Tileset::DrawForEditor(Vector2 offset)
+void Tileset::DrawForEditor(Vector2 offset, Vector2 scale)
 {
 	DrawTexturePro(
 		*_tileset,
@@ -50,11 +50,18 @@ void Tileset::DrawForEditor(Vector2 offset)
 		Game::ScreenRec({
 			offset.x,
 			offset.y,
-			(_numBlocks.X * 0.05f) * (_bsize.X / 32.0f),
-			(_numBlocks.Y * 1 / 15.0f) * (_bsize.X / 32.0f),
+			(_numBlocks.X * 0.05f) * (_bsize.X / 32.0f) * scale.x,
+			(_numBlocks.Y * 1 / 15.0f) * (_bsize.X / 32.0f) * scale.y,
 		}),
 		{ 0,0 },
 		0.0f,
 		WHITE
 	);
+
+
+}
+
+const Point_i32 Tileset::NumBlocks() const noexcept
+{
+	return _numBlocks;
 }

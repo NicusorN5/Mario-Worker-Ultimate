@@ -4,6 +4,7 @@
 #include "GameResourceLoadException.hpp"
 #include <random>
 #include "UI/SpriteFont.hpp"
+#include "World\Tileset.hpp"
 
 namespace Resources
 {
@@ -52,10 +53,15 @@ namespace Resources
 
 	extern Font KeystrokesMT;
 
-	extern Texture2D TerrainTileset;
-	extern Texture2D BlocksTileset;
-	extern Texture2D TankTileset;
-	extern Texture2D PipesTileset;
+	extern Texture2D TerrainTilesetTexture;
+	extern Texture2D BlocksTilesetTexture;
+	extern Texture2D TankTilesetTexture;
+	extern Texture2D PipesTilesetTexture;
+
+	extern Tileset TerrainTileset;
+	extern Tileset BlocksTileset;
+	extern Tileset TankTileset;
+	extern Tileset PipesTileset;
 
 	/// <summary>
 	/// Loads the texture and checks if it is correctly loaded. Otherwise a GameResourceLoadException is thrown.

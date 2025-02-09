@@ -10,11 +10,15 @@ class Tileset
 
 	GameBase* _scene;
 public:
-	Tileset(Texture2D* tileset, Point block_size);
+	Tileset(Texture2D* tileset, Point_i32 block_size);
+
+	Tileset() = default;
 
 	void SetScene(GameBase* scene);
 	void DrawTile(Block b);
 
 	void DrawTiles(const std::span<Block>& blocks);
-	void DrawForEditor(Vector2 offset);
+	void DrawForEditor(Vector2 offset, Vector2 scale = {0.65f, 0.65f});
+
+	const Point_i32 NumBlocks() const noexcept;
 };

@@ -41,7 +41,15 @@ Color Resources::PoisonColor(154, 0, 230, 128);
 
 Font Resources::KeystrokesMT;
 
-Texture2D Resources::TerrainTileset;
+Texture2D Resources::TerrainTilesetTexture;
+Texture2D Resources::BlocksTilesetTexture;
+Texture2D Resources::TankTilesetTexture;
+Texture2D Resources::PipesTilesetTexture;
+
+Tileset Resources::TerrainTileset;
+Tileset Resources::BlocksTileset;
+Tileset Resources::TankTileset;
+Tileset Resources::PipesTileset;
 
 void Resources::PlayRandomSound(Sound* sounds, size_t numSounds)
 {
@@ -175,11 +183,15 @@ void Resources::LoadAll()
 	KeystrokesMT = LoadFont("Data\\Fonts\\KeystrokesMTa.ttf");
 	if(KeystrokesMT.texture.id == 0) throw new GameResourceLoadException("Data\\Fonts\\KeystrokesMT.ttf");
 
-	TerrainTileset = LoadTextureChkF("Data\\World\\Tileset_Blocks.png");
-	BlocksTileset = LoadTextureChkF("Data\\World\\Tileset_Blocks.png");
-	TankTileset = LoadTextureChkF("Data\\World\\Tileset_Tank.png");
-	PipesTileset = LoadTextureChkF("Data\\World\\Tileset_Pipes.png");
+	TerrainTilesetTexture = LoadTextureChkF("Data\\World\\Tileset_Terrain.png");
+	BlocksTilesetTexture = LoadTextureChkF("Data\\World\\Tileset_Blocks.png");
+	TankTilesetTexture = LoadTextureChkF("Data\\World\\Tileset_Tank.png");
+	PipesTilesetTexture = LoadTextureChkF("Data\\World\\Tileset_Pipes.png");
 
+	TerrainTileset = Tileset(&TerrainTilesetTexture, { 32, 32 });
+	BlocksTileset = Tileset(&BlocksTilesetTexture, { 32, 32 });
+	TankTileset = Tileset(&TankTilesetTexture, { 32, 32 });
+	PipesTileset = Tileset(&PipesTilesetTexture, { 32, 32 });
 }
 
 Sound Resources::LoadSoundChkF(const std::filesystem::path& path)
@@ -243,8 +255,8 @@ void Resources::UnloadAll()
 
 	UnloadFont(KeystrokesMT);
 
-	UnloadTexture(TerrainTileset);
-	UnloadTexture(BlocksTileset);
-	UnloadTexture(TankTileset);
-	UnloadTexture(PipesTileset);
+	UnloadTexture(TerrainTilesetTexture);
+	UnloadTexture(BlocksTilesetTexture);
+	UnloadTexture(TankTilesetTexture);
+	UnloadTexture(PipesTilesetTexture);
 }

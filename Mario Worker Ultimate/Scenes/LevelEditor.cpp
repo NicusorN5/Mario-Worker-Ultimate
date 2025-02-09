@@ -1382,6 +1382,19 @@ void LevelEditor::Draw(float dt)
 				
 				switch(_blocksPageId)
 				{
+					case 0:
+						Resources::TerrainTileset.DrawForEditor({ 0.25f,0.145f });
+						auto num = Resources::TerrainTileset.NumBlocks();
+						break;
+					case 1:
+						Resources::BlocksTileset.DrawForEditor({ 0.25f,0.145f });
+						break;
+					case 2:
+						Resources::TankTileset.DrawForEditor({ 0.25f,0.145f });
+						break;
+					case 3:
+						Resources::PipesTileset.DrawForEditor({ 0.25f,0.145f });
+						break;
 					default:break;
 				}
 				break;
